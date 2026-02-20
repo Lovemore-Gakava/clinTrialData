@@ -1,0 +1,30 @@
+Package: ctdata
+Title: Clinical Trial Example Datasets
+Version: 0.1.0
+Authors@R: c(
+    person("Lovemore", "Gakava", , "Lovemore.Gakava@gmail.com", role = c("aut", "cre", "cph"))
+  )
+Description: A collection of clinical trial example datasets from
+    multiple sources including the CDISC Pilot 01 study. All datasets are 
+    provided in Parquet format for efficient storage and can be accessed using 
+    the 'connector' package. Designed for training, testing, prototyping, and
+    demonstrating clinical data analysis workflows.
+License: Apache License (>= 2)
+URL: https://lovemore-gakava.github.io/ctdata,
+    https://github.com/lovemore-gakava/ctdata
+BugReports: https://github.com/lovemore-gakava/ctdata/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports:
+    connector
+Suggests:
+    arrow,
+    dplyr,
+    ggplot2,
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    tidyr
+Config/testthat/edition: 3
+VignetteBuilder: knitr

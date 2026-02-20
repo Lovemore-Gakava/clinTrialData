@@ -1,0 +1,15 @@
+^ctdata\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
+^\.lintr$
+^cspell\.yaml$
+^\.github$
+^data-raw$
+^doc$
+^Meta$
+^dev$
+\.lock$

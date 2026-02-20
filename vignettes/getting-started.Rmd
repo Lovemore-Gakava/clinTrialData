@@ -1,0 +1,197 @@
+---
+title: "Getting Started with ctdata"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with ctdata}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+The `ctdata` package provides easy access to clinical trial example
+datasets from multiple sources. All data is stored in efficient Parquet format
+and can be accessed using the `connector` package through a unified interface.
+
+Key features:
+
+- **Automatic discovery**: Data sources are automatically detected by scanning the package directory structure
+- **Generic interface**: Use `connect_clinical_data()` to connect to any available data source
+- **Dynamic configuration**: No need to maintain static configuration files
+- **Extensible**: Add new data sources by simply adding directories with parquet files
+
+## Installation
+
+```r
+# Install from GitHub
+remotes::install_github("lovemore-gakava/ctdata")
+```
+
+## Available Data Sources
+
+```{r}
+library(ctdata)
+
+# View all available data sources
+list_data_sources()
+```
+
+## Quick Start
+
+### Discover Available Data Sources
+
+```{r eval=FALSE}
+# View all available data sources
+sources <- list_data_sources()
+print(sources)
+```
+
+### Connect to a Data Source
+
+```{r eval=FALSE}
+# Connect to CDISC Pilot data (or any available source)
+db <- connect_clinical_data("cdisc_pilot")
+
+# List available datasets in ADaM domain
+db$adam$list_content_cnt()
+
+# Read ADSL dataset
+adsl <- db$adam$read_cnt("adsl")
+head(adsl)
+```
+
+### Explore the Data
+
+```{r eval=FALSE}
+# Get dataset dimensions
+dim(adsl)
+
+# View structure
+str(adsl)
+
+# Summary statistics
+summary(adsl)
+```
+
+## Working with Different Domains
+
+### ADaM Datasets
+
+```{r eval=FALSE}
+# Read adverse events data
+adae <- db$adam$read_cnt("adae")
+
+# Read lab data
+adlbc <- db$adam$read_cnt("adlbc")
+```
+
+### SDTM Datasets
+
+```{r eval=FALSE}
+# Read demographics
+dm <- db$sdtm$read_cnt("dm")
+
+# Read vital signs
+vs <- db$sdtm$read_cnt("vs")
+```
+
+## Working with Multiple Data Sources
+
+The package automatically discovers all available data sources. You can easily
+switch between different sources or work with multiple sources simultaneously:
+
+```{r eval=FALSE}
+# Get information about all sources
+all_sources <- list_data_sources()
+
+# Connect to different sources
+for (source_name in all_sources$source) {
+  cat("Connecting to:", source_name, "\n")
+  db <- connect_clinical_data(source_name)
+
+  # List domains available in this source
+  cat("Available domains:", names(db), "\n")
+}
+```
+
+## Example Analysis
+
+```{r eval=FALSE}
+library(dplyr)
+
+# Connect to data source
+db <- connect_clinical_data("cdisc_pilot")
+
+# Read subject-level data
+adsl <- db$adam$read_cnt("adsl")
+
+# Basic demographic summary by treatment
+demo_summary <- adsl %>%
+  group_by(TRT01A) %>%
+  summarise(
+    n = n(),
+    mean_age = mean(AGE, na.rm = TRUE),
+    female_pct = mean(SEX == "F", na.rm = TRUE) * 100,
+    .groups = "drop"
+  )
+
+print(demo_summary)
+```
+
+## Contributing New Data Sources
+
+The package is designed to be extensible. If you would like to contribute a new data source to the package, you can do so by:
+
+1. **Fork the repository** on GitHub or **create a pull request**
+2. In your fork/branch, create a directory under `inst/exampledata/` with your source name
+3. Organize your data in subdirectories (e.g., `adam/`, `sdtm/`, `output/`)
+4. Place your `.parquet` files in the appropriate subdirectories
+5. The source will be automatically discovered by `list_data_sources()`
+6. Submit a pull request with your new data source
+
+**Note:** Data sources cannot be added to an installed package directly. Contributions must be made through the package development workflow (fork/PR).
+
+Example directory structure for contributors:
+```
+inst/exampledata/
+├── cdisc_pilot/
+│   ├── adam/
+│   │   ├── adsl.parquet
+│   │   └── adae.parquet
+│   └── sdtm/
+│       ├── dm.parquet
+│       └── ae.parquet
+└── your_new_source/
+    ├── adam/
+    │   └── your_data.parquet
+    └── sdtm/
+        └── your_data.parquet
+```
+
+To contribute, visit the [GitHub repository](https://github.com/lovemore-gakava/ctdata).
+
+## Data Attribution
+
+### CDISC Pilot Data
+
+The CDISC Pilot Study data included in this package comes from the CDISC SDTM/ADaM Pilot Project, which demonstrates the implementation of CDISC standards in regulatory submissions.
+
+**Source**: [CDISC SDTM/ADaM Pilot Project](https://github.com/cdisc-org/sdtm-adam-pilot-project)
+
+**Description**: This pilot study data was created to demonstrate the use of CDISC standards (SDTM and ADaM) in regulatory submissions. The data represents a fictional clinical trial and serves as an educational resource for the clinical research community.
+
+**Usage**: The data is provided for educational and development purposes to help users understand CDISC standards and develop tools for clinical data analysis.
+
+**Acknowledgments**: We acknowledge and thank CDISC for making this valuable educational resource available to the community. The data has been converted to Parquet format for efficient storage and access while maintaining the original structure and content.
+
+For additional variations of this data, see also:
+- [PHUSE Test Data Factory](https://github.com/phuse-org/phuse-scripts/tree/master/data)
+- [CDISC-split folder](https://github.com/phuse-org/phuse-scripts/tree/master/data/adam/cdisc-split) - Multiple studies variation
+

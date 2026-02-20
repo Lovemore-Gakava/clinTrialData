@@ -1,0 +1,29 @@
+---
+url: https://lovemore-gakava.github.io/ctdata
+template:
+  bootstrap: 5
+development:
+  mode: auto
+
+reference:
+- title: "Data Access Functions"
+  desc: "Functions for connecting to and accessing clinical trial data"
+  contents:
+  - connect_clinical_data
+  - list_data_sources
+- title: "Datasets"
+  desc: "Clinical trial datasets included in the package"
+  contents:
+  - ctdata-data
+- title: "Lock Protection"
+  desc: "Internal functions for data protection"
+  contents:
+  - remove_cnt.ConnectorLockedFS
+  - write_cnt.ConnectorLockedFS
+
+articles:
+- title: "Guides"
+  navbar: ~
+  contents:
+  - getting-started
+  - cdisc-pilot-extended

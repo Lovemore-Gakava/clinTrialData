@@ -1,0 +1,46 @@
+---
+# MegaLinter Configuration for R Package
+# https://megalinter.io/configuration/
+
+# Apply R flavor
+FLAVOR: r
+
+# Enable/disable linters
+ENABLE_LINTERS:
+  - R_LINTR
+  - MARKDOWN_MARKDOWNLINT
+  - YAML_YAMLLINT
+
+DISABLE_LINTERS:
+  - SPELL_CSPELL  # Use wordspell (via inst/WORDLIST) instead
+  - SPELL_LYCHEE  # Disable link checking for now
+  - HTML_DJLINT   # Disable HTML linting for generated docs
+
+# Exclude patterns
+FILTER_REGEX_EXCLUDE: |
+  (docs/|doc/|man/|\.git/|node_modules/|\.Rproj\.user/|inst/doc/)
+
+# File exclusions
+IGNORE_GENERATED_FILES: true
+
+# R-specific settings
+R_LINTR_ARGUMENTS: --error_on_lint
+
+# Markdown settings
+MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.yaml
+
+# YAML settings
+YAML_YAMLLINT_CONFIG_FILE: .yamllint.yaml
+
+# Disable some verbose outputs
+SHOW_ELAPSED_TIME: false
+LOG_LEVEL: INFO
+
+# Skip files that are typically auto-generated
+ADDITIONAL_EXCLUDED_DIRECTORIES:
+  - docs
+  - doc
+  - man
+  - .git
+  - .Rproj.user
+  - inst/doc
