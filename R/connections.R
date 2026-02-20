@@ -57,7 +57,7 @@ generate_connector_config <- function(source_path) {
 #' @return A `connectors` object
 #' @keywords internal
 connect_to_source <- function(source_name) {
-  root_path <- system.file("exampledata", source_name, package = "ctdata")
+  root_path <- system.file("exampledata", source_name, package = "clinTrialData")
 
   if (root_path == "" || !dir.exists(root_path)) {
     stop("Data source '", source_name, "' not found in package installation.")
@@ -111,7 +111,7 @@ wrap_connectors_with_locks <- function(obj, study_path) {
 #' @examples
 #' list_data_sources()
 list_data_sources <- function() {
-  exampledata_path <- system.file("exampledata", package = "ctdata")
+  exampledata_path <- system.file("exampledata", package = "clinTrialData")
 
   if (exampledata_path == "" || !dir.exists(exampledata_path)) {
     return(data.frame(

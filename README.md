@@ -1,14 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ctdata <img src="man/figures/logo.png" align="right" height="139" alt="ctdata logo" />
+# clinTrialData <img src="man/figures/logo.png" align="right" height="139" alt="clinTrialData logo" />
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/Lovemore-Gakava/ctdata/actions/workflows/r.yml/badge.svg)](https://github.com/Lovemore-Gakava/ctdata/actions/workflows/r.yml)
+[![R-CMD-check](https://github.com/Lovemore-Gakava/clinTrialData/actions/workflows/r.yml/badge.svg)](https://github.com/Lovemore-Gakava/clinTrialData/actions/workflows/r.yml)
 <!-- badges: end -->
 
-The `ctdata` package provides access to clinical trial example datasets
+The `clinTrialData` package provides access to clinical trial example datasets
 in R. Data is stored in Parquet format and accessed through the
 `connector` package.
 
@@ -24,17 +24,17 @@ in R. Data is stored in Parquet format and accessed through the
 
 ## Installation
 
-You can install the development version of ctdata from GitHub:
+You can install the development version of clinTrialData from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("lovemore-gakava/ctdata")
+remotes::install_github("lovemore-gakava/clinTrialData")
 ```
 
 ## Quick Start
 
 ``` r
-library(ctdata)
+library(clinTrialData)
 
 # View available data sources
 list_data_sources()
@@ -84,10 +84,10 @@ See package vignettes for detailed information about each data source:
 
 ``` r
 # View all available vignettes
-vignette(package = "ctdata")
+vignette(package = "clinTrialData")
 
 # View CDISC Pilot extended datasets
-vignette("cdisc-pilot-extended", package = "ctdata")
+vignette("cdisc-pilot-extended", package = "clinTrialData")
 ```
 
 ## Data Format

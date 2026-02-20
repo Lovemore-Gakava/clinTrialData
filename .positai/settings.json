@@ -1,0 +1,12 @@
+{
+  "permission": {
+    "bash": {
+      "cd /Users/lovemore.gakavagmail.com/Downloads/ctdata\ncat .Rbuildignore": "allow",
+      "cd /Users/lovemore.gakavagmail.com/Downloads/ctdata": "allow",
+      "R CMD build . 2>&1": "allow",
+      "Rscript -e \"rownames(installed.packages())\"": "allow",
+      "tr ' ' '\\n'": "allow",
+      "grep *": "allow"
+    }
+  }
+}

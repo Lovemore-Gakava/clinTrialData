@@ -74,7 +74,7 @@ discover_xpt_files <- function(repo_owner, repo_name, path) {
       # Make API request with proper headers
       response <- httr::GET(
         api_url,
-        httr::add_headers("User-Agent" = "R-ctdata")
+        httr::add_headers("User-Agent" = "R-clinTrialData")
       )
 
       if (httr::status_code(response) == 200) {

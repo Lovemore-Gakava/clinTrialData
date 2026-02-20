@@ -1,7 +1,7 @@
 #' Clinical Trial Datasets
 #'
 #' @description
-#' The ctdata package contains clinical trial datasets from
+#' The clinTrialData package contains clinical trial datasets from
 #' multiple sources, stored in Parquet format. Data is accessed
 #' using connector functions.
 #'
@@ -60,7 +60,7 @@
 #' CDISC. Clinical Data Interchange Standards Consortium.
 #' \url{https://www.cdisc.org/}
 #'
-#' @name ctdata-data
+#' @name clinTrialData-data
 #' @aliases clinical-data cdisc-pilot
 #' @keywords datasets
 NULL

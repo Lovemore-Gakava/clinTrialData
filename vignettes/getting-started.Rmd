@@ -1,8 +1,8 @@
 ---
-title: "Getting Started with ctdata"
+title: "Getting Started with clinTrialData"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Started with ctdata}
+  %\VignetteIndexEntry{Getting Started with clinTrialData}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The `ctdata` package provides easy access to clinical trial example
+The `clinTrialData` package provides easy access to clinical trial example
 datasets from multiple sources. All data is stored in efficient Parquet format
 and can be accessed using the `connector` package through a unified interface.
 
@@ -31,13 +31,13 @@ Key features:
 
 ```r
 # Install from GitHub
-remotes::install_github("lovemore-gakava/ctdata")
+remotes::install_github("lovemore-gakava/clinTrialData")
 ```
 
 ## Available Data Sources
 
 ```{r}
-library(ctdata)
+library(clinTrialData)
 
 # View all available data sources
 list_data_sources()
@@ -175,7 +175,7 @@ inst/exampledata/
         └── your_data.parquet
 ```
 
-To contribute, visit the [GitHub repository](https://github.com/lovemore-gakava/ctdata).
+To contribute, visit the [GitHub repository](https://github.com/Lovemore-Gakava/clinTrialData).
 
 ## Data Attribution
 

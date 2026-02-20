@@ -1,4 +1,7 @@
-^ctdata\.Rproj$
+^clinTrialData\.Rproj$
+^\.mega-linter\.yml$
+^\.positai$
+^README\.html$
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^_pkgdown\.yml$

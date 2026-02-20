@@ -54,7 +54,7 @@ The lock mechanism prevents data-raw scripts from accidentally overwriting study
 #### Check Lock Status
 
 ```r
-library(ctdata)
+library(clinTrialData)
 status <- get_lock_status("inst/exampledata/cdisc_pilot")
 print(status)
 ```
@@ -64,7 +64,7 @@ print(status)
 To regenerate data, you must first unlock the study folder:
 
 ```r
-library(ctdata)
+library(clinTrialData)
 unlock_study("inst/exampledata/cdisc_pilot")
 
 # Now you can run the data preparation script
@@ -103,7 +103,7 @@ When you need to update or regenerate study data:
 
 1. **Unlock the folder:**
    ```r
-   library(ctdata)
+   library(clinTrialData)
    unlock_study("inst/exampledata/cdisc_pilot_extended")
    ```
 

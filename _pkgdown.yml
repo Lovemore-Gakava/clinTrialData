@@ -1,5 +1,5 @@
 ---
-url: https://lovemore-gakava.github.io/ctdata
+url: https://lovemore-gakava.github.io/clinTrialData
 template:
   bootstrap: 5
 development:
@@ -14,7 +14,7 @@ reference:
 - title: "Datasets"
   desc: "Clinical trial datasets included in the package"
   contents:
-  - ctdata-data
+  - clinTrialData-data
 - title: "Lock Protection"
   desc: "Internal functions for data protection"
   contents:
