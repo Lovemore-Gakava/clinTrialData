@@ -1,0 +1,47 @@
+{
+  "source": "cdisc_pilot",
+  "description": "CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping",
+  "domains": {
+    "adam": [
+      "adae",
+      "adlb",
+      "adlbc",
+      "adlbh",
+      "adlbhy",
+      "adqsadas",
+      "adqscibc",
+      "adqsnpix",
+      "adsl",
+      "adtte",
+      "advs"
+    ],
+    "sdtm": [
+      "ae",
+      "cm",
+      "dm",
+      "ds",
+      "ex",
+      "lb",
+      "mh",
+      "qs",
+      "relrec",
+      "sc",
+      "se",
+      "suppae",
+      "suppdm",
+      "suppds",
+      "supplb",
+      "sv",
+      "ta",
+      "te",
+      "ti",
+      "ts",
+      "tv",
+      "vs"
+    ]
+  },
+  "n_subjects": 225,
+  "version": "v0.1.0",
+  "license": "CDISC Pilot — educational use",
+  "source_url": "https://github.com/cdisc-org/sdtm-adam-pilot-project"
+}

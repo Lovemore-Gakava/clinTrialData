@@ -1,0 +1,1776 @@
+Table 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr All BSA Adj Ur Oxalate (umol/24h)                                                                  
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                               1319.6 (350.27)     1301.1 (323.56)       1258.9 (328.26)   
+    Median                                      1318.9              1234.8                 1204.0       
+    Min, Max                                 777.7, 1852.6       791.3, 1853.4         788.2, 1855.6    
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                               1371.0 (293.96)     1326.0 (310.15)       1290.2 (325.07)   
+    Median                                      1373.5              1337.8                 1289.3       
+    Min, Max                                 827.5, 1860.1       791.0, 1851.8         787.4, 1860.1    
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                53.3 (465.90)       18.4 (499.47)         33.6 (468.68)    
+    Median                                        7.2                11.5                  -10.2        
+    Min, Max                                 -960.8, 987.3       -972.3, 895.6        -1055.1, 1002.0   
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                               1364.5 (328.28)     1356.4 (289.34)       1335.3 (317.45)   
+    Median                                      1369.1              1357.6                 1313.7       
+    Min, Max                                 797.5, 1843.7       841.3, 1854.7         785.3, 1861.2    
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                47.1 (504.54)       53.4 (488.06)         80.8 (424.56)    
+    Median                                       38.6                55.5                  125.5        
+    Min, Max                                -905.4, 1054.4       -998.3, 881.1         -913.2, 992.8    
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                               1316.3 (309.05)     1339.2 (278.31)       1268.0 (296.39)   
+    Median                                      1311.6              1360.8                 1219.1       
+    Min, Max                                 789.9, 1835.3       799.3, 1855.0         783.0, 1841.3    
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                15.3 (504.99)       29.6 (440.69)         22.7 (405.22)    
+    Median                                       32.2                35.1                   36.2        
+    Min, Max                                -1027.1, 1029.5     -905.6, 1053.6         -1019.3, 839.3   
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                               1382.1 (315.73)     1287.1 (339.92)       1333.0 (333.10)   
+    Median                                      1433.5              1266.2                 1342.5       
+    Min, Max                                 784.3, 1844.5       781.0, 1864.1         791.6, 1864.0    
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                72.8 (416.14)      -28.3 (505.34)         75.8 (483.61)    
+    Median                                       67.6                -10.3                  38.6        
+    Min, Max                                -974.3, 1017.0      -901.7, 1042.4        -1064.0, 1016.6   
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr All BSA Adj Ur Oxalate (umol/24h)                                                                  
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                               1358.1 (305.35)     1343.1 (300.18)       1381.6 (309.35)   
+    Median                                      1369.8              1334.9                 1399.7       
+    Min, Max                                 801.1, 1857.0       790.7, 1855.7         843.4, 1853.0    
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                49.1 (432.61)       1.3 (412.51)          101.4 (469.64)   
+    Median                                       26.1                -72.1                 106.6        
+    Min, Max                                -960.0, 1063.4       -740.4, 785.3         -976.6, 1000.5   
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                               1363.8 (295.92)     1258.2 (278.48)       1344.1 (363.46)   
+    Median                                      1388.3              1218.5                 1390.5       
+    Min, Max                                 779.2, 1828.4       814.1, 1829.2         800.0, 1830.4    
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                59.4 (476.78)      -99.5 (436.77)         61.3 (528.05)    
+    Median                                       108.9               -89.8                  50.7        
+    Min, Max                                 -970.9, 964.1       -858.5, 738.8         -1017.7, 992.5   
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                               1332.7 (322.25)     1358.8 (321.48)       1247.6 (313.14)   
+    Median                                      1308.5              1418.8                 1195.7       
+    Min, Max                                 801.1, 1844.0       803.3, 1849.6         797.6, 1830.7    
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                32.6 (476.44)       13.6 (502.44)         -72.0 (427.37)   
+    Median                                       69.4               -102.7                 -28.4        
+    Min, Max                                 -880.2, 990.3       -735.5, 950.0         -719.8, 839.0    
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                               1298.9 (308.87)     1379.2 (256.96)       1323.8 (362.60)   
+    Median                                      1236.2              1364.5                 1357.6       
+    Min, Max                                 786.8, 1860.7       916.5, 1841.4         794.6, 1838.5    
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                               -17.3 (479.92)       51.6 (504.62)         24.1 (496.41)    
+    Median                                       23.1                -37.0                 171.9        
+    Min, Max                                -988.4, 1014.5       -706.9, 884.9         -1001.3, 979.6   
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                               1342.7 (335.66)     1300.1 (389.68)       1234.9 (340.15)   
+    Median                                      1390.1              1298.9                 1124.9       
+    Min, Max                                 821.3, 1861.0       777.9, 1856.0         781.5, 1818.4    
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr All BSA Adj Ur Oxalate (umol/24h)                                                                  
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                12.8 (520.54)       16.6 (510.15)         -47.2 (530.65)   
+    Median                                       -40.5               -41.8                 -79.3        
+    Min, Max                                 -921.8, 934.1      -766.0, 1030.0         -938.5, 947.4    
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                               1312.8 (310.56)     1332.5 (296.60)       1306.0 (330.97)   
+    Median                                      1275.8              1351.0                 1235.3       
+    Min, Max                                 828.1, 1852.1       780.9, 1825.8         779.7, 1851.8    
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                -4.9 (491.80)       25.8 (460.99)         56.0 (496.18)    
+    Median                                       -40.1               -54.5                  82.9        
+    Min, Max                                -920.8, 1046.0       -941.2, 938.4        -1020.6, 1056.6   
+24Hr Urinary Creatinine (umol/24h)                                                                      
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 7.7 (3.16)          8.2 (3.16)             8.4 (3.57)     
+    Median                                        7.9                 8.3                   8.1         
+    Min, Max                                   2.5, 14.1           2.4, 13.9             2.6, 14.1      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 8.5 (3.44)          8.6 (3.79)             8.8 (3.40)     
+    Median                                        9.1                 9.2                   9.4         
+    Min, Max                                   2.6, 14.0           2.4, 14.2             2.8, 14.1      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 0.7 (4.51)          0.6 (5.07)             0.5 (5.13)     
+    Median                                        0.9                 1.0                   0.1         
+    Min, Max                                  -10.6, 10.6         -10.3, 11.7           -10.0, 10.3     
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 7.7 (3.62)          8.6 (3.57)             8.4 (3.37)     
+    Median                                        7.7                 9.2                   8.2         
+    Min, Max                                   2.4, 14.0           2.6, 13.8             2.6, 13.6      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 -0.1 (4.56)         0.5 (5.13)             0.1 (4.91)     
+    Median                                       -0.3                 1.6                   0.4         
+    Min, Max                                  -11.1, 10.0          -9.8, 9.8            -10.6, 10.2     
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 8.4 (3.27)          7.5 (3.41)             7.3 (3.34)     
+    Median                                        8.6                 7.8                   6.8         
+    Min, Max                                   2.4, 14.0           2.5, 13.9             2.4, 14.1      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr Urinary Creatinine (umol/24h)                                                                      
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 0.5 (3.65)          -1.0 (4.65)           -0.8 (5.16)     
+    Median                                        0.5                -1.8                   -1.0        
+    Min, Max                                  -6.4, 10.1           -9.9, 9.9            -11.1, 10.1     
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 8.6 (3.31)          7.7 (3.57)             8.5 (3.76)     
+    Median                                        9.2                 7.8                   7.8         
+    Min, Max                                   2.7, 13.7           2.5, 13.9             2.5, 13.9      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 0.7 (4.72)          -0.6 (4.61)            0.4 (4.98)     
+    Median                                        1.0                -0.5                   0.6         
+    Min, Max                                  -11.4, 10.1         -10.8, 9.7             -7.6, 10.3     
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 8.5 (3.39)          7.8 (3.41)             8.3 (3.51)     
+    Median                                        9.2                 7.5                   8.1         
+    Min, Max                                   2.4, 14.1           2.4, 13.8             2.5, 14.1      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 0.7 (4.43)          -0.9 (4.49)            0.3 (4.86)     
+    Median                                        0.9                -0.8                   0.0         
+    Min, Max                                   -9.2, 9.7           -9.5, 8.7             -8.8, 9.5      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 8.0 (3.62)          7.3 (3.75)             8.5 (3.35)     
+    Median                                        7.9                 7.6                   8.8         
+    Min, Max                                   2.4, 14.2           2.5, 13.8             2.6, 14.1      
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 0.2 (4.61)          -1.4 (4.15)            0.4 (4.72)     
+    Median                                        1.0                -0.9                   0.2         
+    Min, Max                                  -10.4, 10.5         -10.3, 8.3             -8.0, 10.2     
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 8.3 (3.32)          9.0 (3.59)             9.1 (3.28)     
+    Median                                        8.1                10.0                   9.2         
+    Min, Max                                   2.5, 13.7           3.7, 13.8             2.8, 13.5      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 0.4 (5.11)          0.4 (4.69)             0.9 (4.68)     
+    Median                                       -0.1                 0.7                   2.5         
+    Min, Max                                  -10.0, 10.4          -8.5, 8.7             -9.6, 7.7      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr Urinary Creatinine (umol/24h)                                                                      
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 8.8 (3.54)          7.8 (3.73)             7.8 (3.56)     
+    Median                                        9.1                 6.7                   7.4         
+    Min, Max                                   2.6, 14.1           2.5, 14.0             3.5, 13.5      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 1.0 (4.62)          -0.7 (4.94)           -0.1 (4.77)     
+    Median                                        1.2                 0.0                   -0.4        
+    Min, Max                                  -11.2, 10.6         -7.8, 10.4            -10.0, 10.2     
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 8.6 (3.48)          9.1 (3.12)             9.8 (2.74)     
+    Median                                        8.9                 9.0                   10.1        
+    Min, Max                                   2.6, 14.0           3.2, 13.4             4.8, 13.9      
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 0.7 (4.62)          0.7 (4.42)             2.3 (4.69)     
+    Median                                       -0.1                 1.2                   1.0         
+    Min, Max                                  -10.3, 10.7         -10.2, 7.7             -6.4, 11.0     
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 8.1 (3.27)          8.5 (3.10)             7.8 (3.41)     
+    Median                                        7.9                 8.3                   7.1         
+    Min, Max                                   2.5, 14.2           2.5, 14.1             2.5, 14.2      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 0.3 (4.48)          0.5 (4.50)            -0.5 (5.18)     
+    Median                                        0.2                 0.6                   0.0         
+    Min, Max                                  -10.9, 10.2         -8.2, 11.2            -11.2, 10.8     
+24Hr Urinary Oxalate (umol/24h)                                                                         
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                               798.7 (261.13)      825.6 (236.40)         789.3 (285.39)   
+    Median                                       788.2               830.7                 744.0        
+    Min, Max                                 347.0, 1263.6       352.1, 1260.3         348.6, 1264.9    
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                               803.8 (262.11)      859.4 (274.93)         778.6 (254.55)   
+    Median                                       773.8               860.4                 741.4        
+    Min, Max                                 353.8, 1260.2       350.1, 1269.3         350.3, 1267.4    
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                3.8 (370.93)        40.1 (328.22)         -14.9 (347.36)   
+    Median                                       15.1                52.7                   -1.6        
+    Min, Max                                 -793.1, 797.9       -713.7, 762.7         -660.8, 730.9    
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr Urinary Oxalate (umol/24h)                                                                         
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                               774.2 (269.17)      799.8 (267.13)         833.5 (276.21)   
+    Median                                       731.9               777.8                 881.9        
+    Min, Max                                 362.2, 1265.6       386.3, 1238.2         364.3, 1266.4    
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                               -25.3 (365.34)      -27.6 (360.71)         39.1 (371.65)    
+    Median                                       -28.9               -25.9                  15.7        
+    Min, Max                                 -901.4, 733.3       -744.4, 701.9         -744.3, 883.0    
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                               800.4 (261.56)      735.3 (258.65)         807.1 (263.72)   
+    Median                                       784.9               733.1                 820.5        
+    Min, Max                                 354.8, 1261.1       350.9, 1268.4         390.0, 1225.1    
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                4.8 (343.52)       -84.3 (392.93)         12.8 (336.35)    
+    Median                                       32.1                -87.8                  12.6        
+    Min, Max                                 -866.2, 804.6       -817.6, 887.6         -785.7, 864.8    
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                               808.7 (260.61)      807.7 (240.11)         808.4 (278.62)   
+    Median                                       811.7               789.9                 785.0        
+    Min, Max                                 350.3, 1260.0       356.9, 1263.1         381.9, 1253.9    
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                6.2 (341.21)        -3.1 (342.02)         19.4 (426.16)    
+    Median                                       -1.8                66.3                   11.2        
+    Min, Max                                 -824.3, 882.0       -707.6, 662.3         -822.3, 864.8    
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                               798.1 (262.13)      844.2 (255.40)         782.1 (237.20)   
+    Median                                       770.5               914.4                 781.4        
+    Min, Max                                 382.2, 1262.1       361.8, 1230.0         361.1, 1212.4    
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                -4.3 (405.56)       39.8 (345.37)         -7.9 (406.22)    
+    Median                                       71.9                94.0                  -24.1        
+    Min, Max                                 -796.2, 815.7       -697.4, 755.8         -821.7, 781.4    
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                               812.4 (264.28)      828.5 (258.14)         742.3 (255.01)   
+    Median                                       789.5               887.1                 697.6        
+    Min, Max                                 352.4, 1266.9       354.1, 1251.6         348.1, 1175.4    
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr Urinary Oxalate (umol/24h)                                                                         
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                6.5 (333.39)        45.4 (366.15)         -76.0 (357.83)   
+    Median                                        0.9                39.5                  -97.6        
+    Min, Max                                 -599.9, 919.9       -574.3, 724.1         -730.1, 563.6    
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                               881.6 (260.67)      758.9 (270.25)         846.4 (260.55)   
+    Median                                       898.0               690.3                 818.9        
+    Min, Max                                 388.1, 1251.5       376.4, 1263.8         426.9, 1256.6    
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                81.9 (390.12)       -8.9 (373.77)         40.4 (397.49)    
+    Median                                       89.2                -53.8                 -26.0        
+    Min, Max                                 -743.0, 719.6       -735.8, 706.3         -659.5, 848.8    
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                               819.4 (257.97)      872.8 (242.48)         855.3 (274.14)   
+    Median                                       860.0               928.2                 933.5        
+    Min, Max                                 380.5, 1261.0       421.6, 1255.7         418.5, 1257.3    
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                16.5 (364.97)       84.3 (378.09)         54.5 (447.22)    
+    Median                                       -5.9                203.1                 101.7        
+    Min, Max                                 -620.0, 798.5       -618.2, 831.6         -799.2, 737.8    
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                               836.3 (274.18)      854.5 (296.85)         916.0 (280.41)   
+    Median                                       829.9               820.1                 983.6        
+    Min, Max                                 375.8, 1233.8       345.8, 1268.1         349.9, 1234.7    
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                42.8 (394.74)      110.4 (370.59)         118.7 (445.97)   
+    Median                                       106.6               175.2                  59.9        
+    Min, Max                                 -781.0, 772.8       -574.0, 815.3         -761.5, 836.5    
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                               801.4 (283.73)      810.6 (264.56)         819.6 (269.19)   
+    Median                                       805.0               799.2                 802.9        
+    Min, Max                                 349.5, 1267.1       347.9, 1256.9         402.8, 1242.5    
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                1.4 (379.90)        -4.7 (333.04)         26.9 (418.92)    
+    Median                                       -10.2                1.9                   3.1         
+    Min, Max                                 -907.3, 754.6       -848.4, 730.6         -808.2, 848.9    
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr(<18yr)BSA Adj Ur Oxalate (umol/24h)                                                                
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                               1329.2 (355.12)     1350.6 (322.00)       1336.2 (320.79)   
+    Median                                      1351.1              1302.4                 1364.5       
+    Min, Max                                 800.9, 1862.9       780.7, 1851.6         781.1, 1858.6    
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                               1384.4 (330.79)     1306.0 (296.77)       1274.1 (324.13)   
+    Median                                      1408.3              1323.0                 1255.0       
+    Min, Max                                 821.8, 1859.9       779.8, 1837.9         778.9, 1829.0    
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                64.0 (529.24)      -36.3 (450.15)         -57.3 (432.78)   
+    Median                                       97.0                -22.7                 -83.3        
+    Min, Max                                -985.8, 1041.0       -900.4, 801.8         -933.1, 866.8    
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                               1372.5 (332.36)     1350.7 (339.43)       1328.2 (323.94)   
+    Median                                      1383.6              1342.0                 1245.7       
+    Min, Max                                 789.8, 1855.5       798.3, 1859.6         812.4, 1863.7    
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                50.8 (476.83)       23.5 (500.67)         -0.2 (455.52)    
+    Median                                       19.6                -4.4                  -20.3        
+    Min, Max                                 -919.3, 967.8      -1046.1, 941.1         -924.8, 872.1    
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                               1281.3 (325.13)     1321.1 (354.23)       1353.2 (328.42)   
+    Median                                      1260.0              1363.7                 1372.2       
+    Min, Max                                 794.8, 1829.4       777.7, 1862.7         799.2, 1862.9    
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                               -30.6 (477.22)      -20.6 (523.62)         37.0 (432.69)    
+    Median                                        3.4                -8.8                  -11.8        
+    Min, Max                                -1030.7, 1002.2     -882.0, 1003.2         -738.9, 1017.5   
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                               1304.8 (347.51)     1337.3 (335.61)       1237.3 (318.51)   
+    Median                                      1351.3              1343.4                 1211.3       
+    Min, Max                                 780.1, 1857.6       787.1, 1864.0         782.6, 1850.6    
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                               -18.7 (502.70)      -17.0 (437.05)         -68.4 (425.49)   
+    Median                                       -11.4               -26.5                 -80.6        
+    Min, Max                                -1040.1, 1026.5      -961.9, 841.2         -1020.7, 928.7   
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr(<18yr)BSA Adj Ur Oxalate (umol/24h)                                                                
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                               1326.0 (313.90)     1389.4 (285.06)       1350.5 (283.15)   
+    Median                                      1292.1              1413.8                 1425.0       
+    Min, Max                                 784.3, 1848.8       812.0, 1849.3         825.2, 1840.0    
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                7.5 (526.23)        13.5 (422.76)         58.9 (440.03)    
+    Median                                       16.9                 8.2                   83.1        
+    Min, Max                                -1064.6, 981.2      -886.8, 1036.1         -862.3, 1001.9   
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                               1300.4 (312.60)     1385.7 (304.60)       1251.7 (336.89)   
+    Median                                      1306.3              1464.0                 1187.4       
+    Min, Max                                 784.9, 1861.7       869.6, 1863.6         791.8, 1838.7    
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                               -11.2 (471.40)       17.3 (423.88)         -58.4 (461.08)   
+    Median                                       -24.2               -53.8                 -71.2        
+    Min, Max                                 -907.1, 991.6       -850.2, 872.4         -899.8, 1000.1   
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                               1248.2 (309.59)     1343.1 (328.46)       1268.7 (294.06)   
+    Median                                      1224.2              1364.3                 1261.0       
+    Min, Max                                 790.3, 1856.0       850.0, 1847.5         851.3, 1863.1    
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                               -62.5 (507.89)      -42.4 (460.63)         -43.3 (394.40)   
+    Median                                      -111.2              -134.5                 -36.0        
+    Min, Max                                 -995.2, 937.3       -960.3, 716.7         -817.7, 697.6    
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                               1454.1 (324.97)     1429.2 (306.52)       1262.1 (351.09)   
+    Median                                      1580.7              1519.8                 1188.0       
+    Min, Max                                 784.7, 1863.9       852.2, 1831.7         782.8, 1857.7    
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                               159.2 (498.00)       30.9 (421.78)         -50.7 (424.89)   
+    Median                                       210.3               24.2                  -73.5        
+    Min, Max                                 -955.6, 946.8       -774.7, 603.3         -734.4, 943.8    
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                               1308.6 (333.03)     1177.3 (261.70)       1341.8 (290.33)   
+    Median                                      1286.9              1101.7                 1381.4       
+    Min, Max                                 782.7, 1863.9       801.7, 1704.3         796.2, 1785.2    
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+24Hr(<18yr)BSA Adj Ur Oxalate (umol/24h)                                                                
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                -9.2 (517.80)      -233.3 (444.85)        52.0 (467.59)    
+    Median                                       -19.7              -258.8                 116.0        
+    Min, Max                                 -995.1, 993.6       -945.3, 722.6         -983.7, 763.8    
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                               1309.6 (317.66)     1331.4 (320.87)       1367.8 (303.39)   
+    Median                                      1359.8              1363.3                 1334.4       
+    Min, Max                                 787.1, 1852.1       789.4, 1854.7         795.0, 1861.7    
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                               -10.8 (511.32)      -10.3 (433.68)         37.1 (460.54)    
+    Median                                       -27.8               61.8                   39.1        
+    Min, Max                                 -990.2, 906.5      -911.5, 1055.5         -932.7, 992.2    
+Urine Bilirubin (SCALE)                                                                                 
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 0.0 (0.21)          0.1 (0.29)             0.0 (0.21)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 2.0               0.0, 1.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 0.1 (0.28)          0.0 (0.19)             0.1 (0.33)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 1.0               0.0, 2.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 0.0 (0.36)          -0.0 (0.36)            0.0 (0.41)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 2.0           -2.0, 1.0             -1.0, 2.0      
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 0.0 (0.11)          0.0 (0.26)             0.1 (0.23)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 2.0               0.0, 1.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 -0.0 (0.25)         -0.0 (0.32)            0.0 (0.24)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           -1.0, 2.0             -1.0, 1.0      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 0.1 (0.39)          0.0 (0.25)             0.1 (0.34)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Bilirubin (SCALE)                                                                                 
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 0.1 (0.46)          -0.0 (0.40)            0.1 (0.38)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 2.0           -2.0, 2.0             -1.0, 2.0      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 0.1 (0.30)          0.0 (0.13)             0.1 (0.41)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 1.0               0.0, 2.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 0.0 (0.39)          -0.0 (0.32)            0.1 (0.46)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 2.0           -2.0, 1.0             -1.0, 2.0      
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 0.1 (0.30)          0.1 (0.24)             0.1 (0.31)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 1.0               0.0, 2.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 0.0 (0.39)          0.0 (0.40)             0.0 (0.32)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 2.0           -2.0, 1.0             -1.0, 2.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 0.0 (0.21)          0.1 (0.37)             0.0 (0.16)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 2.0               0.0, 1.0      
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 0.0 (0.30)          0.0 (0.53)            -0.0 (0.29)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           -2.0, 2.0             -1.0, 1.0      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 0.1 (0.38)          0.0 (0.00)             0.0 (0.00)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 0.0               0.0, 0.0      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 0.0 (0.44)          0.0 (0.00)            -0.0 (0.18)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 2.0           0.0, 0.0              -1.0, 0.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Bilirubin (SCALE)                                                                                 
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 0.1 (0.38)          0.1 (0.38)             0.0 (0.00)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 0.0      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 0.1 (0.46)          0.1 (0.39)            -0.0 (0.18)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 2.0           0.0, 2.0              -1.0, 0.0      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 0.1 (0.23)          0.0 (0.20)             0.0 (0.00)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 0.0      
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 0.0 (0.33)          0.0 (0.20)            -0.0 (0.19)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           0.0, 1.0              -1.0, 0.0      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 0.1 (0.28)          0.0 (0.11)             0.1 (0.36)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 1.0               0.0, 2.0      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 0.0 (0.36)          -0.0 (0.31)            0.0 (0.43)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 2.0           -2.0, 1.0             -1.0, 2.0      
+Urine Blood (SCALE)                                                                                     
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 0.3 (0.55)          0.3 (0.49)             0.2 (0.55)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 3.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 0.5 (0.65)          0.3 (0.53)             0.4 (0.67)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 3.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 0.2 (0.81)          -0.1 (0.68)            0.1 (0.82)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -1.0, 2.0             -2.0, 3.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Blood (SCALE)                                                                                     
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 0.3 (0.63)          0.2 (0.57)             0.4 (0.63)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 2.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 0.0 (0.80)          -0.1 (0.80)            0.1 (0.76)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 3.0           -2.0, 3.0             -2.0, 2.0      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 0.3 (0.53)          0.2 (0.50)             0.2 (0.52)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 -0.0 (0.80)         -0.1 (0.71)            0.0 (0.78)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -1.0, 2.0             -3.0, 2.0      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 0.2 (0.52)          0.2 (0.42)             0.4 (0.62)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 1.0               0.0, 2.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 -0.0 (0.78)         -0.1 (0.61)            0.1 (0.84)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -1.0, 1.0             -3.0, 2.0      
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 0.4 (0.57)          0.3 (0.47)             0.2 (0.55)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 1.0               0.0, 3.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 0.1 (0.77)          -0.1 (0.72)           -0.0 (0.86)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 3.0           -1.0, 1.0             -3.0, 3.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 0.4 (0.64)          0.3 (0.60)             0.3 (0.57)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Blood (SCALE)                                                                                     
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 0.1 (0.82)          -0.1 (0.76)            0.1 (0.74)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -1.0, 2.0             -1.0, 2.0      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 0.3 (0.58)          0.4 (0.55)             0.4 (0.67)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 2.0      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 0.0 (0.84)          0.0 (0.67)             0.2 (0.76)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 3.0           -1.0, 1.0             -1.0, 2.0      
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 0.3 (0.66)          0.2 (0.40)             0.4 (0.67)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 1.0               0.0, 2.0      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 0.0 (0.71)          -0.2 (0.67)            0.2 (0.83)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -1.0, 1.0             -2.0, 2.0      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 0.3 (0.61)          0.3 (0.69)             0.2 (0.51)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 2.0      
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 0.0 (0.78)          -0.1 (0.54)            0.0 (0.62)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -1.0, 1.0             -2.0, 1.0      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 0.3 (0.59)          0.3 (0.65)             0.3 (0.64)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 3.0               0.0, 3.0      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 -0.0 (0.84)         0.0 (0.80)             0.1 (0.93)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -2.0, 3.0             -3.0, 3.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Glucose (SCALE)                                                                                   
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 0.3 (0.86)          0.2 (0.54)             0.2 (0.55)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 0.1 (0.36)          0.2 (0.54)             0.1 (0.44)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 3.0               0.0, 3.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 -0.2 (0.94)         -0.1 (0.74)           -0.1 (0.67)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -3.0, 2.0             -3.0, 2.0      
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 0.2 (0.52)          0.2 (0.47)             0.1 (0.34)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 -0.1 (1.06)         0.0 (0.64)            -0.1 (0.65)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -2.0, 2.0             -3.0, 1.0      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 0.3 (0.76)          0.2 (0.41)             0.4 (0.82)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 3.0      
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 -0.1 (1.27)         -0.0 (0.60)            0.2 (1.02)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -2.0, 2.0             -3.0, 3.0      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 0.2 (0.49)          0.4 (0.85)             0.2 (0.53)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 -0.2 (1.07)         0.2 (0.91)            -0.1 (0.83)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -2.0, 3.0             -3.0, 3.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Glucose (SCALE)                                                                                   
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 0.2 (0.53)          0.2 (0.57)             0.2 (0.44)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 3.0               0.0, 2.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 -0.2 (1.15)         0.0 (0.81)            -0.1 (0.79)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -2.0, 3.0             -3.0, 2.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 0.2 (0.61)          0.2 (0.67)             0.2 (0.64)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 3.0               0.0, 2.0      
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 -0.1 (1.19)         -0.1 (0.93)            0.1 (0.81)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -2.0, 3.0             -2.0, 2.0      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 0.1 (0.43)          0.1 (0.40)             0.2 (0.54)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 -0.2 (1.05)         -0.1 (0.63)            0.1 (0.73)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -2.0, 1.0             -2.0, 2.0      
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 0.4 (0.74)          0.4 (0.80)             0.3 (0.78)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 -0.1 (1.29)         0.2 (0.98)             0.2 (0.91)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -2.0, 2.0             -2.0, 3.0      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 0.2 (0.59)          0.2 (0.52)             0.3 (0.72)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 3.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Glucose (SCALE)                                                                                   
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 -0.3 (0.88)         0.0 (0.66)             0.2 (0.74)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 1.0           -2.0, 1.0             -2.0, 2.0      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 0.2 (0.48)          0.1 (0.47)             0.2 (0.72)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 -0.2 (1.02)         -0.1 (0.75)            0.0 (0.92)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -3.0, 3.0             -3.0, 3.0      
+Urine Ketones (SCALE)                                                                                   
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 0.2 (0.46)          0.1 (0.37)             0.0 (0.26)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 0.2 (0.55)          0.2 (0.42)             0.1 (0.35)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 0.1 (0.72)          0.0 (0.55)             0.0 (0.46)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -2.0, 2.0             -2.0, 2.0      
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 0.1 (0.24)          0.2 (0.45)             0.1 (0.40)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 2.0               0.0, 2.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 -0.1 (0.50)         0.1 (0.50)             0.1 (0.47)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 1.0           -2.0, 2.0             -2.0, 2.0      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 0.2 (0.55)          0.1 (0.32)             0.1 (0.30)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Ketones (SCALE)                                                                                   
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 0.1 (0.74)          -0.0 (0.54)            0.0 (0.43)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -2.0, 2.0             -2.0, 2.0      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 0.1 (0.28)          0.2 (0.49)             0.2 (0.48)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 -0.1 (0.53)         0.1 (0.64)             0.1 (0.54)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -2.0, 2.0             -2.0, 2.0      
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 0.1 (0.44)          0.2 (0.47)             0.1 (0.36)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 0.0 (0.60)          0.0 (0.70)             0.1 (0.42)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -2.0, 2.0             -1.0, 2.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 0.1 (0.47)          0.2 (0.48)             0.1 (0.28)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 1.0      
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 0.0 (0.67)          0.1 (0.65)             0.1 (0.33)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -2.0, 2.0             -1.0, 1.0      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 0.3 (0.59)          0.1 (0.34)             0.2 (0.37)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 1.0               0.0, 1.0      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 0.1 (0.75)          -0.0 (0.67)            0.1 (0.34)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -2.0, 1.0              0.0, 1.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Ketones (SCALE)                                                                                   
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 0.1 (0.23)          0.0 (0.00)             0.1 (0.40)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 0.0               0.0, 2.0      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 -0.1 (0.52)         -0.2 (0.57)            0.1 (0.45)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 1.0           -2.0, 0.0             -1.0, 2.0      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 0.1 (0.36)          0.0 (0.20)             0.1 (0.27)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 1.0               0.0, 1.0      
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 -0.1 (0.48)         -0.2 (0.64)            0.0 (0.34)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 1.0           -2.0, 1.0             -1.0, 1.0      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 0.1 (0.41)          0.2 (0.43)             0.1 (0.36)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 0.0 (0.54)          0.1 (0.57)             0.1 (0.46)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -2.0, 2.0             -2.0, 2.0      
+Urine Leukocyte Esterase (SCALE)                                                                        
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 0.4 (0.73)          0.3 (0.63)             0.2 (0.49)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 2.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 0.3 (0.69)          0.4 (0.75)             0.3 (0.59)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 2.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 -0.0 (0.99)         0.1 (1.06)             0.1 (0.79)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -3.0, 3.0             -2.0, 2.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Leukocyte Esterase (SCALE)                                                                        
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 0.3 (0.56)          0.3 (0.53)             0.3 (0.59)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 -0.0 (0.93)         -0.0 (0.82)            0.1 (0.73)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -3.0, 2.0             -2.0, 2.0      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 0.3 (0.70)          0.4 (0.73)             0.3 (0.70)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 -0.0 (1.02)         0.1 (0.86)             0.1 (0.84)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -2.0, 3.0             -2.0, 3.0      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 0.2 (0.51)          0.3 (0.57)             0.2 (0.43)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 2.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 -0.1 (0.73)         0.0 (0.87)            -0.0 (0.56)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -3.0, 2.0             -2.0, 1.0      
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 0.3 (0.60)          0.2 (0.41)             0.3 (0.75)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 3.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 -0.0 (0.80)         -0.2 (0.63)            0.2 (0.89)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -2.0, 1.0             -2.0, 3.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 0.4 (0.81)          0.3 (0.54)             0.3 (0.62)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 2.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Leukocyte Esterase (SCALE)                                                                        
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 0.1 (1.02)          -0.1 (0.86)            0.1 (0.63)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -3.0, 2.0             -1.0, 2.0      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 0.2 (0.43)          0.4 (0.67)             0.2 (0.60)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 2.0               0.0, 3.0      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 -0.1 (0.70)         0.1 (0.88)             0.0 (0.82)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 1.0           -3.0, 2.0             -2.0, 3.0      
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 0.2 (0.50)          0.2 (0.48)             0.2 (0.57)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 2.0      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 -0.1 (0.78)         -0.1 (0.89)            0.1 (0.66)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 3.0           -3.0, 2.0             -1.0, 2.0      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 0.2 (0.38)          0.2 (0.37)             0.1 (0.36)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 -0.2 (0.82)         -0.1 (0.78)            0.0 (0.55)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 1.0           -3.0, 1.0             -1.0, 1.0      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 0.3 (0.58)          0.2 (0.59)             0.2 (0.59)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 3.0               0.0, 3.0      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 -0.1 (0.96)         -0.1 (0.80)           -0.0 (0.77)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -3.0, 2.0             -2.0, 3.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Nitrites (SCALE)                                                                                  
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 0.1 (0.31)          0.0 (0.19)             0.0 (0.19)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 0.1 (0.26)          0.1 (0.28)             0.1 (0.25)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 -0.0 (0.41)         0.1 (0.36)             0.0 (0.32)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           -1.0, 1.0             -1.0, 1.0      
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 0.1 (0.33)          0.1 (0.30)             0.1 (0.32)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 0.0 (0.47)          0.1 (0.29)             0.1 (0.39)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           -1.0, 1.0             -1.0, 1.0      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 0.1 (0.25)          0.1 (0.35)             0.0 (0.00)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 0.0      
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 -0.0 (0.38)         0.1 (0.37)            -0.0 (0.17)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           -1.0, 1.0             -1.0, 0.0      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 0.1 (0.30)          0.1 (0.36)             0.1 (0.26)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 -0.0 (0.42)         0.1 (0.42)             0.1 (0.30)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           -1.0, 1.0             -1.0, 1.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Nitrites (SCALE)                                                                                  
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 0.0 (0.17)          0.1 (0.32)             0.0 (0.14)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 -0.1 (0.38)         0.1 (0.37)             0.0 (0.20)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           -1.0, 1.0             -1.0, 1.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 0.1 (0.31)          0.1 (0.35)             0.1 (0.23)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 -0.0 (0.44)         0.1 (0.36)             0.0 (0.29)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           0.0, 1.0              -1.0, 1.0      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 0.2 (0.36)          0.1 (0.30)             0.1 (0.25)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 0.0 (0.48)          0.1 (0.31)             0.0 (0.31)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           0.0, 1.0              -1.0, 1.0      
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 0.1 (0.23)          0.0 (0.19)             0.0 (0.18)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 -0.1 (0.42)         0.0 (0.20)             0.0 (0.26)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           0.0, 1.0              -1.0, 1.0      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 0.1 (0.26)          0.1 (0.33)             0.0 (0.19)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Nitrites (SCALE)                                                                                  
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 -0.1 (0.40)         0.1 (0.34)             0.0 (0.28)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           0.0, 1.0              -1.0, 1.0      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 0.1 (0.30)          0.0 (0.22)             0.0 (0.22)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 1.0            0.0, 1.0               0.0, 1.0      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 0.0 (0.44)          0.0 (0.30)             0.0 (0.30)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -1.0, 1.0           -1.0, 1.0             -1.0, 1.0      
+Urine Protein (SCALE)                                                                                   
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 0.4 (0.70)          0.3 (0.67)             0.5 (0.78)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 0.5 (0.72)          0.4 (0.77)             0.4 (0.73)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 0.2 (1.02)          0.0 (1.06)            -0.0 (1.11)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -3.0, 3.0             -3.0, 3.0      
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 0.5 (0.82)          0.4 (0.70)             0.4 (0.69)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 0.2 (1.06)          0.0 (1.04)            -0.0 (1.08)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -3.0, 3.0             -3.0, 3.0      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 0.3 (0.62)          0.3 (0.48)             0.3 (0.66)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 3.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Protein (SCALE)                                                                                   
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 0.0 (0.92)          -0.1 (0.92)           -0.1 (1.04)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -3.0, 2.0             -3.0, 2.0      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 0.5 (0.77)          0.4 (0.74)             0.4 (0.68)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 2.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 0.2 (0.91)          0.1 (1.06)            -0.0 (0.88)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -3.0, 3.0             -3.0, 2.0      
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 0.4 (0.74)          0.4 (0.77)             0.4 (0.81)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 3.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 0.1 (0.97)          0.1 (0.95)             0.0 (1.12)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -3.0, 3.0             -3.0, 3.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 0.2 (0.60)          0.5 (0.74)             0.6 (0.69)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 3.0               0.0, 2.0      
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 -0.1 (0.96)         0.1 (0.94)             0.2 (0.93)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -2.0, 3.0             -1.0, 2.0      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 0.5 (0.64)          0.8 (0.95)             0.4 (0.81)     
+    Median                                        0.0                 1.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 3.0               0.0, 3.0      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 0.2 (1.00)          0.5 (1.14)             0.0 (1.05)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 2.0           -1.0, 3.0             -2.0, 3.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Protein (SCALE)                                                                                   
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 0.4 (0.65)          0.3 (0.62)             0.5 (0.94)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 3.0      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 0.1 (1.04)          -0.0 (0.77)            0.1 (1.03)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -1.0, 2.0             -2.0, 2.0      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 0.4 (0.80)          0.2 (0.52)             0.6 (0.84)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 3.0            0.0, 2.0               0.0, 3.0      
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 0.1 (1.07)          0.0 (0.72)             0.2 (1.08)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -3.0, 3.0           -1.0, 2.0             -2.0, 3.0      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 0.3 (0.58)          0.4 (0.77)             0.2 (0.58)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   0.0, 2.0            0.0, 3.0               0.0, 3.0      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 -0.0 (0.78)         0.1 (0.95)            -0.2 (0.98)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -2.0, 2.0           -3.0, 3.0             -3.0, 3.0      
+Urine Specific Gravity (SPECIFIC GRAVITY)                                                               
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 -0.0 (0.01)         -0.0 (0.01)           -0.0 (0.01)     
+    Median                                        0.0                -0.0                   -0.0        
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Specific Gravity (SPECIFIC GRAVITY)                                                               
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 -0.0 (0.01)         0.0 (0.01)             0.0 (0.01)     
+    Median                                       -0.0                 0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 0.0 (0.01)          0.0 (0.01)            -0.0 (0.01)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 0.0 (0.01)          0.0 (0.01)             0.0 (0.01)     
+    Median                                        0.0                 0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 -0.0 (0.01)         -0.0 (0.01)            0.0 (0.01)     
+    Median                                       -0.0                -0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine Specific Gravity (SPECIFIC GRAVITY)                                                               
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 0.0 (0.01)          0.0 (0.01)             0.0 (0.01)     
+    Median                                        0.0                -0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 0.0 (0.01)          0.0 (0.01)             0.0 (0.01)     
+    Median                                        0.0                -0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 0.0 (0.01)          0.0 (0.01)            -0.0 (0.01)     
+    Median                                        0.0                -0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 0.0 (0.01)          0.0 (0.01)            -0.0 (0.01)     
+    Median                                        0.0                -0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 1.0 (0.01)          1.0 (0.01)             1.0 (0.01)     
+    Median                                        1.0                 1.0                   1.0         
+    Min, Max                                   1.0, 1.0            1.0, 1.0               1.0, 1.0      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 0.0 (0.01)          -0.0 (0.01)            0.0 (0.01)     
+    Median                                        0.0                -0.0                   0.0         
+    Min, Max                                   -0.0, 0.0           -0.0, 0.0             -0.0, 0.0      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine pH (pH)                                                                                           
+  Baseline                                                                                              
+    n                                             86                  82                     84         
+    Mean (SD)                                 6.3 (1.02)          6.1 (1.01)             6.3 (1.01)     
+    Median                                        6.3                 6.1                   6.3         
+    Min, Max                                   4.5, 8.0            4.5, 8.0               4.5, 8.0      
+  Week 2                                                                                                
+    n                                             84                  80                     78         
+    Mean (SD)                                 6.2 (1.10)          6.1 (1.05)             6.2 (0.96)     
+    Median                                        6.2                 6.0                   6.2         
+    Min, Max                                   4.5, 7.9            4.5, 8.0               4.5, 8.0      
+  Week 2 Change from Baseline                                                                           
+    n                                             84                  78                     78         
+    Mean (SD)                                 -0.1 (1.52)         -0.0 (1.42)           -0.0 (1.54)     
+    Median                                        0.0                 0.0                   -0.1        
+    Min, Max                                   -3.2, 2.8           -3.2, 3.3             -3.1, 3.3      
+  Week 4                                                                                                
+    n                                             82                  72                     72         
+    Mean (SD)                                 6.4 (1.03)          6.1 (1.11)             6.2 (1.12)     
+    Median                                        6.4                 6.1                   6.3         
+    Min, Max                                   4.5, 7.9            4.5, 8.0               4.5, 8.0      
+  Week 4 Change from Baseline                                                                           
+    n                                             82                  70                     72         
+    Mean (SD)                                 0.1 (1.52)          0.1 (1.52)            -0.1 (1.65)     
+    Median                                        0.1                 0.3                   -0.2        
+    Min, Max                                   -3.4, 2.9           -3.3, 3.0             -3.1, 3.4      
+  Week 6                                                                                                
+    n                                             75                  64                     67         
+    Mean (SD)                                 6.3 (0.98)          6.3 (1.00)             6.1 (0.96)     
+    Median                                        6.3                 6.3                   5.9         
+    Min, Max                                   4.6, 7.9            4.6, 8.0               4.5, 7.9      
+  Week 6 Change from Baseline                                                                           
+    n                                             75                  62                     67         
+    Mean (SD)                                 -0.1 (1.38)         0.2 (1.34)            -0.2 (1.34)     
+    Median                                       -0.2                 0.4                   -0.4        
+    Min, Max                                   -2.7, 3.0           -3.1, 3.1             -2.7, 2.7      
+  Week 8                                                                                                
+    n                                             73                  60                     56         
+    Mean (SD)                                 6.2 (1.03)          6.0 (1.01)             6.4 (0.93)     
+    Median                                        6.3                 5.9                   6.5         
+    Min, Max                                   4.5, 8.0            4.5, 8.0               4.7, 8.0      
+  Week 8 Change from Baseline                                                                           
+    n                                             73                  58                     56         
+    Mean (SD)                                 -0.2 (1.33)         -0.0 (1.38)            0.1 (1.29)     
+    Median                                       -0.1                 0.1                   0.1         
+    Min, Max                                   -2.8, 2.9           -2.9, 2.8             -3.0, 2.8      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine pH (pH)                                                                                           
+  Week 12                                                                                               
+    n                                             67                  52                     50         
+    Mean (SD)                                 6.6 (0.99)          6.4 (1.07)             6.2 (1.03)     
+    Median                                        6.7                 6.4                   6.4         
+    Min, Max                                   4.5, 8.0            4.5, 8.0               4.5, 8.0      
+  Week 12 Change from Baseline                                                                          
+    n                                             67                  50                     50         
+    Mean (SD)                                 0.2 (1.54)          0.3 (1.43)             0.0 (1.41)     
+    Median                                        0.3                 0.8                   0.1         
+    Min, Max                                   -2.8, 3.3           -3.4, 2.5             -2.9, 3.0      
+  Week 16                                                                                               
+    n                                             68                  42                     37         
+    Mean (SD)                                 6.3 (1.03)          6.1 (1.09)             6.2 (1.02)     
+    Median                                        6.2                 6.1                   6.1         
+    Min, Max                                   4.5, 7.9            4.5, 8.0               4.5, 7.8      
+  Week 16 Change from Baseline                                                                          
+    n                                             68                  40                     37         
+    Mean (SD)                                 -0.1 (1.35)         -0.0 (1.65)           -0.1 (1.50)     
+    Median                                        0.1                -0.2                   0.0         
+    Min, Max                                   -3.2, 2.7           -3.2, 3.3             -3.1, 2.8      
+  Week 20                                                                                               
+    n                                             66                  31                     31         
+    Mean (SD)                                 6.1 (0.93)          6.4 (1.00)             5.8 (0.92)     
+    Median                                        5.9                 6.4                   5.6         
+    Min, Max                                   4.6, 7.9            4.6, 8.0               4.5, 7.7      
+  Week 20 Change from Baseline                                                                          
+    n                                             66                  30                     31         
+    Mean (SD)                                 -0.2 (1.40)         0.5 (1.53)            -0.5 (1.34)     
+    Median                                       -0.5                 0.5                   -0.5        
+    Min, Max                                   -3.1, 3.3           -2.8, 3.2             -3.0, 2.1      
+  Week 24                                                                                               
+    n                                             57                  27                     30         
+    Mean (SD)                                 6.2 (0.99)          6.3 (1.00)             6.2 (1.04)     
+    Median                                        6.1                 6.3                   6.2         
+    Min, Max                                   4.6, 7.9            4.7, 8.0               4.7, 7.8      
+  Week 24 Change from Baseline                                                                          
+    n                                             57                  26                     30         
+    Mean (SD)                                 -0.2 (1.37)         0.4 (1.22)            -0.2 (1.26)     
+    Median                                       -0.1                 0.4                   -0.1        
+    Min, Max                                   -2.9, 3.0           -3.0, 2.9             -2.4, 1.8      
+  Week 26                                                                                               
+    n                                             57                  25                     27         
+    Mean (SD)                                 6.4 (1.09)          6.2 (1.20)             6.3 (0.94)     
+    Median                                        6.4                 6.5                   6.4         
+    Min, Max                                   4.6, 8.0            4.6, 8.0               4.7, 7.8      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55
+\s\nTable 14-3.04
+ARS-LB-T04: Summary of Observed and Change from Baseline by Scheduled Visits - Urine Analysis Tests
+Safety Population
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Parameter (Units)                               Placebo       Xanomeline Low Dose   Xanomeline High Dose
+  Visit                                         (N=86)              (N=84)                 (N=84)       
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+Urine pH (pH)                                                                                           
+  Week 26 Change from Baseline                                                                          
+    n                                             57                  24                     27         
+    Mean (SD)                                 -0.1 (1.48)         0.3 (1.57)            -0.2 (1.48)     
+    Median                                        0.0                 0.4                   0.0         
+    Min, Max                                   -2.9, 3.1           -2.4, 3.0             -2.4, 2.5      
+  End of Treatment                                                                                      
+    n                                             84                  82                     80         
+    Mean (SD)                                 6.3 (0.98)          6.2 (1.03)             6.2 (1.05)     
+    Median                                        6.3                 6.0                   6.2         
+    Min, Max                                   4.5, 8.0            4.6, 7.9               4.5, 7.9      
+  End of Treatment Change from Baseline                                                                 
+    n                                             84                  80                     80         
+    Mean (SD)                                 -0.0 (1.50)         0.0 (1.45)            -0.0 (1.41)     
+    Median                                        0.1                 0.0                   -0.1        
+    Min, Max                                   -3.5, 3.2           -3.3, 2.9             -2.5, 3.4      
+————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+Note: Baseline is defined as the last assessment that is non-missing prior to first dose of investigational product.
+Source: adsl, adlburi; Program: ARS-LB-T04_rtables.R; Run date: 2025-11-20 13:22:55

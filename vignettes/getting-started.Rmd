@@ -1,0 +1,185 @@
+---
+title: "Getting Started with clinTrialData"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with clinTrialData}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+`clinTrialData` is a **community-grown library** of clinical trial example
+datasets for R. The package ships with a core set of studies and is designed
+to expand over time — anyone can contribute a new data source, and users can
+download any available study on demand without waiting for a new package
+release.
+
+Data is stored in Parquet format and accessed through the `connector` package,
+giving a consistent API regardless of which study you are working with.
+
+Key features:
+
+- **Growing library**: New datasets are added by the community as GitHub Release assets — no CRAN resubmission needed
+- **On-demand download**: Use `download_study()` to fetch any available study and cache it locally
+- **Generic interface**: Use `connect_clinical_data()` to connect to any available data source
+- **Automatic discovery**: `list_data_sources()` finds all studies on your machine; `list_available_studies()` shows everything available to download
+- **Data protection**: Downloaded and bundled datasets are locked against accidental modification
+
+## Installation
+
+```r
+# Install from CRAN
+install.packages("clinTrialData")
+
+# Or the development version from GitHub:
+# install.packages("remotes")
+remotes::install_github("Lovemore-Gakava/clinTrialData")
+```
+
+## Available Data Sources
+
+```{r}
+library(clinTrialData)
+
+# Studies on your machine (bundled + previously downloaded)
+list_data_sources()
+```
+
+## Quick Start
+
+### Connect to a Data Source
+
+The package bundles the CDISC Pilot 01 study, so you can connect immediately:
+
+```{r}
+# Connect to CDISC Pilot data
+db <- connect_clinical_data("cdisc_pilot")
+
+# List available datasets in the ADaM domain
+db$adam$list_content_cnt()
+
+# Read the subject-level dataset
+adsl <- db$adam$read_cnt("adsl")
+head(adsl[, c("USUBJID", "TRT01A", "AGE", "SEX", "RACE")])
+```
+
+### Discover and Download Additional Studies
+
+Studies beyond the bundled data can be downloaded from GitHub Releases:
+
+```{r eval=FALSE}
+# What's available to download?
+list_available_studies()
+
+# Download a study once — cached locally from then on
+download_study("cdisc_pilot_extended")
+
+# Where is the cache?
+cache_dir()
+```
+
+### Explore the Data
+
+```{r}
+# Dimensions
+dim(adsl)
+
+# Quick structure overview
+str(adsl, list.len = 10)
+```
+
+## Working with Different Domains
+
+### ADaM Datasets
+
+```{r}
+# Read adverse events data
+adae <- db$adam$read_cnt("adae")
+head(adae[, c("USUBJID", "AEDECOD", "AESEV", "AESER")])
+```
+
+### SDTM Datasets
+
+```{r}
+# Read demographics
+dm <- db$sdtm$read_cnt("dm")
+head(dm[, c("USUBJID", "ARM", "AGE", "SEX", "RACE")])
+```
+
+## Example Analysis
+
+```{r}
+library(dplyr)
+
+# Basic demographic summary by treatment
+adsl |>
+  group_by(TRT01A) |>
+  summarise(
+    n = n(),
+    mean_age = mean(AGE, na.rm = TRUE),
+    female_pct = mean(SEX == "F", na.rm = TRUE) * 100,
+    .groups = "drop"
+  )
+```
+
+## Contributing New Data Sources
+
+Anyone can add a new study to the library. Datasets live on
+[GitHub Releases](https://github.com/Lovemore-Gakava/clinTrialData/releases),
+not inside the package — so **no pull request or CRAN submission is needed**
+to add data.
+
+### Step 1: Prepare your data
+
+Organise your Parquet files by domain:
+
+```
+your_new_study/
+├── adam/
+│   ├── adsl.parquet
+│   └── adae.parquet
+└── sdtm/
+    ├── dm.parquet
+    └── ae.parquet
+```
+
+### Step 2: Upload data and metadata to a GitHub Release
+
+Open an [issue](https://github.com/Lovemore-Gakava/clinTrialData/issues) to
+request a release slot, then use the helper script:
+
+```r
+source("data-raw/upload_to_release.R")
+
+# Upload the data zip
+upload_study_to_release("your_new_study", tag = "v1.1.0")
+
+# Generate and upload metadata (enables dataset_info() for your study)
+generate_and_upload_metadata(
+  source      = "your_new_study",
+  description = "Brief description of your study",
+  version     = "v1.1.0",
+  license     = "Your license here",
+  source_url  = "https://link-to-original-data",
+  tag         = "v1.1.0"
+)
+```
+
+### Step 3: Users can inspect and access it immediately
+
+```r
+dataset_info("your_new_study")       # inspect before downloading
+download_study("your_new_study")     # download and cache
+connect_clinical_data("your_new_study")
+```
+
+No CRAN submission required. The study is available to all users as soon as
+it is uploaded.
