@@ -3,6 +3,6 @@
 ### Guides
 
 - [Getting Started with
-  ctdata](https://lovemore-gakava.github.io/ctdata/articles/getting-started.md):
+  clinTrialData](https://lovemore-gakava.github.io/clinTrialData/articles/getting-started.md):
 - [CDISC Pilot Extended
-  Datasets](https://lovemore-gakava.github.io/ctdata/articles/cdisc-pilot-extended.md):
+  Datasets](https://lovemore-gakava.github.io/clinTrialData/articles/cdisc-pilot-extended.md):

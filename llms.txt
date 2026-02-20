@@ -1,7 +1,7 @@
-# ctdata
+# clinTrialData
 
-The `ctdata` package provides access to clinical trial example datasets
-in R. Data is stored in Parquet format and accessed through the
+The `clinTrialData` package provides access to clinical trial example
+datasets in R. Data is stored in Parquet format and accessed through the
 `connector` package.
 
 ## Features
@@ -16,17 +16,17 @@ in R. Data is stored in Parquet format and accessed through the
 
 ## Installation
 
-You can install the development version of ctdata from GitHub:
+You can install the development version of clinTrialData from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("lovemore-gakava/ctdata")
+remotes::install_github("lovemore-gakava/clinTrialData")
 ```
 
 ## Quick Start
 
 ``` r
-library(ctdata)
+library(clinTrialData)
 
 # View available data sources
 list_data_sources()
@@ -60,7 +60,7 @@ features:
 - **ADLB** - Combined labs including urinalysis
 
 Use
-[`list_data_sources()`](https://lovemore-gakava.github.io/ctdata/reference/list_data_sources.md)
+[`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
 for complete details.
 
 ## Data Protection
@@ -78,10 +78,10 @@ See package vignettes for detailed information about each data source:
 
 ``` r
 # View all available vignettes
-vignette(package = "ctdata")
+vignette(package = "clinTrialData")
 
 # View CDISC Pilot extended datasets
-vignette("cdisc-pilot-extended", package = "ctdata")
+vignette("cdisc-pilot-extended", package = "clinTrialData")
 ```
 
 ## Data Format
@@ -95,27 +95,27 @@ fast access.
 
 Functions for connecting to and accessing clinical trial data
 
-- [`connect_clinical_data()`](https://lovemore-gakava.github.io/ctdata/reference/connect_clinical_data.md)
+- [`connect_clinical_data()`](https://lovemore-gakava.github.io/clinTrialData/reference/connect_clinical_data.md)
   : Connect to Clinical Data by Source
-- [`list_data_sources()`](https://lovemore-gakava.github.io/ctdata/reference/list_data_sources.md)
+- [`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
   : List Available Clinical Data Sources
 
 ## Datasets
 
 Clinical trial datasets included in the package
 
-- [`ctdata-data`](https://lovemore-gakava.github.io/ctdata/reference/ctdata-data.md)
-  [`clinical-data`](https://lovemore-gakava.github.io/ctdata/reference/ctdata-data.md)
-  [`cdisc-pilot`](https://lovemore-gakava.github.io/ctdata/reference/ctdata-data.md)
+- [`clinTrialData-data`](https://lovemore-gakava.github.io/clinTrialData/reference/clinTrialData-data.md)
+  [`clinical-data`](https://lovemore-gakava.github.io/clinTrialData/reference/clinTrialData-data.md)
+  [`cdisc-pilot`](https://lovemore-gakava.github.io/clinTrialData/reference/clinTrialData-data.md)
   : Clinical Trial Datasets
 
 ## Lock Protection
 
 Internal functions for data protection
 
-- [`remove_cnt(`*`<ConnectorLockedFS>`*`)`](https://lovemore-gakava.github.io/ctdata/reference/remove_cnt.ConnectorLockedFS.md)
+- [`remove_cnt(`*`<ConnectorLockedFS>`*`)`](https://lovemore-gakava.github.io/clinTrialData/reference/remove_cnt.ConnectorLockedFS.md)
   : Remove Content with Lock Check
-- [`write_cnt(`*`<ConnectorLockedFS>`*`)`](https://lovemore-gakava.github.io/ctdata/reference/write_cnt.ConnectorLockedFS.md)
+- [`write_cnt(`*`<ConnectorLockedFS>`*`)`](https://lovemore-gakava.github.io/clinTrialData/reference/write_cnt.ConnectorLockedFS.md)
   : Write Content with Lock Check
 
 # Articles
@@ -123,6 +123,6 @@ Internal functions for data protection
 ### Guides
 
 - [Getting Started with
-  ctdata](https://lovemore-gakava.github.io/ctdata/articles/getting-started.md):
+  clinTrialData](https://lovemore-gakava.github.io/clinTrialData/articles/getting-started.md):
 - [CDISC Pilot Extended
-  Datasets](https://lovemore-gakava.github.io/ctdata/articles/cdisc-pilot-extended.md):
+  Datasets](https://lovemore-gakava.github.io/clinTrialData/articles/cdisc-pilot-extended.md):

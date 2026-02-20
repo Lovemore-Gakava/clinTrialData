@@ -15,7 +15,7 @@ connect_clinical_data(source = "cdisc_pilot")
 - source:
 
   Character string specifying the data source. Use
-  [`list_data_sources()`](https://lovemore-gakava.github.io/ctdata/reference/list_data_sources.md)
+  [`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
   to see all available options.
 
 ## Value

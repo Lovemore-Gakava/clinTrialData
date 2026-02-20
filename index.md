@@ -1,7 +1,7 @@
-# ctdata
+# clinTrialData
 
-The `ctdata` package provides access to clinical trial example datasets
-in R. Data is stored in Parquet format and accessed through the
+The `clinTrialData` package provides access to clinical trial example
+datasets in R. Data is stored in Parquet format and accessed through the
 `connector` package.
 
 ## Features
@@ -16,17 +16,17 @@ in R. Data is stored in Parquet format and accessed through the
 
 ## Installation
 
-You can install the development version of ctdata from GitHub:
+You can install the development version of clinTrialData from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("lovemore-gakava/ctdata")
+remotes::install_github("lovemore-gakava/clinTrialData")
 ```
 
 ## Quick Start
 
 ``` r
-library(ctdata)
+library(clinTrialData)
 
 # View available data sources
 list_data_sources()
@@ -60,7 +60,7 @@ features:
 - **ADLB** - Combined labs including urinalysis
 
 Use
-[`list_data_sources()`](https://lovemore-gakava.github.io/ctdata/reference/list_data_sources.md)
+[`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
 for complete details.
 
 ## Data Protection
@@ -78,10 +78,10 @@ See package vignettes for detailed information about each data source:
 
 ``` r
 # View all available vignettes
-vignette(package = "ctdata")
+vignette(package = "clinTrialData")
 
 # View CDISC Pilot extended datasets
-vignette("cdisc-pilot-extended", package = "ctdata")
+vignette("cdisc-pilot-extended", package = "clinTrialData")
 ```
 
 ## Data Format

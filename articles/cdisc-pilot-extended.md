@@ -28,9 +28,9 @@ A new laboratory dataset focusing on urinalysis parameters.
 
 ``` r
 # Install the package
-remotes::install_github("lovemore-gakava/ctdata")
+remotes::install_github("lovemore-gakava/clinTrialData")
 
-library(ctdata)
+library(clinTrialData)
 ```
 
 ## Quick Start
@@ -38,7 +38,7 @@ library(ctdata)
 ### Connect to the Extended Data Source
 
 ``` r
-library(ctdata)
+library(clinTrialData)
 library(dplyr)
 library(ggplot2)
 
@@ -87,7 +87,7 @@ directly. Contributions must be made through the package development
 workflow (fork/PR).
 
 To contribute, visit the [GitHub
-repository](https://github.com/lovemore-gakava/ctdata).
+repository](https://github.com/Lovemore-Gakava/clinTrialData).
 
 ## Data Attribution
 
@@ -108,7 +108,7 @@ support additional analysis scenarios.
 ## Next Steps
 
 - Explore the [Getting
-  Started](https://lovemore-gakava.github.io/ctdata/articles/getting-started.md)
+  Started](https://lovemore-gakava.github.io/clinTrialData/articles/getting-started.md)
   vignette for basic package usage
 - Review the standard CDISC Pilot data for comparison
 - Use these extended datasets to develop and test advanced analysis
@@ -118,4 +118,4 @@ support additional analysis scenarios.
 ## Support
 
 For questions, issues, or contributions, please visit the [GitHub
-repository](https://github.com/lovemore-gakava/ctdata).
+repository](https://github.com/Lovemore-Gakava/clinTrialData).

@@ -1,18 +1,18 @@
-# Getting Started with ctdata
+# Getting Started with clinTrialData
 
 ## Introduction
 
-The `ctdata` package provides easy access to clinical trial example
-datasets from multiple sources. All data is stored in efficient Parquet
-format and can be accessed using the `connector` package through a
-unified interface.
+The `clinTrialData` package provides easy access to clinical trial
+example datasets from multiple sources. All data is stored in efficient
+Parquet format and can be accessed using the `connector` package through
+a unified interface.
 
 Key features:
 
 - **Automatic discovery**: Data sources are automatically detected by
   scanning the package directory structure
 - **Generic interface**: Use
-  [`connect_clinical_data()`](https://lovemore-gakava.github.io/ctdata/reference/connect_clinical_data.md)
+  [`connect_clinical_data()`](https://lovemore-gakava.github.io/clinTrialData/reference/connect_clinical_data.md)
   to connect to any available data source
 - **Dynamic configuration**: No need to maintain static configuration
   files
@@ -23,13 +23,13 @@ Key features:
 
 ``` r
 # Install from GitHub
-remotes::install_github("lovemore-gakava/ctdata")
+remotes::install_github("lovemore-gakava/clinTrialData")
 ```
 
 ## Available Data Sources
 
 ``` r
-library(ctdata)
+library(clinTrialData)
 
 # View all available data sources
 list_data_sources()
@@ -153,7 +153,7 @@ contribute a new data source to the package, you can do so by:
     `output/`)
 4.  Place your `.parquet` files in the appropriate subdirectories
 5.  The source will be automatically discovered by
-    [`list_data_sources()`](https://lovemore-gakava.github.io/ctdata/reference/list_data_sources.md)
+    [`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
 6.  Submit a pull request with your new data source
 
 **Note:** Data sources cannot be added to an installed package directly.
@@ -177,7 +177,7 @@ Example directory structure for contributors:
             └── your_data.parquet
 
 To contribute, visit the [GitHub
-repository](https://github.com/lovemore-gakava/ctdata).
+repository](https://github.com/Lovemore-Gakava/clinTrialData).
 
 ## Data Attribution
 

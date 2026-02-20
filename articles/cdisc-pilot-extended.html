@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>CDISC Pilot Extended Datasets • ctdata</title>
+<title>CDISC Pilot Extended Datasets • clinTrialData</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="../index.html">ctdata</a>
+    <a class="navbar-brand me-2" href="../index.html">clinTrialData</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
 
@@ -38,7 +38,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with ctdata</a></li>
+<li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with clinTrialData</a></li>
     <li><a class="dropdown-item" href="../articles/cdisc-pilot-extended.html">CDISC Pilot Extended Datasets</a></li>
   </ul>
 </li>
@@ -47,7 +47,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/lovemore-gakava/ctdata/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/Lovemore-Gakava/clinTrialData/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -63,7 +63,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>CDISC Pilot Extended Datasets</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/lovemore-gakava/ctdata/blob/main/vignettes/cdisc-pilot-extended.Rmd" class="external-link"><code>vignettes/cdisc-pilot-extended.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Lovemore-Gakava/clinTrialData/blob/main/vignettes/cdisc-pilot-extended.Rmd" class="external-link"><code>vignettes/cdisc-pilot-extended.Rmd</code></a></small>
       <div class="d-none name"><code>cdisc-pilot-extended.Rmd</code></div>
     </div>
 
@@ -108,9 +108,9 @@ TRTDUR by dividing by 365.25)
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install the package</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"lovemore-gakava/ctdata"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"lovemore-gakava/clinTrialData"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lovemore-gakava.github.io/ctdata">ctdata</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lovemore-gakava.github.io/clinTrialData">clinTrialData</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -119,7 +119,7 @@ TRTDUR by dividing by 365.25)
 <h3 id="connect-to-the-extended-data-source">Connect to the Extended Data Source<a class="anchor" aria-label="anchor" href="#connect-to-the-extended-data-source"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lovemore-gakava.github.io/ctdata">ctdata</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lovemore-gakava.github.io/clinTrialData">clinTrialData</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
@@ -183,7 +183,7 @@ pull request</strong>
 <p><strong>Note:</strong> Extended datasets cannot be modified in an
 installed package directly. Contributions must be made through the
 package development workflow (fork/PR).</p>
-<p>To contribute, visit the <a href="https://github.com/lovemore-gakava/ctdata" class="external-link">GitHub
+<p>To contribute, visit the <a href="https://github.com/Lovemore-Gakava/clinTrialData" class="external-link">GitHub
 repository</a>.</p>
 </div>
 <div class="section level2">
@@ -216,7 +216,7 @@ workflows</li>
 <div class="section level2">
 <h2 id="support">Support<a class="anchor" aria-label="anchor" href="#support"></a>
 </h2>
-<p>For questions, issues, or contributions, please visit the <a href="https://github.com/lovemore-gakava/ctdata" class="external-link">GitHub
+<p>For questions, issues, or contributions, please visit the <a href="https://github.com/Lovemore-Gakava/clinTrialData" class="external-link">GitHub
 repository</a>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
