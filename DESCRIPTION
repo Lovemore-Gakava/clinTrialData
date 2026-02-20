@@ -10,7 +10,7 @@ Description: A collection of clinical trial example datasets from
     the 'connector' package. Designed for training, testing, prototyping, and
     demonstrating clinical data analysis workflows.
 License: Apache License (>= 2)
-URL: https://lovemore-gakava.github.io/clinTrialData,
+URL: https://lovemore-gakava.github.io/clinTrialData/,
     https://github.com/Lovemore-Gakava/clinTrialData
 BugReports: https://github.com/Lovemore-Gakava/clinTrialData/issues
 Encoding: UTF-8

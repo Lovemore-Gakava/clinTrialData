@@ -1,4 +1,5 @@
 ^clinTrialData\.Rproj$
+^man/figures/logo_original\.png$
 ^\.mega-linter\.yml$
 ^\.positai$
 ^README\.html$
