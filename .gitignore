@@ -59,3 +59,5 @@ inst/doc
 
 # Lock files (generated automatically by package)
 inst/exampledata/*/.lock
+.DS_Store
+man/figures/logo_original.png
