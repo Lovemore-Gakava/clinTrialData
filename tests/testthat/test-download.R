@@ -436,6 +436,7 @@ test_that("dataset_info uses tag_name column when tag column is absent", {
 test_that("list_available_studies errors when GitHub is unreachable", {
   local_mocked_bindings(
     has_package  = function(pkg) TRUE,
+    cache_dir    = function() tempfile(),  # empty cache — no fallback available
     .pb_releases = function(...) stop("timeout")
   )
 
@@ -457,6 +458,7 @@ test_that("list_available_studies returns empty df when no releases", {
 test_that("list_available_studies returns empty df when no assets", {
   local_mocked_bindings(
     has_package  = function(pkg) TRUE,
+    cache_dir    = function() tempfile(),  # empty cache — no fallback
     .pb_releases = function(...) fake_releases(),
     .pb_list     = function(...) NULL
   )
@@ -468,6 +470,7 @@ test_that("list_available_studies returns empty df when no assets", {
 test_that("list_available_studies returns empty df when pb_list has 0 rows", {
   local_mocked_bindings(
     has_package  = function(pkg) TRUE,
+    cache_dir    = function() tempfile(),  # empty cache — no fallback
     .pb_releases = function(...) fake_releases(),
     .pb_list     = function(...) data.frame(
       file_name = character(0), size = numeric(0), tag = character(0),

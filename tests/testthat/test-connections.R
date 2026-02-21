@@ -9,6 +9,13 @@ test_that("list_data_sources works", {
 })
 
 test_that("list_data_sources reads description from metadata.json", {
+  # Mock cache_dir to an empty location so only bundled data is found,
+  # ensuring the description comes from the bundled metadata.json
+  local_mocked_bindings(
+    cache_dir = function() tempfile(),
+    .package = "clinTrialData"
+  )
+
   sources <- list_data_sources()
   pilot <- sources[sources$source == "cdisc_pilot", ]
 
