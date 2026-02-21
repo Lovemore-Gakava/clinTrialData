@@ -2,28 +2,43 @@
 
 ## Introduction
 
-The `clinTrialData` package provides easy access to clinical trial
-example datasets from multiple sources. All data is stored in efficient
-Parquet format and can be accessed using the `connector` package through
-a unified interface.
+`clinTrialData` is a **community-grown library** of clinical trial
+example datasets for R. The package ships with a core set of studies and
+is designed to expand over time — anyone can contribute a new data
+source, and users can download any available study on demand without
+waiting for a new package release.
+
+Data is stored in Parquet format and accessed through the `connector`
+package, giving a consistent API regardless of which study you are
+working with.
 
 Key features:
 
-- **Automatic discovery**: Data sources are automatically detected by
-  scanning the package directory structure
+- **Growing library**: New datasets are added by the community as GitHub
+  Release assets — no CRAN resubmission needed
+- **On-demand download**: Use
+  [`download_study()`](https://lovemore-gakava.github.io/clinTrialData/reference/download_study.md)
+  to fetch any available study and cache it locally
 - **Generic interface**: Use
   [`connect_clinical_data()`](https://lovemore-gakava.github.io/clinTrialData/reference/connect_clinical_data.md)
   to connect to any available data source
-- **Dynamic configuration**: No need to maintain static configuration
-  files
-- **Extensible**: Add new data sources by simply adding directories with
-  parquet files
+- **Automatic discovery**:
+  [`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
+  finds all studies on your machine;
+  [`list_available_studies()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_available_studies.md)
+  shows everything available to download
+- **Data protection**: Downloaded and bundled datasets are locked
+  against accidental modification
 
 ## Installation
 
 ``` r
-# Install from GitHub
-remotes::install_github("lovemore-gakava/clinTrialData")
+# Install from CRAN
+install.packages("clinTrialData")
+
+# Or the development version from GitHub:
+# install.packages("remotes")
+remotes::install_github("Lovemore-Gakava/clinTrialData")
 ```
 
 ## Available Data Sources
@@ -31,21 +46,28 @@ remotes::install_github("lovemore-gakava/clinTrialData")
 ``` r
 library(clinTrialData)
 
-# View all available data sources
+# Studies on your machine (bundled + previously downloaded)
 list_data_sources()
-#>                 source          description    domains  format
-#> 1          cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet
-#> 2 cdisc_pilot_extended cdisc_pilot_extended adam, sdtm parquet
+#>        source          description    domains  format location
+#> 1 cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet  bundled
 ```
 
 ## Quick Start
 
-### Discover Available Data Sources
+### Discover and Download Data Sources
 
 ``` r
-# View all available data sources
-sources <- list_data_sources()
-print(sources)
+# What's on your machine already?
+list_data_sources()
+
+# What's available to download from GitHub Releases?
+list_available_studies()
+
+# Download a study once — cached locally from then on
+download_study("cdisc_pilot")
+
+# Where is the cache?
+cache_dir()
 ```
 
 ### Connect to a Data Source
@@ -143,69 +165,52 @@ print(demo_summary)
 
 ## Contributing New Data Sources
 
-The package is designed to be extensible. If you would like to
-contribute a new data source to the package, you can do so by:
+Anyone can add a new study to the library. Datasets live on [GitHub
+Releases](https://github.com/Lovemore-Gakava/clinTrialData/releases),
+not inside the package — so **no pull request or CRAN submission is
+needed** to add data.
 
-1.  **Fork the repository** on GitHub or **create a pull request**
-2.  In your fork/branch, create a directory under `inst/exampledata/`
-    with your source name
-3.  Organize your data in subdirectories (e.g., `adam/`, `sdtm/`,
-    `output/`)
-4.  Place your `.parquet` files in the appropriate subdirectories
-5.  The source will be automatically discovered by
-    [`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
-6.  Submit a pull request with your new data source
+### Step 1: Prepare your data
 
-**Note:** Data sources cannot be added to an installed package directly.
-Contributions must be made through the package development workflow
-(fork/PR).
+Organise your Parquet files by domain:
 
-Example directory structure for contributors:
+    your_new_study/
+    ├── adam/
+    │   ├── adsl.parquet
+    │   └── adae.parquet
+    └── sdtm/
+        ├── dm.parquet
+        └── ae.parquet
 
-    inst/exampledata/
-    ├── cdisc_pilot/
-    │   ├── adam/
-    │   │   ├── adsl.parquet
-    │   │   └── adae.parquet
-    │   └── sdtm/
-    │       ├── dm.parquet
-    │       └── ae.parquet
-    └── your_new_source/
-        ├── adam/
-        │   └── your_data.parquet
-        └── sdtm/
-            └── your_data.parquet
+### Step 2: Upload data and metadata to a GitHub Release
 
-To contribute, visit the [GitHub
-repository](https://github.com/Lovemore-Gakava/clinTrialData).
+Open an [issue](https://github.com/Lovemore-Gakava/clinTrialData/issues)
+to request a release slot, then use the helper script:
 
-## Data Attribution
+``` r
+source("data-raw/upload_to_release.R")
 
-### CDISC Pilot Data
+# Upload the data zip
+upload_study_to_release("your_new_study", tag = "v1.1.0")
 
-The CDISC Pilot Study data included in this package comes from the CDISC
-SDTM/ADaM Pilot Project, which demonstrates the implementation of CDISC
-standards in regulatory submissions.
+# Generate and upload metadata (enables dataset_info() for your study)
+generate_and_upload_metadata(
+  source      = "your_new_study",
+  description = "Brief description of your study",
+  version     = "v1.1.0",
+  license     = "Your license here",
+  source_url  = "https://link-to-original-data",
+  tag         = "v1.1.0"
+)
+```
 
-**Source**: [CDISC SDTM/ADaM Pilot
-Project](https://github.com/cdisc-org/sdtm-adam-pilot-project)
+### Step 3: Users can inspect and access it immediately
 
-**Description**: This pilot study data was created to demonstrate the
-use of CDISC standards (SDTM and ADaM) in regulatory submissions. The
-data represents a fictional clinical trial and serves as an educational
-resource for the clinical research community.
+``` r
+dataset_info("your_new_study")       # inspect before downloading
+download_study("your_new_study")     # download and cache
+connect_clinical_data("your_new_study")
+```
 
-**Usage**: The data is provided for educational and development purposes
-to help users understand CDISC standards and develop tools for clinical
-data analysis.
-
-**Acknowledgments**: We acknowledge and thank CDISC for making this
-valuable educational resource available to the community. The data has
-been converted to Parquet format for efficient storage and access while
-maintaining the original structure and content.
-
-For additional variations of this data, see also: - [PHUSE Test Data
-Factory](https://github.com/phuse-org/phuse-scripts/tree/master/data) -
-[CDISC-split
-folder](https://github.com/phuse-org/phuse-scripts/tree/master/data/adam/cdisc-split) -
-Multiple studies variation
+No CRAN submission required. The study is available to all users as soon
+as it is uploaded.

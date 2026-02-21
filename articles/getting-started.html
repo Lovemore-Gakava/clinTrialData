@@ -39,7 +39,6 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with clinTrialData</a></li>
-    <li><a class="dropdown-item" href="../articles/cdisc-pilot-extended.html">CDISC Pilot Extended Datasets</a></li>
   </ul>
 </li>
       </ul>
@@ -72,33 +71,47 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The <code>clinTrialData</code> package provides easy access to
-clinical trial example datasets from multiple sources. All data is
-stored in efficient Parquet format and can be accessed using the
-<code>connector</code> package through a unified interface.</p>
+<p><code>clinTrialData</code> is a <strong>community-grown
+library</strong> of clinical trial example datasets for R. The package
+ships with a core set of studies and is designed to expand over time —
+anyone can contribute a new data source, and users can download any
+available study on demand without waiting for a new package release.</p>
+<p>Data is stored in Parquet format and accessed through the
+<code>connector</code> package, giving a consistent API regardless of
+which study you are working with.</p>
 <p>Key features:</p>
 <ul>
 <li>
-<strong>Automatic discovery</strong>: Data sources are automatically
-detected by scanning the package directory structure</li>
+<strong>Growing library</strong>: New datasets are added by the
+community as GitHub Release assets — no CRAN resubmission needed</li>
+<li>
+<strong>On-demand download</strong>: Use
+<code><a href="../reference/download_study.html">download_study()</a></code> to fetch any available study and cache it
+locally</li>
 <li>
 <strong>Generic interface</strong>: Use
 <code><a href="../reference/connect_clinical_data.html">connect_clinical_data()</a></code> to connect to any available data
 source</li>
 <li>
-<strong>Dynamic configuration</strong>: No need to maintain static
-configuration files</li>
+<strong>Automatic discovery</strong>:
+<code><a href="../reference/list_data_sources.html">list_data_sources()</a></code> finds all studies on your machine;
+<code><a href="../reference/list_available_studies.html">list_available_studies()</a></code> shows everything available to
+download</li>
 <li>
-<strong>Extensible</strong>: Add new data sources by simply adding
-directories with parquet files</li>
+<strong>Data protection</strong>: Downloaded and bundled datasets
+are locked against accidental modification</li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install from GitHub</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"lovemore-gakava/clinTrialData"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Install from CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"clinTrialData"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or the development version from GitHub:</span></span>
+<span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Lovemore-Gakava/clinTrialData"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="available-data-sources">Available Data Sources<a class="anchor" aria-label="anchor" href="#available-data-sources"></a>
@@ -106,22 +119,29 @@ directories with parquet files</li>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lovemore-gakava.github.io/clinTrialData/">clinTrialData</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># View all available data sources</span></span>
+<span><span class="co"># Studies on your machine (bundled + previously downloaded)</span></span>
 <span><span class="fu"><a href="../reference/list_data_sources.html">list_data_sources</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                 source          description    domains  format</span></span>
-<span><span class="co">#&gt; 1          cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet</span></span>
-<span><span class="co">#&gt; 2 cdisc_pilot_extended cdisc_pilot_extended adam, sdtm parquet</span></span></code></pre></div>
+<span><span class="co">#&gt;        source          description    domains  format location</span></span>
+<span><span class="co">#&gt; 1 cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet  bundled</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <div class="section level3">
-<h3 id="discover-available-data-sources">Discover Available Data Sources<a class="anchor" aria-label="anchor" href="#discover-available-data-sources"></a>
+<h3 id="discover-and-download-data-sources">Discover and Download Data Sources<a class="anchor" aria-label="anchor" href="#discover-and-download-data-sources"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># View all available data sources</span></span>
-<span><span class="va">sources</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_sources.html">list_data_sources</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">sources</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># What's on your machine already?</span></span>
+<span><span class="fu"><a href="../reference/list_data_sources.html">list_data_sources</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># What's available to download from GitHub Releases?</span></span>
+<span><span class="fu"><a href="../reference/list_available_studies.html">list_available_studies</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Download a study once — cached locally from then on</span></span>
+<span><span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Where is the cache?</span></span>
+<span><span class="fu"><a href="../reference/cache_dir.html">cache_dir</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="connect-to-a-data-source">Connect to a Data Source<a class="anchor" aria-label="anchor" href="#connect-to-a-data-source"></a>
@@ -221,69 +241,51 @@ sources simultaneously:</p>
 <div class="section level2">
 <h2 id="contributing-new-data-sources">Contributing New Data Sources<a class="anchor" aria-label="anchor" href="#contributing-new-data-sources"></a>
 </h2>
-<p>The package is designed to be extensible. If you would like to
-contribute a new data source to the package, you can do so by:</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Fork the repository</strong> on GitHub or <strong>create a
-pull request</strong>
-</li>
-<li>In your fork/branch, create a directory under
-<code>inst/exampledata/</code> with your source name</li>
-<li>Organize your data in subdirectories (e.g., <code>adam/</code>,
-<code>sdtm/</code>, <code>output/</code>)</li>
-<li>Place your <code>.parquet</code> files in the appropriate
-subdirectories</li>
-<li>The source will be automatically discovered by
-<code><a href="../reference/list_data_sources.html">list_data_sources()</a></code>
-</li>
-<li>Submit a pull request with your new data source</li>
-</ol>
-<p><strong>Note:</strong> Data sources cannot be added to an installed
-package directly. Contributions must be made through the package
-development workflow (fork/PR).</p>
-<p>Example directory structure for contributors:</p>
-<pre><code>inst/exampledata/
-├── cdisc_pilot/
-│   ├── adam/
-│   │   ├── adsl.parquet
-│   │   └── adae.parquet
-│   └── sdtm/
-│       ├── dm.parquet
-│       └── ae.parquet
-└── your_new_source/
-    ├── adam/
-    │   └── your_data.parquet
-    └── sdtm/
-        └── your_data.parquet</code></pre>
-<p>To contribute, visit the <a href="https://github.com/Lovemore-Gakava/clinTrialData" class="external-link">GitHub
-repository</a>.</p>
-</div>
-<div class="section level2">
-<h2 id="data-attribution">Data Attribution<a class="anchor" aria-label="anchor" href="#data-attribution"></a>
-</h2>
+<p>Anyone can add a new study to the library. Datasets live on <a href="https://github.com/Lovemore-Gakava/clinTrialData/releases" class="external-link">GitHub
+Releases</a>, not inside the package — so <strong>no pull request or
+CRAN submission is needed</strong> to add data.</p>
 <div class="section level3">
-<h3 id="cdisc-pilot-data">CDISC Pilot Data<a class="anchor" aria-label="anchor" href="#cdisc-pilot-data"></a>
+<h3 id="step-1-prepare-your-data">Step 1: Prepare your data<a class="anchor" aria-label="anchor" href="#step-1-prepare-your-data"></a>
 </h3>
-<p>The CDISC Pilot Study data included in this package comes from the
-CDISC SDTM/ADaM Pilot Project, which demonstrates the implementation of
-CDISC standards in regulatory submissions.</p>
-<p><strong>Source</strong>: <a href="https://github.com/cdisc-org/sdtm-adam-pilot-project" class="external-link">CDISC
-SDTM/ADaM Pilot Project</a></p>
-<p><strong>Description</strong>: This pilot study data was created to
-demonstrate the use of CDISC standards (SDTM and ADaM) in regulatory
-submissions. The data represents a fictional clinical trial and serves
-as an educational resource for the clinical research community.</p>
-<p><strong>Usage</strong>: The data is provided for educational and
-development purposes to help users understand CDISC standards and
-develop tools for clinical data analysis.</p>
-<p><strong>Acknowledgments</strong>: We acknowledge and thank CDISC for
-making this valuable educational resource available to the community.
-The data has been converted to Parquet format for efficient storage and
-access while maintaining the original structure and content.</p>
-<p>For additional variations of this data, see also: - <a href="https://github.com/phuse-org/phuse-scripts/tree/master/data" class="external-link">PHUSE
-Test Data Factory</a> - <a href="https://github.com/phuse-org/phuse-scripts/tree/master/data/adam/cdisc-split" class="external-link">CDISC-split
-folder</a> - Multiple studies variation</p>
+<p>Organise your Parquet files by domain:</p>
+<pre><code>your_new_study/
+├── adam/
+│   ├── adsl.parquet
+│   └── adae.parquet
+└── sdtm/
+    ├── dm.parquet
+    └── ae.parquet</code></pre>
+</div>
+<div class="section level3">
+<h3 id="step-2-upload-data-and-metadata-to-a-github-release">Step 2: Upload data and metadata to a GitHub Release<a class="anchor" aria-label="anchor" href="#step-2-upload-data-and-metadata-to-a-github-release"></a>
+</h3>
+<p>Open an <a href="https://github.com/Lovemore-Gakava/clinTrialData/issues" class="external-link">issue</a>
+to request a release slot, then use the helper script:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/upload_to_release.R"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Upload the data zip</span></span>
+<span><span class="fu">upload_study_to_release</span><span class="op">(</span><span class="st">"your_new_study"</span>, tag <span class="op">=</span> <span class="st">"v1.1.0"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate and upload metadata (enables dataset_info() for your study)</span></span>
+<span><span class="fu">generate_and_upload_metadata</span><span class="op">(</span></span>
+<span>  source      <span class="op">=</span> <span class="st">"your_new_study"</span>,</span>
+<span>  description <span class="op">=</span> <span class="st">"Brief description of your study"</span>,</span>
+<span>  version     <span class="op">=</span> <span class="st">"v1.1.0"</span>,</span>
+<span>  license     <span class="op">=</span> <span class="st">"Your license here"</span>,</span>
+<span>  source_url  <span class="op">=</span> <span class="st">"https://link-to-original-data"</span>,</span>
+<span>  tag         <span class="op">=</span> <span class="st">"v1.1.0"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="step-3-users-can-inspect-and-access-it-immediately">Step 3: Users can inspect and access it immediately<a class="anchor" aria-label="anchor" href="#step-3-users-can-inspect-and-access-it-immediately"></a>
+</h3>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dataset_info.html">dataset_info</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span>       <span class="co"># inspect before downloading</span></span>
+<span><span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span>     <span class="co"># download and cache</span></span>
+<span><span class="fu"><a href="../reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span></span></code></pre></div>
+<p>No CRAN submission required. The study is available to all users as
+soon as it is uploaded.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -1,20 +1,23 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/404.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/LICENSE.html</loc></url>
-<url><loc>https://lovemore-gakava.github.io/clinTrialData/articles/cdisc-pilot-extended.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/articles/getting-started.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/articles/index.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/authors.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/index.html</loc></url>
+<url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/cache_dir.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/can_write_study.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/clinTrialData-data.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/connect_clinical_data.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/connect_to_source.html</loc></url>
+<url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/dataset_info.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/dot-onLoad.html</loc></url>
+<url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/download_study.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/generate_connector_config.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/get_lock_status.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/index.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/is_study_locked.html</loc></url>
+<url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/list_available_studies.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/lock_all_studies.html</loc></url>
 <url><loc>https://lovemore-gakava.github.io/clinTrialData/reference/lock_study.html</loc></url>

@@ -8,6 +8,19 @@ Functions for connecting to and accessing clinical trial data
   : Connect to Clinical Data by Source
 - [`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
   : List Available Clinical Data Sources
+- [`dataset_info()`](https://lovemore-gakava.github.io/clinTrialData/reference/dataset_info.md)
+  : Inspect a Clinical Trial Dataset Without Downloading
+
+## Download & Cache
+
+Functions for downloading studies from GitHub Releases
+
+- [`download_study()`](https://lovemore-gakava.github.io/clinTrialData/reference/download_study.md)
+  : Download a Clinical Trial Study Dataset
+- [`list_available_studies()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_available_studies.md)
+  : List Studies Available for Download
+- [`cache_dir()`](https://lovemore-gakava.github.io/clinTrialData/reference/cache_dir.md)
+  : Get the Local Cache Directory
 
 ## Datasets
 

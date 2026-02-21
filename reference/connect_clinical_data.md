@@ -25,17 +25,34 @@ A `connectors` object
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
+# \donttest{
 # Connect to CDISC Pilot data
 db <- connect_clinical_data("cdisc_pilot")
+#> ℹ Replace some metadata informations...
+#> ────────────────────────────────────────────────────────────────────────────────
+#> Connection to:
+#> → adam
+#> • connector_fs
+#> • /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam
+#> ────────────────────────────────────────────────────────────────────────────────
+#> Connection to:
+#> → sdtm
+#> • connector_fs
+#> • /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm
 
 # List available datasets
 db$adam$list_content_cnt()
+#>  [1] "adae.parquet"     "adlb.parquet"     "adlbc.parquet"    "adlbh.parquet"   
+#>  [5] "adlbhy.parquet"   "adqsadas.parquet" "adqscibc.parquet" "adqsnpix.parquet"
+#>  [9] "adsl.parquet"     "adtte.parquet"    "advs.parquet"    
 
 # Read a dataset
 adsl <- db$adam$read_cnt("adsl")
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet
 
 # List available sources
 list_data_sources()
-} # }
+#>        source          description    domains  format location
+#> 1 cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet  bundled
+# }
 ```

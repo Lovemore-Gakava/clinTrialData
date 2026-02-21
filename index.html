@@ -42,7 +42,6 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/getting-started.html">Getting Started with clinTrialData</a></li>
-    <li><a class="dropdown-item" href="articles/cdisc-pilot-extended.html">CDISC Pilot Extended Datasets</a></li>
   </ul>
 </li>
       </ul>
@@ -65,96 +64,177 @@
 </div>
 <!-- badges: start -->
 
-<p>The <code>clinTrialData</code> package provides access to clinical trial example datasets in R. Data is stored in Parquet format and accessed through the <code>connector</code> package.</p>
+<p><code>clinTrialData</code> is a <strong>community-grown library</strong> of clinical trial example datasets for R. The package ships with a core set of datasets and is designed to expand over time — anyone can contribute a new data source, and users can download any available study on demand without waiting for a new package release.</p>
+<p>Data is stored in Parquet format and accessed through the <a href="https://github.com/pharmaverse/connector" class="external-link"><code>connector</code></a> package, giving a consistent API regardless of which study you are working with.</p>
 <div class="section level2">
-<h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
+<h2 id="how-the-library-grows">How the library grows<a class="anchor" aria-label="anchor" href="#how-the-library-grows"></a>
 </h2>
+<p>The core idea is simple: datasets live as assets on <a href="https://github.com/Lovemore-Gakava/clinTrialData/releases" class="external-link">GitHub Releases</a>, not inside the package itself. This means:</p>
 <ul>
-<li>Multiple clinical trial data sources (CDISC Pilot 01 and extended datasets)</li>
-<li>Complete ADaM and SDTM datasets</li>
-<li>Parquet format for efficient storage and fast access</li>
-<li>Automatic data protection prevents accidental modifications</li>
-<li>Integration with the <code>connector</code> package</li>
-<li>Consistent API across data sources</li>
+<li>
+<strong>Users</strong> can pull in any study with a single function call</li>
+<li>
+<strong>Contributors</strong> can add new datasets without a CRAN resubmission</li>
+<li>
+<strong>The library expands</strong> as the community adds more real-world clinical trial examples</li>
 </ul>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># What's available to download from GitHub Releases?</span></span>
+<span><span class="fu"><a href="reference/list_available_studies.html">list_available_studies</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                  source version size_mb cached</span></span>
+<span><span class="co">#&gt; 1           cdisc_pilot  v0.1.0     3.7   TRUE</span></span>
+<span><span class="co">#&gt; 2  cdisc_pilot_extended  v0.1.0     4.3  FALSE</span></span>
+<span></span>
+<span><span class="co"># Inspect any study before downloading — fetches a tiny metadata file</span></span>
+<span><span class="fu"><a href="reference/dataset_info.html">dataset_info</a></span><span class="op">(</span><span class="st">"cdisc_pilot_extended"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ──────────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; cdisc_pilot_extended (v0.1.0)</span></span>
+<span><span class="co">#&gt; ──────────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Enhanced CDISC Pilot 01 study with urinalysis data</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; Domains &amp; datasets:</span></span>
+<span><span class="co">#&gt;   adam   (12): adsl, adae, adlb, adlbc, adlbh, adlbhy, adlburi, ...</span></span>
+<span><span class="co">#&gt;   sdtm   (22): ae, cm, dm, ds, ex, lb, mh, qs, relrec, sc, ...</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; Subjects:   254</span></span>
+<span><span class="co">#&gt; Version:    v0.1.0</span></span>
+<span><span class="co">#&gt; License:    CDISC Pilot — educational use</span></span>
+<span><span class="co">#&gt; Source:     https://github.com/cdisc-org/sdtm-adam-pilot-project</span></span>
+<span><span class="co">#&gt; ──────────────────────────────────────────────────────────────────────────</span></span>
+<span></span>
+<span><span class="co"># Download once; cached locally from then on</span></span>
+<span><span class="fu"><a href="reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"cdisc_pilot_extended"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Connect and analyse — same API for every study</span></span>
+<span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"cdisc_pilot_extended"</span><span class="op">)</span></span>
+<span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"adsl"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of clinTrialData from GitHub:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"lovemore-gakava/clinTrialData"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install from CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"clinTrialData"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or the development version from GitHub:</span></span>
+<span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Lovemore-Gakava/clinTrialData"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lovemore-gakava.github.io/clinTrialData/">clinTrialData</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># View available data sources</span></span>
+<span><span class="co"># What's already on your machine?</span></span>
 <span><span class="fu"><a href="reference/list_data_sources.html">list_data_sources</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Connect to a data source</span></span>
+<span><span class="co"># What's available to download?</span></span>
+<span><span class="fu"><a href="reference/list_available_studies.html">list_available_studies</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Download a study (only needed once — cached locally after that)</span></span>
+<span><span class="fu"><a href="reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Connect and explore</span></span>
 <span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># List available datasets</span></span>
-<span><span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">list_content_cnt</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">db</span><span class="op">$</span><span class="va">sdtm</span><span class="op">$</span><span class="fu">list_content_cnt</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">list_content_cnt</span><span class="op">(</span><span class="op">)</span>  <span class="co"># list ADaM datasets</span></span>
+<span><span class="va">db</span><span class="op">$</span><span class="va">sdtm</span><span class="op">$</span><span class="fu">list_content_cnt</span><span class="op">(</span><span class="op">)</span>  <span class="co"># list SDTM datasets</span></span>
 <span></span>
-<span><span class="co"># Read a dataset</span></span>
 <span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"adsl"</span><span class="op">)</span></span>
-<span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">sdtm</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"dm"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">dm</span>   <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">sdtm</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"dm"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="available-data-sources">Available Data Sources<a class="anchor" aria-label="anchor" href="#available-data-sources"></a>
 </h2>
 <div class="section level3">
-<h3 id="cdisc_pilot">cdisc_pilot<a class="anchor" aria-label="anchor" href="#cdisc_pilot"></a>
+<h3 id="bundled-with-the-package">Bundled with the package<a class="anchor" aria-label="anchor" href="#bundled-with-the-package"></a>
 </h3>
-<p>Standard CDISC Pilot 01 datasets (10 ADaM, 22 SDTM) for quick testing and examples.</p>
+<p><strong>cdisc_pilot</strong> — Standard CDISC Pilot 01 study (10 ADaM, 22 SDTM datasets). Available immediately after installation, no download needed.</p>
 </div>
 <div class="section level3">
-<h3 id="cdisc_pilot_extended">cdisc_pilot_extended<a class="anchor" aria-label="anchor" href="#cdisc_pilot_extended"></a>
+<h3 id="available-via-github-releases">Available via GitHub Releases<a class="anchor" aria-label="anchor" href="#available-via-github-releases"></a>
 </h3>
-<p>Enhanced CDISC Pilot 01 datasets (11 ADaM, 24 SDTM) with additional features:</p>
+<p><strong>cdisc_pilot_extended</strong> — Enhanced CDISC Pilot 01 study (11 ADaM, 24 SDTM datasets) with additional features:</p>
 <ul>
 <li>
-<strong>TRTDURY</strong> - Treatment duration in years</li>
+<strong>TRTDURY</strong> — Treatment duration in years</li>
 <li>
-<strong>ADLBURI</strong> - Urinalysis laboratory dataset (new)</li>
+<strong>ADLBURI</strong> — Urinalysis laboratory dataset</li>
 <li>
-<strong>ADLB</strong> - Combined labs including urinalysis</li>
+<strong>ADLB</strong> — Combined labs including urinalysis</li>
 </ul>
-<p>Use <code><a href="reference/list_data_sources.html">list_data_sources()</a></code> for complete details.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"cdisc_pilot_extended"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"cdisc_pilot_extended"</span><span class="op">)</span></span></code></pre></div>
+<p>Use <code><a href="reference/list_data_sources.html">list_data_sources()</a></code> to see all locally available studies and <code><a href="reference/list_available_studies.html">list_available_studies()</a></code> to see everything on GitHub Releases.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="contributing-a-new-data-source">Contributing a New Data Source<a class="anchor" aria-label="anchor" href="#contributing-a-new-data-source"></a>
+</h2>
+<p>Adding a new study to the library does not require a pull request or a CRAN submission. The data lives on GitHub Releases, not inside the package.</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Prepare your data</strong> as Parquet files organised by domain (e.g. <code>adam/</code>, <code>sdtm/</code>):</li>
+</ol>
+<!-- --><div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>your_study<span class="sc">/</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>├── adam<span class="sc">/</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>│   ├── adsl.parquet</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>│   └── adae.parquet</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>└── sdtm<span class="sc">/</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>    ├── dm.parquet</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>    └── ae.parquet</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>
+<strong>Upload to a GitHub Release</strong> — open an issue on the <a href="https://github.com/Lovemore-Gakava/clinTrialData/issues" class="external-link">repository</a> to request a release slot, then use the helper script:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/upload_to_release.R"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Upload the data zip</span></span>
+<span><span class="fu">upload_study_to_release</span><span class="op">(</span><span class="st">"your_study"</span>, tag <span class="op">=</span> <span class="st">"v1.1.0"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate and upload the metadata (enables dataset_info() for your study)</span></span>
+<span><span class="fu">generate_and_upload_metadata</span><span class="op">(</span></span>
+<span>  source      <span class="op">=</span> <span class="st">"your_study"</span>,</span>
+<span>  description <span class="op">=</span> <span class="st">"Brief description of your study"</span>,</span>
+<span>  version     <span class="op">=</span> <span class="st">"v1.1.0"</span>,</span>
+<span>  license     <span class="op">=</span> <span class="st">"Your license here"</span>,</span>
+<span>  source_url  <span class="op">=</span> <span class="st">"https://link-to-original-data"</span>,</span>
+<span>  tag         <span class="op">=</span> <span class="st">"v1.1.0"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>
+<strong>Users can inspect and access it immediately</strong> — no CRAN submission required:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/dataset_info.html">dataset_info</a></span><span class="op">(</span><span class="st">"your_study"</span><span class="op">)</span>      <span class="co"># inspect before downloading</span></span>
+<span><span class="fu"><a href="reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"your_study"</span><span class="op">)</span>    <span class="co"># download and cache</span></span>
+<span><span class="fu"><a href="reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"your_study"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="data-protection">Data Protection<a class="anchor" aria-label="anchor" href="#data-protection"></a>
 </h2>
-<p>Datasets are automatically protected from accidental modifications:</p>
-<ul>
-<li>Reading data is allowed</li>
-<li>Writing or removing data is blocked</li>
-<li>No manual lock management required</li>
-<li>Clear error messages when write operations are attempted</li>
-</ul>
+<p>All datasets — whether bundled or downloaded — are automatically protected from accidental modification. Reading is always allowed; write and delete operations are blocked with a clear error message.</p>
+</div>
+<div class="section level2">
+<h2 id="data-attribution">Data Attribution<a class="anchor" aria-label="anchor" href="#data-attribution"></a>
+</h2>
+<p>The extended datasets are derived from the CDISC Pilot Study data.</p>
+<p><strong>Original Source</strong>: <a href="https://github.com/cdisc-org/sdtm-adam-pilot-project" class="external-link">CDISC SDTM/ADaM Pilot Project</a></p>
+<p><strong>Modifications</strong>: This extended version includes additional derived variables (TRTDURY) and a simulated urinalysis dataset (ADLBURI) created for educational and development purposes.</p>
+<p><strong>Acknowledgments</strong>: We acknowledge and thank CDISC for making the original pilot data available. The extended datasets maintain the structure and quality of the original data while adding features to support additional analysis scenarios.</p>
 </div>
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
 </h2>
-<p>See package vignettes for detailed information about each data source:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># View all available vignettes</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Browse all vignettes</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"clinTrialData"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># View CDISC Pilot extended datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"cdisc-pilot-extended"</span>, package <span class="op">=</span> <span class="st">"clinTrialData"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="data-format">Data Format<a class="anchor" aria-label="anchor" href="#data-format"></a>
-</h2>
-<p>Datasets are stored in Apache Parquet format for efficient storage and fast access.</p>
+<span><span class="co"># Cache location</span></span>
+<span><span class="fu"><a href="reference/cache_dir.html">cache_dir</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
