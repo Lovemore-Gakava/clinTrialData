@@ -35,10 +35,16 @@ A new laboratory dataset focusing on urinalysis parameters.
 ## Installation and Setup
 
 ```r
-# Install the package
-remotes::install_github("lovemore-gakava/clinTrialData")
+# Install from CRAN
+install.packages("clinTrialData")
+
+# Or the development version
+remotes::install_github("Lovemore-Gakava/clinTrialData")
 
 library(clinTrialData)
+
+# This dataset is bundled with the package — no download needed
+list_data_sources()
 ```
 
 ## Quick Start
@@ -76,18 +82,29 @@ All datasets from the standard CDISC Pilot data are included, plus:
 
 All standard SDTM datasets (DM, AE, VS, LB, CM, DS, EX, MH, QS, SC, SE, SV, SUPPAE, SUPPDM, SUPPDS, SUPPLB, TA, TE, TI, TS, TV, RELREC)
 
-## Contributing to Extended Data
+## Contributing New Datasets
 
-The extended datasets are generated using `data-raw/create_extended_datasets.R`. If you would like to modify or enhance the extended datasets, you can do so by:
+`clinTrialData` is a community-grown library — new studies are added as GitHub
+Release assets, meaning the library grows without requiring a CRAN resubmission.
 
-1. **Fork the repository** on GitHub or **create a pull request**
-2. In your fork/branch, modify the script `data-raw/create_extended_datasets.R`
-3. Run the script to regenerate the datasets
-4. Submit a pull request with your enhancements
+To enhance the extended datasets or add entirely new studies:
 
-**Note:** Extended datasets cannot be modified in an installed package directly. Contributions must be made through the package development workflow (fork/PR).
+1. **Fork the repository** and modify (or add) a script in `data-raw/`
+2. Organise your Parquet files by domain under `inst/exampledata/your_study/`
+3. **Open a pull request** — see the [GitHub repository](https://github.com/Lovemore-Gakava/clinTrialData) for contribution guidelines
+4. Once merged, **upload to a GitHub Release** using the helper:
 
-To contribute, visit the [GitHub repository](https://github.com/Lovemore-Gakava/clinTrialData).
+```r
+source("data-raw/upload_to_release.R")
+upload_study_to_release("your_study", tag = "v1.1.0")
+```
+
+Users can then access it immediately, no new package version required:
+
+```r
+download_study("your_study")
+connect_clinical_data("your_study")
+```
 
 ## Data Attribution
 

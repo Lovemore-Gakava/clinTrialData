@@ -16,22 +16,32 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The `clinTrialData` package provides easy access to clinical trial example
-datasets from multiple sources. All data is stored in efficient Parquet format
-and can be accessed using the `connector` package through a unified interface.
+`clinTrialData` is a **community-grown library** of clinical trial example
+datasets for R. The package ships with a core set of studies and is designed
+to expand over time — anyone can contribute a new data source, and users can
+download any available study on demand without waiting for a new package
+release.
+
+Data is stored in Parquet format and accessed through the `connector` package,
+giving a consistent API regardless of which study you are working with.
 
 Key features:
 
-- **Automatic discovery**: Data sources are automatically detected by scanning the package directory structure
+- **Growing library**: New datasets are added by the community as GitHub Release assets — no CRAN resubmission needed
+- **On-demand download**: Use `download_study()` to fetch any available study and cache it locally
 - **Generic interface**: Use `connect_clinical_data()` to connect to any available data source
-- **Dynamic configuration**: No need to maintain static configuration files
-- **Extensible**: Add new data sources by simply adding directories with parquet files
+- **Automatic discovery**: `list_data_sources()` finds all studies on your machine; `list_available_studies()` shows everything available to download
+- **Data protection**: Downloaded and bundled datasets are locked against accidental modification
 
 ## Installation
 
 ```r
-# Install from GitHub
-remotes::install_github("lovemore-gakava/clinTrialData")
+# Install from CRAN
+install.packages("clinTrialData")
+
+# Or the development version from GitHub:
+# install.packages("remotes")
+remotes::install_github("Lovemore-Gakava/clinTrialData")
 ```
 
 ## Available Data Sources
@@ -39,18 +49,26 @@ remotes::install_github("lovemore-gakava/clinTrialData")
 ```{r}
 library(clinTrialData)
 
-# View all available data sources
+# Studies on your machine (bundled + previously downloaded)
 list_data_sources()
 ```
 
 ## Quick Start
 
-### Discover Available Data Sources
+### Discover and Download Data Sources
 
 ```{r eval=FALSE}
-# View all available data sources
-sources <- list_data_sources()
-print(sources)
+# What's on your machine already?
+list_data_sources()
+
+# What's available to download from GitHub Releases?
+list_available_studies()
+
+# Download a study once — cached locally from then on
+download_study("cdisc_pilot")
+
+# Where is the cache?
+cache_dir()
 ```
 
 ### Connect to a Data Source
@@ -147,35 +165,46 @@ print(demo_summary)
 
 ## Contributing New Data Sources
 
-The package is designed to be extensible. If you would like to contribute a new data source to the package, you can do so by:
+Anyone can add a new study to the library. The key insight is that datasets
+live as assets on [GitHub Releases](https://github.com/Lovemore-Gakava/clinTrialData/releases),
+not inside the package — so adding a new study doesn't require a CRAN resubmission.
 
-1. **Fork the repository** on GitHub or **create a pull request**
-2. In your fork/branch, create a directory under `inst/exampledata/` with your source name
-3. Organize your data in subdirectories (e.g., `adam/`, `sdtm/`, `output/`)
-4. Place your `.parquet` files in the appropriate subdirectories
-5. The source will be automatically discovered by `list_data_sources()`
-6. Submit a pull request with your new data source
+### Step 1: Prepare your data
 
-**Note:** Data sources cannot be added to an installed package directly. Contributions must be made through the package development workflow (fork/PR).
+Organise your Parquet files by domain, following the existing structure:
 
-Example directory structure for contributors:
 ```
-inst/exampledata/
-├── cdisc_pilot/
-│   ├── adam/
-│   │   ├── adsl.parquet
-│   │   └── adae.parquet
-│   └── sdtm/
-│       ├── dm.parquet
-│       └── ae.parquet
-└── your_new_source/
-    ├── adam/
-    │   └── your_data.parquet
-    └── sdtm/
-        └── your_data.parquet
+your_new_study/
+├── adam/
+│   ├── adsl.parquet
+│   └── adae.parquet
+└── sdtm/
+    ├── dm.parquet
+    └── ae.parquet
 ```
 
-To contribute, visit the [GitHub repository](https://github.com/Lovemore-Gakava/clinTrialData).
+### Step 2: Open a pull request
+
+Fork the repository, add your study folder to `inst/exampledata/`, and include
+a preparation script in `data-raw/`. See the
+[GitHub repository](https://github.com/Lovemore-Gakava/clinTrialData) for details.
+
+### Step 3: Upload to a release
+
+Once your PR is merged, upload the study as a GitHub Release asset using the
+helper script in `data-raw/upload_to_release.R`:
+
+```r
+source("data-raw/upload_to_release.R")
+upload_study_to_release("your_new_study", tag = "v1.1.0")
+```
+
+From that point on, any user can access your study immediately:
+
+```r
+download_study("your_new_study")
+db <- connect_clinical_data("your_new_study")
+```
 
 ## Data Attribution
 
