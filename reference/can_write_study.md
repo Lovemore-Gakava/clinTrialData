@@ -1,8 +1,7 @@
-# Check if study folder should be written
+# Check if a study folder can be written to
 
-Helper function to check if a study folder can be safely written to.
-Returns TRUE if the folder can be written, FALSE if it's locked. Issues
-a warning if the folder is locked.
+Returns TRUE if the folder is not locked; FALSE with a warning
+otherwise.
 
 ## Usage
 

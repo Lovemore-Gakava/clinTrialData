@@ -1,6 +1,6 @@
 # List Available Clinical Data Sources
 
-Returns information about all clinical datasets available locally — both
+Returns information about all clinical datasets available locally – both
 datasets bundled with the package and any datasets previously downloaded
 via
 [`download_study()`](https://lovemore-gakava.github.io/clinTrialData/reference/download_study.md).
@@ -46,6 +46,10 @@ A data frame with columns:
 
 ``` r
 list_data_sources()
-#>        source          description    domains  format location
-#> 1 cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet  bundled
+#>        source
+#> 1 cdisc_pilot
+#>                                                                                       description
+#> 1 CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping
+#>      domains  format location
+#> 1 adam, sdtm parquet  bundled
 ```

@@ -52,7 +52,11 @@ adsl <- db$adam$read_cnt("adsl")
 
 # List available sources
 list_data_sources()
-#>        source          description    domains  format location
-#> 1 cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet  bundled
+#>        source
+#> 1 cdisc_pilot
+#>                                                                                       description
+#> 1 CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping
+#>      domains  format location
+#> 1 adam, sdtm parquet  bundled
 # }
 ```

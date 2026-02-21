@@ -48,53 +48,103 @@ library(clinTrialData)
 
 # Studies on your machine (bundled + previously downloaded)
 list_data_sources()
-#>        source          description    domains  format location
-#> 1 cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet  bundled
+#>        source
+#> 1 cdisc_pilot
+#>                                                                                       description
+#> 1 CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping
+#>      domains  format location
+#> 1 adam, sdtm parquet  bundled
 ```
 
 ## Quick Start
 
-### Discover and Download Data Sources
+### Connect to a Data Source
+
+The package bundles the CDISC Pilot 01 study, so you can connect
+immediately:
 
 ``` r
-# What's on your machine already?
-list_data_sources()
+# Connect to CDISC Pilot data
+db <- connect_clinical_data("cdisc_pilot")
+#> ℹ Replace some metadata informations...
+#> ────────────────────────────────────────────────────────────────────────────────
+#> Connection to:
+#> → adam
+#> • connector_fs
+#> • /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam
+#> ────────────────────────────────────────────────────────────────────────────────
+#> Connection to:
+#> → sdtm
+#> • connector_fs
+#> • /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm
 
-# What's available to download from GitHub Releases?
+# List available datasets in the ADaM domain
+db$adam$list_content_cnt()
+#>  [1] "adae.parquet"     "adlb.parquet"     "adlbc.parquet"    "adlbh.parquet"   
+#>  [5] "adlbhy.parquet"   "adqsadas.parquet" "adqscibc.parquet" "adqsnpix.parquet"
+#>  [9] "adsl.parquet"     "adtte.parquet"    "advs.parquet"
+
+# Read the subject-level dataset
+adsl <- db$adam$read_cnt("adsl")
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet
+head(adsl[, c("USUBJID", "TRT01A", "AGE", "SEX", "RACE")])
+#> # A tibble: 6 × 5
+#>   USUBJID     TRT01A                 AGE SEX   RACE 
+#>   <chr>       <chr>                <dbl> <chr> <chr>
+#> 1 01-701-1015 Placebo                 63 F     WHITE
+#> 2 01-701-1023 Placebo                 64 M     WHITE
+#> 3 01-701-1028 Xanomeline High Dose    71 M     WHITE
+#> 4 01-701-1033 Xanomeline Low Dose     74 M     WHITE
+#> 5 01-701-1034 Xanomeline High Dose    77 F     WHITE
+#> 6 01-701-1047 Placebo                 85 F     WHITE
+```
+
+### Discover and Download Additional Studies
+
+Studies beyond the bundled data can be downloaded from GitHub Releases:
+
+``` r
+# What's available to download?
 list_available_studies()
 
 # Download a study once — cached locally from then on
-download_study("cdisc_pilot")
+download_study("cdisc_pilot_extended")
 
 # Where is the cache?
 cache_dir()
 ```
 
-### Connect to a Data Source
-
-``` r
-# Connect to CDISC Pilot data (or any available source)
-db <- connect_clinical_data("cdisc_pilot")
-
-# List available datasets in ADaM domain
-db$adam$list_content_cnt()
-
-# Read ADSL dataset
-adsl <- db$adam$read_cnt("adsl")
-head(adsl)
-```
-
 ### Explore the Data
 
 ``` r
-# Get dataset dimensions
+# Dimensions
 dim(adsl)
+#> [1] 254  48
 
-# View structure
-str(adsl)
-
-# Summary statistics
-summary(adsl)
+# Quick structure overview
+str(adsl, list.len = 10)
+#> tibble [254 × 48] (S3: tbl_df/tbl/data.frame)
+#>  $ STUDYID : chr [1:254] "CDISCPILOT01" "CDISCPILOT01" "CDISCPILOT01" "CDISCPILOT01" ...
+#>   ..- attr(*, "label")= chr "Study Identifier"
+#>  $ USUBJID : chr [1:254] "01-701-1015" "01-701-1023" "01-701-1028" "01-701-1033" ...
+#>   ..- attr(*, "label")= chr "Unique Subject Identifier"
+#>  $ SUBJID  : chr [1:254] "1015" "1023" "1028" "1033" ...
+#>   ..- attr(*, "label")= chr "Subject Identifier for the Study"
+#>  $ SITEID  : chr [1:254] "701" "701" "701" "701" ...
+#>   ..- attr(*, "label")= chr "Study Site Identifier"
+#>  $ SITEGR1 : chr [1:254] "701" "701" "701" "701" ...
+#>   ..- attr(*, "label")= chr "Pooled Site Group 1"
+#>  $ ARM     : chr [1:254] "Placebo" "Placebo" "Xanomeline High Dose" "Xanomeline Low Dose" ...
+#>   ..- attr(*, "label")= chr "Description of Planned Arm"
+#>  $ TRT01P  : chr [1:254] "Placebo" "Placebo" "Xanomeline High Dose" "Xanomeline Low Dose" ...
+#>   ..- attr(*, "label")= chr "Planned Treatment for Period 01"
+#>  $ TRT01PN : num [1:254] 0 0 81 54 81 0 54 54 54 0 ...
+#>   ..- attr(*, "label")= chr "Planned Treatment for Period 01 (N)"
+#>  $ TRT01A  : chr [1:254] "Placebo" "Placebo" "Xanomeline High Dose" "Xanomeline Low Dose" ...
+#>   ..- attr(*, "label")= chr "Actual Treatment for Period 01"
+#>  $ TRT01AN : num [1:254] 0 0 81 54 81 0 54 54 54 0 ...
+#>   ..- attr(*, "label")= chr "Actual Treatment for Period 01 (N)"
+#>   [list output truncated]
 ```
 
 ## Working with Different Domains
@@ -104,9 +154,17 @@ summary(adsl)
 ``` r
 # Read adverse events data
 adae <- db$adam$read_cnt("adae")
-
-# Read lab data
-adlbc <- db$adam$read_cnt("adlbc")
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet
+head(adae[, c("USUBJID", "AEDECOD", "AESEV", "AESER")])
+#> # A tibble: 6 × 4
+#>   USUBJID     AEDECOD                              AESEV    AESER
+#>   <chr>       <chr>                                <chr>    <chr>
+#> 1 01-701-1015 APPLICATION SITE ERYTHEMA            MILD     N    
+#> 2 01-701-1015 APPLICATION SITE PRURITUS            MILD     N    
+#> 3 01-701-1015 DIARRHOEA                            MILD     N    
+#> 4 01-701-1023 ERYTHEMA                             MILD     N    
+#> 5 01-701-1023 ERYTHEMA                             MODERATE N    
+#> 6 01-701-1023 ATRIOVENTRICULAR BLOCK SECOND DEGREE MILD     N
 ```
 
 ### SDTM Datasets
@@ -114,53 +172,47 @@ adlbc <- db$adam$read_cnt("adlbc")
 ``` r
 # Read demographics
 dm <- db$sdtm$read_cnt("dm")
-
-# Read vital signs
-vs <- db$sdtm$read_cnt("vs")
-```
-
-## Working with Multiple Data Sources
-
-The package automatically discovers all available data sources. You can
-easily switch between different sources or work with multiple sources
-simultaneously:
-
-``` r
-# Get information about all sources
-all_sources <- list_data_sources()
-
-# Connect to different sources
-for (source_name in all_sources$source) {
-  cat("Connecting to:", source_name, "\n")
-  db <- connect_clinical_data(source_name)
-
-  # List domains available in this source
-  cat("Available domains:", names(db), "\n")
-}
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/dm.parquet
+head(dm[, c("USUBJID", "ARM", "AGE", "SEX", "RACE")])
+#> # A tibble: 6 × 5
+#>   USUBJID     ARM                    AGE SEX   RACE 
+#>   <chr>       <chr>                <dbl> <chr> <chr>
+#> 1 01-701-1015 Placebo                 63 F     WHITE
+#> 2 01-701-1023 Placebo                 64 M     WHITE
+#> 3 01-701-1028 Xanomeline High Dose    71 M     WHITE
+#> 4 01-701-1033 Xanomeline Low Dose     74 M     WHITE
+#> 5 01-701-1034 Xanomeline High Dose    77 F     WHITE
+#> 6 01-701-1047 Placebo                 85 F     WHITE
 ```
 
 ## Example Analysis
 
 ``` r
 library(dplyr)
-
-# Connect to data source
-db <- connect_clinical_data("cdisc_pilot")
-
-# Read subject-level data
-adsl <- db$adam$read_cnt("adsl")
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 
 # Basic demographic summary by treatment
-demo_summary <- adsl %>%
-  group_by(TRT01A) %>%
+adsl |>
+  group_by(TRT01A) |>
   summarise(
     n = n(),
     mean_age = mean(AGE, na.rm = TRUE),
     female_pct = mean(SEX == "F", na.rm = TRUE) * 100,
     .groups = "drop"
   )
-
-print(demo_summary)
+#> # A tibble: 3 × 4
+#>   TRT01A                   n mean_age female_pct
+#>   <chr>                <int>    <dbl>      <dbl>
+#> 1 Placebo                 86     75.2       61.6
+#> 2 Xanomeline High Dose    84     74.4       47.6
+#> 3 Xanomeline Low Dose     84     75.7       59.5
 ```
 
 ## Contributing New Data Sources

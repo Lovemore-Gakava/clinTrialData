@@ -1,7 +1,8 @@
 # Unlock a study folder
 
-Removes the lock file from a study folder, allowing it to be
-overwritten.
+Removes the in-memory lock on a study path, allowing write operations
+for the remainder of the current R session. On Unix-like systems, also
+restores write permissions on cached study directories.
 
 ## Usage
 
@@ -17,7 +18,7 @@ unlock_study(study_path)
 
 ## Value
 
-Logical indicating success
+Logical indicating success, invisibly
 
 ## Examples
 

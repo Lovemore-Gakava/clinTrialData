@@ -1,8 +1,8 @@
 # Package onLoad hook
 
-Called when the package is loaded. Locks study folders if this is an
-installed package (not in development mode). Also registers S3 methods
-for connector integration.
+Called when the package is loaded. Registers bundled and cached study
+folders as locked (in memory) to prevent accidental data modification.
+No files are written to disk.
 
 ## Usage
 

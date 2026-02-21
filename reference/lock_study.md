@@ -1,8 +1,9 @@
-# Create a lock file for a study folder
+# Lock a study folder
 
-Creates a lock file to prevent overwriting of a study folder. This is
-typically called after package installation to protect the installed
-data from being overwritten by data-raw scripts.
+Marks a study path as locked for the duration of the current R session.
+On Unix-like systems, cached study directories are also made read-only
+at the file-system level via
+[`Sys.chmod()`](https://rdrr.io/r/base/files2.html).
 
 ## Usage
 
@@ -18,8 +19,8 @@ lock_study(study_path, reason = "Package installed")
 
 - reason:
 
-  Optional reason for the lock (default: "Package installed")
+  Optional reason for the lock (included in messages only)
 
 ## Value
 
-Logical indicating success
+Logical indicating success, invisibly

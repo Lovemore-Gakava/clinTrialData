@@ -1,8 +1,7 @@
 # Check if a study folder is locked
 
-Checks if a lock file exists for a study folder, indicating that the
-folder should not be overwritten (typically because the package has been
-installed).
+Checks whether a study path is locked in the current session, indicating
+that the data should not be overwritten.
 
 ## Usage
 

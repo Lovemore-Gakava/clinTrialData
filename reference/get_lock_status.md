@@ -16,14 +16,13 @@ get_lock_status(study_path)
 
 ## Value
 
-List with lock information or NULL if not locked
+A list with components `locked` (logical) and `path` (character).
 
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
-# Check lock status
 status <- get_lock_status("inst/exampledata/cdisc_pilot")
-print(status)
+status$locked
 } # }
 ```

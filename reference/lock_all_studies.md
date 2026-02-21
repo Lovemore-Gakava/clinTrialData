@@ -1,7 +1,6 @@
 # Lock all study folders
 
-Locks all study folders in the inst/exampledata directory. This is
-typically called during package installation via .onLoad.
+Locks all study folders under a base path (in-memory).
 
 ## Usage
 
@@ -21,4 +20,4 @@ lock_all_studies(base_path = "inst/exampledata", reason = "Package installed")
 
 ## Value
 
-Invisible list of locked folders
+Invisible character vector of locked folder paths

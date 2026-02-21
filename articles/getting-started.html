@@ -121,54 +121,103 @@ are locked against accidental modification</li>
 <span></span>
 <span><span class="co"># Studies on your machine (bundled + previously downloaded)</span></span>
 <span><span class="fu"><a href="../reference/list_data_sources.html">list_data_sources</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        source          description    domains  format location</span></span>
-<span><span class="co">#&gt; 1 cdisc_pilot CDISC Pilot 01 Study adam, sdtm parquet  bundled</span></span></code></pre></div>
+<span><span class="co">#&gt;        source</span></span>
+<span><span class="co">#&gt; 1 cdisc_pilot</span></span>
+<span><span class="co">#&gt;                                                                                       description</span></span>
+<span><span class="co">#&gt; 1 CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping</span></span>
+<span><span class="co">#&gt;      domains  format location</span></span>
+<span><span class="co">#&gt; 1 adam, sdtm parquet  bundled</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <div class="section level3">
-<h3 id="discover-and-download-data-sources">Discover and Download Data Sources<a class="anchor" aria-label="anchor" href="#discover-and-download-data-sources"></a>
+<h3 id="connect-to-a-data-source">Connect to a Data Source<a class="anchor" aria-label="anchor" href="#connect-to-a-data-source"></a>
 </h3>
+<p>The package bundles the CDISC Pilot 01 study, so you can connect
+immediately:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># What's on your machine already?</span></span>
-<span><span class="fu"><a href="../reference/list_data_sources.html">list_data_sources</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Connect to CDISC Pilot data</span></span>
+<span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Replace some metadata informations...</span></span>
+<span><span class="co">#&gt; ────────────────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Connection to:</span></span>
+<span><span class="co">#&gt; → <span style="font-weight: bold;">adam</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> connector_fs</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam</span></span>
+<span><span class="co">#&gt; ────────────────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; Connection to:</span></span>
+<span><span class="co">#&gt; → <span style="font-weight: bold;">sdtm</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> connector_fs</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm</span></span>
 <span></span>
-<span><span class="co"># What's available to download from GitHub Releases?</span></span>
+<span><span class="co"># List available datasets in the ADaM domain</span></span>
+<span><span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">list_content_cnt</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "adae.parquet"     "adlb.parquet"     "adlbc.parquet"    "adlbh.parquet"   </span></span>
+<span><span class="co">#&gt;  [5] "adlbhy.parquet"   "adqsadas.parquet" "adqscibc.parquet" "adqsnpix.parquet"</span></span>
+<span><span class="co">#&gt;  [9] "adsl.parquet"     "adtte.parquet"    "advs.parquet"</span></span>
+<span></span>
+<span><span class="co"># Read the subject-level dataset</span></span>
+<span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"adsl"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">adsl</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"TRT01A"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">#&gt;   USUBJID     TRT01A                 AGE SEX   RACE </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 01-701-1015 Placebo                 63 F     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 01-701-1023 Placebo                 64 M     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 01-701-1028 Xanomeline High Dose    71 M     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 01-701-1033 Xanomeline Low Dose     74 M     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 01-701-1034 Xanomeline High Dose    77 F     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 01-701-1047 Placebo                 85 F     WHITE</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="discover-and-download-additional-studies">Discover and Download Additional Studies<a class="anchor" aria-label="anchor" href="#discover-and-download-additional-studies"></a>
+</h3>
+<p>Studies beyond the bundled data can be downloaded from GitHub
+Releases:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># What's available to download?</span></span>
 <span><span class="fu"><a href="../reference/list_available_studies.html">list_available_studies</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Download a study once — cached locally from then on</span></span>
-<span><span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"cdisc_pilot_extended"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Where is the cache?</span></span>
 <span><span class="fu"><a href="../reference/cache_dir.html">cache_dir</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="connect-to-a-data-source">Connect to a Data Source<a class="anchor" aria-label="anchor" href="#connect-to-a-data-source"></a>
-</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Connect to CDISC Pilot data (or any available source)</span></span>
-<span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># List available datasets in ADaM domain</span></span>
-<span><span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">list_content_cnt</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Read ADSL dataset</span></span>
-<span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"adsl"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">adsl</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level3">
 <h3 id="explore-the-data">Explore the Data<a class="anchor" aria-label="anchor" href="#explore-the-data"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get dataset dimensions</span></span>
+<code class="sourceCode R"><span><span class="co"># Dimensions</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">adsl</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 254  48</span></span>
 <span></span>
-<span><span class="co"># View structure</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">adsl</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Summary statistics</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adsl</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># Quick structure overview</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">adsl</span>, list.len <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt; tibble [254 × 48] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ STUDYID : chr [1:254] "CDISCPILOT01" "CDISCPILOT01" "CDISCPILOT01" "CDISCPILOT01" ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Study Identifier"</span></span>
+<span><span class="co">#&gt;  $ USUBJID : chr [1:254] "01-701-1015" "01-701-1023" "01-701-1028" "01-701-1033" ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Unique Subject Identifier"</span></span>
+<span><span class="co">#&gt;  $ SUBJID  : chr [1:254] "1015" "1023" "1028" "1033" ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Subject Identifier for the Study"</span></span>
+<span><span class="co">#&gt;  $ SITEID  : chr [1:254] "701" "701" "701" "701" ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Study Site Identifier"</span></span>
+<span><span class="co">#&gt;  $ SITEGR1 : chr [1:254] "701" "701" "701" "701" ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Pooled Site Group 1"</span></span>
+<span><span class="co">#&gt;  $ ARM     : chr [1:254] "Placebo" "Placebo" "Xanomeline High Dose" "Xanomeline Low Dose" ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Description of Planned Arm"</span></span>
+<span><span class="co">#&gt;  $ TRT01P  : chr [1:254] "Placebo" "Placebo" "Xanomeline High Dose" "Xanomeline Low Dose" ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Planned Treatment for Period 01"</span></span>
+<span><span class="co">#&gt;  $ TRT01PN : num [1:254] 0 0 81 54 81 0 54 54 54 0 ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Planned Treatment for Period 01 (N)"</span></span>
+<span><span class="co">#&gt;  $ TRT01A  : chr [1:254] "Placebo" "Placebo" "Xanomeline High Dose" "Xanomeline Low Dose" ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Actual Treatment for Period 01"</span></span>
+<span><span class="co">#&gt;  $ TRT01AN : num [1:254] 0 0 81 54 81 0 54 54 54 0 ...</span></span>
+<span><span class="co">#&gt;   ..- attr(*, "label")= chr "Actual Treatment for Period 01 (N)"</span></span>
+<span><span class="co">#&gt;   [list output truncated]</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -180,9 +229,17 @@ are locked against accidental modification</li>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Read adverse events data</span></span>
 <span><span class="va">adae</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"adae"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Read lab data</span></span>
-<span><span class="va">adlbc</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"adlbc"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">adae</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"AEDECOD"</span>, <span class="st">"AESEV"</span>, <span class="st">"AESER"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
+<span><span class="co">#&gt;   USUBJID     AEDECOD                              AESEV    AESER</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 01-701-1015 APPLICATION SITE ERYTHEMA            MILD     N    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 01-701-1015 APPLICATION SITE PRURITUS            MILD     N    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 01-701-1015 DIARRHOEA                            MILD     N    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 01-701-1023 ERYTHEMA                             MILD     N    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 01-701-1023 ERYTHEMA                             MODERATE N    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 01-701-1023 ATRIOVENTRICULAR BLOCK SECOND DEGREE MILD     N</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="sdtm-datasets">SDTM Datasets<a class="anchor" aria-label="anchor" href="#sdtm-datasets"></a>
@@ -190,53 +247,48 @@ are locked against accidental modification</li>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Read demographics</span></span>
 <span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">sdtm</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"dm"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Read vital signs</span></span>
-<span><span class="va">vs</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">sdtm</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"vs"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/dm.parquet</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dm</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"ARM"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">#&gt;   USUBJID     ARM                    AGE SEX   RACE </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 01-701-1015 Placebo                 63 F     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 01-701-1023 Placebo                 64 M     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 01-701-1028 Xanomeline High Dose    71 M     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 01-701-1033 Xanomeline Low Dose     74 M     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 01-701-1034 Xanomeline High Dose    77 F     WHITE</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 01-701-1047 Placebo                 85 F     WHITE</span></span></code></pre></div>
 </div>
-</div>
-<div class="section level2">
-<h2 id="working-with-multiple-data-sources">Working with Multiple Data Sources<a class="anchor" aria-label="anchor" href="#working-with-multiple-data-sources"></a>
-</h2>
-<p>The package automatically discovers all available data sources. You
-can easily switch between different sources or work with multiple
-sources simultaneously:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get information about all sources</span></span>
-<span><span class="va">all_sources</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_data_sources.html">list_data_sources</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Connect to different sources</span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">source_name</span> <span class="kw">in</span> <span class="va">all_sources</span><span class="op">$</span><span class="va">source</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Connecting to:"</span>, <span class="va">source_name</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span>  <span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="va">source_name</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="co"># List domains available in this source</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Available domains:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">db</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example-analysis">Example Analysis<a class="anchor" aria-label="anchor" href="#example-analysis"></a>
 </h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Connect to data source</span></span>
-<span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Read subject-level data</span></span>
-<span><span class="va">adsl</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"adsl"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
 <span></span>
 <span><span class="co"># Basic demographic summary by treatment</span></span>
-<span><span class="va">demo_summary</span> <span class="op">&lt;-</span> <span class="va">adsl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">TRT01A</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">adsl</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">TRT01A</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span></span>
 <span>    n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    mean_age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">AGE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    female_pct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">SEX</span> <span class="op">==</span> <span class="st">"F"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,</span>
 <span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
 <span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">demo_summary</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 4</span></span></span>
+<span><span class="co">#&gt;   TRT01A                   n mean_age female_pct</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Placebo                 86     75.2       61.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Xanomeline High Dose    84     74.4       47.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Xanomeline Low Dose     84     75.7       59.5</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="contributing-new-data-sources">Contributing New Data Sources<a class="anchor" aria-label="anchor" href="#contributing-new-data-sources"></a>
@@ -261,7 +313,7 @@ CRAN submission is needed</strong> to add data.</p>
 </h3>
 <p>Open an <a href="https://github.com/Lovemore-Gakava/clinTrialData/issues" class="external-link">issue</a>
 to request a release slot, then use the helper script:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/upload_to_release.R"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Upload the data zip</span></span>
@@ -280,7 +332,7 @@ to request a release slot, then use the helper script:</p>
 <div class="section level3">
 <h3 id="step-3-users-can-inspect-and-access-it-immediately">Step 3: Users can inspect and access it immediately<a class="anchor" aria-label="anchor" href="#step-3-users-can-inspect-and-access-it-immediately"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dataset_info.html">dataset_info</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span>       <span class="co"># inspect before downloading</span></span>
 <span><span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span>     <span class="co"># download and cache</span></span>
 <span><span class="fu"><a href="../reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span></span></code></pre></div>

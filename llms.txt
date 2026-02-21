@@ -92,7 +92,7 @@ dm   <- db$sdtm$read_cnt("dm")
 
 ### Bundled with the package
 
-**cdisc_pilot** — Standard CDISC Pilot 01 study (10 ADaM, 22 SDTM
+**cdisc_pilot** — Standard CDISC Pilot 01 study (11 ADaM, 22 SDTM
 datasets). Available immediately after installation, no download needed.
 
 ### Available via GitHub Releases

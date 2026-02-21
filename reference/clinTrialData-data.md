@@ -28,7 +28,15 @@ The CDISC Pilot 01 study data includes both ADaM and SDTM domains.
 
 - ADLBHY: Laboratory Analysis Dataset (Hy's Law)
 
-- ADLBURI: Laboratory Analysis Dataset (Urinalysis)
+- ADQSADAS: ADAS-Cog Questionnaire Analysis Dataset
+
+- ADQSCIBC: CIBC Questionnaire Analysis Dataset
+
+- ADQSNPIX: NPI-X Questionnaire Analysis Dataset
+
+- ADTTE: Time-to-Event Analysis Dataset
+
+- ADVS: Vital Signs Analysis Dataset
 
 **SDTM datasets include:**
 
@@ -39,6 +47,10 @@ The CDISC Pilot 01 study data includes both ADaM and SDTM domains.
 - VS: Vital Signs
 
 - LB: Laboratory Test Results
+
+- And 18 additional domains (see
+  [`list_data_sources()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_data_sources.md)
+  for details)
 
 ## Usage
 

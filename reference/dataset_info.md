@@ -1,7 +1,7 @@
 # Inspect a Clinical Trial Dataset Without Downloading
 
 Fetches and displays metadata for any study available in the
-`clinTrialData` library — without downloading the full dataset. Metadata
+`clinTrialData` library – without downloading the full dataset. Metadata
 includes the study description, available domains and datasets, subject
 count, version, and data source attribution.
 
@@ -38,7 +38,21 @@ Invisibly returns the metadata as a named list.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-dataset_info("cdisc_pilot_extended")
-} # }
+# \donttest{
+dataset_info("cdisc_pilot")
+#> ──────────────────────────────────────────────────────────────────────
+#> cdisc_pilot (v0.1.0)
+#> ──────────────────────────────────────────────────────────────────────
+#> CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping
+#> 
+#> Domains & datasets:
+#>   adam   (11): adae, adlb, adlbc, adlbh, adlbhy, adqsadas, adqscibc, adqsnpix, ... (11 total)
+#>   sdtm   (22): ae, cm, dm, ds, ex, lb, mh, qs, ... (22 total)
+#> 
+#> Subjects:   225
+#> Version:    v0.1.0
+#> License:    CDISC Pilot — educational use
+#> Source:     https://github.com/cdisc-org/sdtm-adam-pilot-project
+#> ──────────────────────────────────────────────────────────────────────
+# }
 ```
