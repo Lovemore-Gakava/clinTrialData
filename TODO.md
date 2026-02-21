@@ -7,10 +7,11 @@
 **`%||%` operator**: Keep the internal definition or import from
 `rlang`. Current approach avoids a dependency and works fine.
 
-**`piggyback` in Suggests vs Imports**: Promoting to Imports would make
+**`piggyback` in Suggests vs Imports**: Promoted to Imports.
 [`list_available_studies()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_available_studies.md)
-work out of the box, but Suggests is correct per R conventions. The
-offline fallback now softens first-use UX.
+and
+[`download_study()`](https://lovemore-gakava.github.io/clinTrialData/reference/download_study.md)
+now work out of the box without a separate install step.
 
 ### When needed
 

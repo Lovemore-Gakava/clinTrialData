@@ -41,7 +41,7 @@
 <div class="section level3">
 <h3 id="design-decisions-no-code-changes-required">Design decisions (no code changes required)<a class="anchor" aria-label="anchor" href="#design-decisions-no-code-changes-required"></a></h3>
 <ul class="task-list"><li><p><label><input type="checkbox"><strong><code>%||%</code> operator</strong>: Keep the internal definition or import from <code>rlang</code>. Current approach avoids a dependency and works fine.</label></p></li>
-<li><p><label><input type="checkbox"><strong><code>piggyback</code> in Suggests vs Imports</strong>: Promoting to Imports would make <code><a href="reference/list_available_studies.html">list_available_studies()</a></code> work out of the box, but Suggests is correct per R conventions. The offline fallback now softens first-use UX.</label></p></li>
+<li><p><label><input type="checkbox" checked><strong><code>piggyback</code> in Suggests vs Imports</strong>: Promoted to Imports. <code><a href="reference/list_available_studies.html">list_available_studies()</a></code> and <code><a href="reference/download_study.html">download_study()</a></code> now work out of the box without a separate install step.</label></p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="when-needed">When needed<a class="anchor" aria-label="anchor" href="#when-needed"></a></h3>
