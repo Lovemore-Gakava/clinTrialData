@@ -53,14 +53,30 @@ generate_connector_config <- function(source_path) {
 #' structure and generating the connector configuration dynamically.
 #' Wraps all filesystem connectors with lock protection.
 #'
+#' Resolution order:
+#' 1. User cache (downloaded via [download_study()])
+#' 2. Package-bundled data (`inst/exampledata/`)
+#'
 #' @param source_name Name of the data source (e.g., "cdisc_pilot")
 #' @return A `connectors` object
 #' @keywords internal
 connect_to_source <- function(source_name) {
-  root_path <- system.file("exampledata", source_name, package = "clinTrialData")
+  # 1. Check user cache first (populated by download_study())
+  cached_path <- file.path(cache_dir(), source_name)
 
-  if (root_path == "" || !dir.exists(root_path)) {
-    stop("Data source '", source_name, "' not found in package installation.")
+  # 2. Fall back to package-bundled data
+  bundled_path <- system.file("exampledata", source_name, package = "clinTrialData")
+
+  root_path <- if (dir.exists(cached_path)) {
+    cached_path
+  } else if (!is.null(bundled_path) && bundled_path != "" && dir.exists(bundled_path)) {
+    bundled_path
+  } else {
+    stop(
+      "Data source '", source_name, "' not found.\n",
+      "If this is a remote dataset, download it first with:\n",
+      "  download_study(\"", source_name, "\")"
+    )
   }
 
   # Generate configuration dynamically
@@ -103,78 +119,109 @@ wrap_connectors_with_locks <- function(obj, study_path) {
 #' List Available Clinical Data Sources
 #'
 #' @description
-#' Returns information about all clinical datasets available in the package.
+#' Returns information about all clinical datasets available locally —
+#' both datasets bundled with the package and any datasets previously
+#' downloaded via [download_study()]. The `location` column indicates
+#' whether a dataset is `"bundled"` (shipped with the package) or
+#' `"cached"` (downloaded to the user cache directory).
 #'
-#' @return A data frame with columns: source, description, domains, format
+#' To see datasets available for download from GitHub, use
+#' [list_available_studies()].
+#'
+#' @return A data frame with columns:
+#'   \describe{
+#'     \item{source}{Dataset name (pass to [connect_clinical_data()])}
+#'     \item{description}{Human-readable study description}
+#'     \item{domains}{Comma-separated list of available data domains
+#'       (e.g. `"adam, sdtm"`)}
+#'     \item{format}{Storage format (`"parquet"`)}
+#'     \item{location}{Either `"bundled"` or `"cached"`}
+#'   }
 #' @export
 #'
 #' @examples
 #' list_data_sources()
 list_data_sources <- function() {
-  exampledata_path <- system.file("exampledata", package = "clinTrialData")
+  # Collect (path, location) pairs from both bundled and cached locations
+  search_roots <- list()
 
-  if (exampledata_path == "" || !dir.exists(exampledata_path)) {
-    return(data.frame(
-      source = character(0),
-      description = character(0),
-      domains = character(0),
-      format = character(0),
-      stringsAsFactors = FALSE
-    ))
+  bundled_path <- system.file("exampledata", package = "clinTrialData")
+  if (!is.null(bundled_path) && bundled_path != "" && dir.exists(bundled_path)) {
+    search_roots[["bundled"]] <- bundled_path
   }
 
-  # Find all subdirectories in exampledata
-  source_dirs <- list.dirs(
-    exampledata_path,
-    recursive = FALSE,
-    full.names = FALSE
-  )
-  source_dirs <- source_dirs[source_dirs != ""]
-
-  if (length(source_dirs) == 0) {
-    return(data.frame(
-      source = character(0),
-      description = character(0),
-      domains = character(0),
-      format = character(0),
-      stringsAsFactors = FALSE
-    ))
+  cd <- cache_dir()
+  if (dir.exists(cd)) {
+    search_roots[["cached"]] <- cd
   }
 
-  # Generate information for each source
-  sources_info <- lapply(source_dirs, function(source) {
-    source_path <- file.path(exampledata_path, source)
+  if (length(search_roots) == 0) {
+    return(.empty_sources_df())
+  }
 
-    # Find domain directories (subdirectories with parquet files)
-    domain_dirs <- list.dirs(source_path, recursive = FALSE, full.names = FALSE)
-    domain_dirs <- domain_dirs[domain_dirs != ""]
+  # Enumerate sources from each root, avoiding duplicates (cache wins)
+  seen <- character(0)
+  sources_info <- list()
 
-    # Filter to only domains that contain parquet files
-    valid_domains <- character(0)
-    for (domain in domain_dirs) {
-      domain_path <- file.path(source_path, domain)
-      parquet_files <- list.files(domain_path, pattern = "\\.parquet$")
-      if (length(parquet_files) > 0) {
-        valid_domains <- c(valid_domains, domain)
+  for (location in names(search_roots)) {
+    root <- search_roots[[location]]
+    dirs <- list.dirs(root, recursive = FALSE, full.names = FALSE)
+    dirs <- dirs[dirs != ""]
+
+    for (source in dirs) {
+      if (source %in% seen) next  # cache already registered this source
+
+      source_path <- file.path(root, source)
+      domain_dirs <- list.dirs(source_path, recursive = FALSE, full.names = FALSE)
+      domain_dirs <- domain_dirs[domain_dirs != ""]
+
+      valid_domains <- character(0)
+      for (domain in domain_dirs) {
+        parquet_files <- list.files(
+          file.path(source_path, domain),
+          pattern = "\\.parquet$"
+        )
+        if (length(parquet_files) > 0) {
+          valid_domains <- c(valid_domains, domain)
+        }
       }
+
+      if (length(valid_domains) == 0) next  # skip dirs without parquet data
+
+      description <- switch(source,
+        "cdisc_pilot"          = "CDISC Pilot 01 Study",
+        "cdisc_pilot_extended" = "CDISC Pilot 01 Study (Extended)",
+        source  # fall back to the source name
+      )
+
+      sources_info[[length(sources_info) + 1]] <- list(
+        source      = source,
+        description = description,
+        domains     = paste(valid_domains, collapse = ", "),
+        format      = "parquet",
+        location    = location
+      )
+      seen <- c(seen, source)
     }
+  }
 
-    # Create description based on source name
-    description <- switch(source,
-      "cdisc_pilot" = "CDISC Pilot 01 Study",
-      paste(source)
-    )
+  if (length(sources_info) == 0) {
+    return(.empty_sources_df())
+  }
 
-    list(
-      source = source,
-      description = description,
-      domains = paste(valid_domains, collapse = ", "),
-      format = "parquet"
-    )
-  })
-
-  # Convert to data frame
   do.call(rbind, lapply(sources_info, data.frame, stringsAsFactors = FALSE))
+}
+
+#' @keywords internal
+.empty_sources_df <- function() {
+  data.frame(
+    source      = character(0),
+    description = character(0),
+    domains     = character(0),
+    format      = character(0),
+    location    = character(0),
+    stringsAsFactors = FALSE
+  )
 }
 
 #' Connect to Clinical Data by Source

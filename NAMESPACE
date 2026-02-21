@@ -2,7 +2,10 @@
 
 S3method(remove_cnt,ConnectorLockedFS)
 S3method(write_cnt,ConnectorLockedFS)
+export(cache_dir)
 export(connect_clinical_data)
+export(download_study)
+export(list_available_studies)
 export(list_data_sources)
 importFrom(connector,remove_cnt)
 importFrom(connector,write_cnt)

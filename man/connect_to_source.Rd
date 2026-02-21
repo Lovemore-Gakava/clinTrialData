@@ -16,5 +16,11 @@ A \code{connectors} object
 Generic function to connect to any data source by scanning its directory
 structure and generating the connector configuration dynamically.
 Wraps all filesystem connectors with lock protection.
+
+Resolution order:
+\enumerate{
+\item User cache (downloaded via \code{\link[=download_study]{download_study()}})
+\item Package-bundled data (\verb{inst/exampledata/})
+}
 }
 \keyword{internal}

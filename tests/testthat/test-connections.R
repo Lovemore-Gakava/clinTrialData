@@ -4,7 +4,8 @@ test_that("list_data_sources works", {
   expect_s3_class(sources, "data.frame")
   expect_gt(nrow(sources), 0)
   expect_true("cdisc_pilot" %in% sources$source)
-  expect_named(sources, c("source", "description", "domains", "format"))
+  expect_named(sources, c("source", "description", "domains", "format", "location"))
+  expect_true(all(sources$location %in% c("bundled", "cached")))
 })
 
 test_that("connect_clinical_data validates input", {
