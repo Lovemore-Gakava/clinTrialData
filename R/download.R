@@ -39,13 +39,6 @@ dataset_info <- function(source, repo = "Lovemore-Gakava/clinTrialData") {
     meta <- jsonlite::fromJSON(bundled_meta, simplifyVector = FALSE)
   } else {
     # 2. Fetch from GitHub Release
-    if (!has_package("piggyback")) {
-      stop(
-        "Package 'piggyback' is required to fetch remote metadata.\n",
-        "Install it with: install.packages(\"piggyback\")\n",
-        "Or download the study first with: download_study(\"", source, "\")"
-      )
-    }
 
     releases <- tryCatch(
       .pb_releases(repo = repo),
@@ -259,13 +252,6 @@ cache_dir <- function() {
 #' list_available_studies()
 #' }
 list_available_studies <- function(repo = "Lovemore-Gakava/clinTrialData") {
-  if (!has_package("piggyback")) {
-    stop(
-      "Package 'piggyback' is required to list available studies.\n",
-      "Install it with: install.packages(\"piggyback\")"
-    )
-  }
-
   releases <- tryCatch(
     .pb_releases(repo = repo),
     error = function(e) {
@@ -399,12 +385,6 @@ download_study <- function(source,
                            version = "latest",
                            force   = FALSE,
                            repo    = "Lovemore-Gakava/clinTrialData") {
-  if (!has_package("piggyback")) {
-    stop(
-      "Package 'piggyback' is required to download studies.\n",
-      "Install it with: install.packages(\"piggyback\")"
-    )
-  }
 
   cd <- cache_dir()
   study_cache_path <- file.path(cd, source)

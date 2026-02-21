@@ -21,12 +21,12 @@ Imports:
     connector,
     httr,
     jsonlite,
+    piggyback,
     tools
 Suggests:
     arrow,
     dplyr,
     ggplot2,
-    piggyback,
     testthat (>= 3.0.0),
     knitr,
     rmarkdown,

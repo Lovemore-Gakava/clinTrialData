@@ -252,16 +252,6 @@ test_that("dataset_info parses bundled cdisc_pilot domains correctly", {
   expect_equal(length(unlist(result$domains$sdtm)), 22)
 })
 
-test_that("dataset_info errors without piggyback for remote study", {
-  local_mocked_bindings(
-    cache_dir    = function() tempfile(),
-    has_package  = function(pkg) FALSE
-
-)
-
-  expect_error(dataset_info("nonexistent_study"), "piggyback")
-})
-
 test_that("dataset_info errors when GitHub is unreachable", {
   local_mocked_bindings(
     cache_dir    = function() tempfile(),
@@ -442,11 +432,6 @@ test_that("dataset_info uses tag_name column when tag column is absent", {
 
 
 # --- list_available_studies -----------------------------------------------
-
-test_that("list_available_studies errors without piggyback", {
-  local_mocked_bindings(has_package = function(pkg) FALSE)
-  expect_error(list_available_studies(), "piggyback")
-})
 
 test_that("list_available_studies errors when GitHub is unreachable", {
   local_mocked_bindings(
@@ -684,11 +669,6 @@ test_that("list_available_studies falls back when pb_list fails with stale cache
 
 
 # --- download_study -------------------------------------------------------
-
-test_that("download_study errors without piggyback", {
-  local_mocked_bindings(has_package = function(pkg) FALSE)
-  expect_error(download_study("cdisc_pilot"), "piggyback")
-})
 
 test_that("download_study reports cached study without downloading", {
   fake_cache <- file.path(tempdir(), paste0("ctd_dl_", sample.int(1e5, 1)))
