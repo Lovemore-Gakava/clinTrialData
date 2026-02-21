@@ -3,10 +3,16 @@
 Release assets, along with their local cache status. Studies marked as
 cached = TRUE are already downloaded and available for use with
 connect_clinical_data() without an internet connection.
+When GitHub is unreachable, the function falls back to the last
+successfully fetched listing (if available) and issues a warning.
+The cached column is always recomputed from the local filesystem.
 Requires the piggyback package."><meta property="og:description" content="Returns a data frame of all clinical trial studies available as GitHub
 Release assets, along with their local cache status. Studies marked as
 cached = TRUE are already downloaded and available for use with
 connect_clinical_data() without an internet connection.
+When GitHub is unreachable, the function falls back to the last
+successfully fetched listing (if available) and issues a warning.
+The cached column is always recomputed from the local filesystem.
 Requires the piggyback package."><meta property="og:image" content="https://lovemore-gakava.github.io/clinTrialData/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
@@ -48,6 +54,9 @@ Requires the piggyback package."><meta property="og:image" content="https://love
 Release assets, along with their local cache status. Studies marked as
 <code>cached = TRUE</code> are already downloaded and available for use with
 <code><a href="connect_clinical_data.html">connect_clinical_data()</a></code> without an internet connection.</p>
+<p>When GitHub is unreachable, the function falls back to the last
+successfully fetched listing (if available) and issues a warning.
+The <code>cached</code> column is always recomputed from the local filesystem.</p>
 <p>Requires the <code>piggyback</code> package.</p>
     </div>
 

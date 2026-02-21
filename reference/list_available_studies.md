@@ -6,6 +6,10 @@ Release assets, along with their local cache status. Studies marked as
 [`connect_clinical_data()`](https://lovemore-gakava.github.io/clinTrialData/reference/connect_clinical_data.md)
 without an internet connection.
 
+When GitHub is unreachable, the function falls back to the last
+successfully fetched listing (if available) and issues a warning. The
+`cached` column is always recomputed from the local filesystem.
+
 Requires the `piggyback` package.
 
 ## Usage
