@@ -62,3 +62,4 @@ inst/exampledata/*/.lock
 .DS_Store
 man/figures/logo_original.png
 doc/
+README.html
