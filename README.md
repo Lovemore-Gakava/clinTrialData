@@ -8,27 +8,52 @@
 [![R-CMD-check](https://github.com/Lovemore-Gakava/clinTrialData/actions/workflows/r.yml/badge.svg)](https://github.com/Lovemore-Gakava/clinTrialData/actions/workflows/r.yml)
 <!-- badges: end -->
 
-The `clinTrialData` package provides access to clinical trial example datasets
-in R. Data is stored in Parquet format and accessed through the
-`connector` package.
+`clinTrialData` is a **community-grown library** of clinical trial
+example datasets for R. The package ships with a core set of datasets
+and is designed to expand over time — anyone can contribute a new data
+source, and users can download any available study on demand without
+waiting for a new package release.
 
-## Features
+Data is stored in Parquet format and accessed through the
+[`connector`](https://github.com/pharmaverse/connector) package, giving
+a consistent API regardless of which study you are working with.
 
-- Multiple clinical trial data sources (CDISC Pilot 01 and extended
-  datasets)
-- Complete ADaM and SDTM datasets
-- Parquet format for efficient storage and fast access
-- Automatic data protection prevents accidental modifications
-- Integration with the `connector` package
-- Consistent API across data sources
+## How the library grows
+
+The core idea is simple: datasets live as assets on [GitHub
+Releases](https://github.com/Lovemore-Gakava/clinTrialData/releases),
+not inside the package itself. This means:
+
+- **Users** can pull in any study with a single function call
+- **Contributors** can add new datasets without a CRAN resubmission
+- **The library expands** as the community adds more real-world clinical
+  trial examples
+
+``` r
+# See everything available — bundled in the package or ready to download
+list_available_studies()
+#>                  source version size_mb cached
+#> 1           cdisc_pilot   1.0.0     9.2   TRUE
+#> 2  cdisc_pilot_extended   1.0.0     9.2  FALSE
+#> 3        new_study_2025   1.1.0     4.8  FALSE
+
+# Download a study once; it's cached locally from then on
+download_study("new_study_2025")
+
+# Connect and analyse — same API for every study
+db <- connect_clinical_data("new_study_2025")
+adsl <- db$adam$read_cnt("adsl")
+```
 
 ## Installation
 
-You can install the development version of clinTrialData from GitHub:
-
 ``` r
+# Install from CRAN
+install.packages("clinTrialData")
+
+# Or the development version from GitHub:
 # install.packages("remotes")
-remotes::install_github("lovemore-gakava/clinTrialData")
+remotes::install_github("Lovemore-Gakava/clinTrialData")
 ```
 
 ## Quick Start
@@ -36,61 +61,88 @@ remotes::install_github("lovemore-gakava/clinTrialData")
 ``` r
 library(clinTrialData)
 
-# View available data sources
+# What's already on your machine?
 list_data_sources()
 
-# Connect to a data source
+# What's available to download?
+list_available_studies()
+
+# Download a study (only needed once — cached locally after that)
+download_study("cdisc_pilot")
+
+# Connect and explore
 db <- connect_clinical_data("cdisc_pilot")
 
-# List available datasets
-db$adam$list_content_cnt()
-db$sdtm$list_content_cnt()
+db$adam$list_content_cnt()  # list ADaM datasets
+db$sdtm$list_content_cnt()  # list SDTM datasets
 
-# Read a dataset
 adsl <- db$adam$read_cnt("adsl")
-dm <- db$sdtm$read_cnt("dm")
+dm   <- db$sdtm$read_cnt("dm")
 ```
 
-## Available Data Sources
+## Bundled Data Sources
+
+The following studies ship with the package and are available
+immediately after installation.
 
 ### cdisc_pilot
 
-Standard CDISC Pilot 01 datasets (10 ADaM, 22 SDTM) for quick testing
-and examples.
+Standard CDISC Pilot 01 study — 10 ADaM and 22 SDTM datasets, widely
+used for training and prototyping.
 
 ### cdisc_pilot_extended
 
-Enhanced CDISC Pilot 01 datasets (11 ADaM, 24 SDTM) with additional
-features:
+An enhanced version of the CDISC Pilot 01 study — 11 ADaM and 24 SDTM
+datasets with additional features:
 
-- **TRTDURY** - Treatment duration in years
-- **ADLBURI** - Urinalysis laboratory dataset (new)
-- **ADLB** - Combined labs including urinalysis
+- **TRTDURY** — Treatment duration in years
+- **ADLBURI** — Urinalysis laboratory dataset
+- **ADLB** — Combined labs including urinalysis
 
-Use `list_data_sources()` for complete details.
+Use `list_data_sources()` to see all locally available studies and their
+domains.
+
+## Contributing a New Data Source
+
+Adding a new study to the library takes three steps:
+
+1.  **Prepare your data** as Parquet files organised by domain
+    (e.g. `adam/`, `sdtm/`), following the structure of the existing
+    studies in `inst/exampledata/`.
+
+2.  **Open a pull request** adding your study folder to
+    `inst/exampledata/` and a preparation script to `data-raw/`. See the
+    [contributing
+    guide](https://lovemore-gakava.github.io/clinTrialData/CONTRIBUTING.html)
+    for details.
+
+3.  **Upload to a release** using the helper script in
+    `data-raw/upload_to_release.R`:
+
+``` r
+# After your PR is merged, upload the study as a release asset:
+source("data-raw/upload_to_release.R")
+upload_study_to_release("your_study_name", tag = "v1.1.0")
+```
+
+Once uploaded, any user can access your study immediately via
+`download_study("your_study_name")` — no CRAN submission required.
 
 ## Data Protection
 
-Datasets are automatically protected from accidental modifications:
-
-- Reading data is allowed
-- Writing or removing data is blocked
-- No manual lock management required
-- Clear error messages when write operations are attempted
+All datasets — whether bundled or downloaded — are automatically
+protected from accidental modification. Reading is always allowed; write
+and delete operations are blocked with a clear error message.
 
 ## Documentation
 
-See package vignettes for detailed information about each data source:
-
 ``` r
-# View all available vignettes
+# Browse all vignettes
 vignette(package = "clinTrialData")
 
-# View CDISC Pilot extended datasets
+# Extended dataset guide
 vignette("cdisc-pilot-extended", package = "clinTrialData")
+
+# Cache location
+cache_dir()
 ```
-
-## Data Format
-
-Datasets are stored in Apache Parquet format for efficient storage and
-fast access.
