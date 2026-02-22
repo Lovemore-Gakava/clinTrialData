@@ -1,6 +1,6 @@
 ---
 # MegaLinter Configuration for R Package
-# https://megalinter.io/configuration/
+# https://megalinter.io/latest/configuration/
 
 # Apply R flavor
 FLAVOR: r

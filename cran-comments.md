@@ -1,8 +1,14 @@
+## Resubmission
+
+This is a resubmission. The following issue raised by CRAN has been addressed:
+
+* Fixed invalid URL in `README.md`: `https://github.com/pharmaverse/connector`
+  has been corrected to `https://github.com/NovoNordisk-OpenSource/connector`,
+  which is the actual GitHub repository for the 'connector' package on CRAN.
+
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
-
-* This is a new submission.
 
 ## Package size
 
