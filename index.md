@@ -7,8 +7,9 @@ source, and users can download any available study on demand without
 waiting for a new package release.
 
 Data is stored in Parquet format and accessed through the
-[`connector`](https://github.com/pharmaverse/connector) package, giving
-a consistent API regardless of which study you are working with.
+[`connector`](https://github.com/NovoNordisk-OpenSource/connector)
+package, giving a consistent API regardless of which study you are
+working with.
 
 ## How the library grows
 
