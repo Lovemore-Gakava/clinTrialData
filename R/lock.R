@@ -94,12 +94,6 @@ lock_study <- function(study_path, reason = "Package installed") {
 #' @param study_path Path to the study folder
 #' @return Logical indicating success, invisibly
 #' @keywords internal
-#'
-#' @examples
-#' \dontrun{
-#' # Unlock a study folder to allow regeneration
-#' unlock_study("inst/exampledata/cdisc_pilot")
-#' }
 unlock_study <- function(study_path) {
   np <- normalizePath(study_path, mustWork = FALSE)
   .lock_env$locked_paths <- setdiff(.lock_env$locked_paths, np)
@@ -143,12 +137,6 @@ lock_all_studies <- function(
 #' @param study_path Path to the study folder
 #' @return A list with components `locked` (logical) and `path` (character).
 #' @keywords internal
-#'
-#' @examples
-#' \dontrun{
-#' status <- get_lock_status("inst/exampledata/cdisc_pilot")
-#' status$locked
-#' }
 get_lock_status <- function(study_path) {
   list(
     locked = is_study_locked(study_path),

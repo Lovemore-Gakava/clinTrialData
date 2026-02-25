@@ -1,10 +1,13 @@
 ## Resubmission
 
-This is a resubmission. The following issue raised by CRAN has been addressed:
+This is a resubmission. The following issues raised by CRAN have been addressed:
 
-* Fixed invalid URL in `README.md`: `https://github.com/pharmaverse/connector`
-  has been corrected to `https://github.com/NovoNordisk-OpenSource/connector`,
-  which is the actual GitHub repository for the 'connector' package on CRAN.
+* Added a reference (CDISC) in the Description field of DESCRIPTION with
+  angle-bracket URL format.
+* Removed examples from unexported internal functions `get_lock_status()` and
+  `unlock_study()`.
+* Replaced all `\dontrun{}` with `\donttest{}` for examples that download data
+  (`download_study()`, `list_available_studies()`).
 
 ## R CMD check results
 

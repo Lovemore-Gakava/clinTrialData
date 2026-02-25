@@ -15,10 +15,4 @@ A list with components \code{locked} (logical) and \code{path} (character).
 \description{
 Returns information about the lock status of a study folder.
 }
-\examples{
-\dontrun{
-status <- get_lock_status("inst/exampledata/cdisc_pilot")
-status$locked
-}
-}
 \keyword{internal}

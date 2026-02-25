@@ -35,12 +35,9 @@ cache (see \code{\link[=cache_dir]{cache_dir()}}). Once downloaded, the study is
 Requires the \code{piggyback} package.
 }
 \examples{
-\dontrun{
+\donttest{
 # Download the CDISC Pilot study
 download_study("cdisc_pilot")
-
-# Force re-download a specific version
-download_study("cdisc_pilot", version = "v1.0.0", force = TRUE)
 
 # Then connect as usual
 db <- connect_clinical_data("cdisc_pilot")

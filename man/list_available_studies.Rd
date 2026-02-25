@@ -33,7 +33,7 @@ The \code{cached} column is always recomputed from the local filesystem.
 Requires the \code{piggyback} package.
 }
 \examples{
-\dontrun{
+\donttest{
 list_available_studies()
 }
 }

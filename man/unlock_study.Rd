@@ -17,10 +17,4 @@ Removes the in-memory lock on a study path, allowing write operations
 for the remainder of the current R session. On Unix-like systems, also
 restores write permissions on cached study directories.
 }
-\examples{
-\dontrun{
-# Unlock a study folder to allow regeneration
-unlock_study("inst/exampledata/cdisc_pilot")
-}
-}
 \keyword{internal}

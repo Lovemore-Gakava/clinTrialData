@@ -248,7 +248,7 @@ cache_dir <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' list_available_studies()
 #' }
 list_available_studies <- function(repo = "Lovemore-Gakava/clinTrialData") {
@@ -371,12 +371,9 @@ list_available_studies <- function(repo = "Lovemore-Gakava/clinTrialData") {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Download the CDISC Pilot study
 #' download_study("cdisc_pilot")
-#'
-#' # Force re-download a specific version
-#' download_study("cdisc_pilot", version = "v1.0.0", force = TRUE)
 #'
 #' # Then connect as usual
 #' db <- connect_clinical_data("cdisc_pilot")
