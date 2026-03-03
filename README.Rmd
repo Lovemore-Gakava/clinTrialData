@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # clinTrialData <img src="man/figures/logo.png" align="right" height="139" alt="clinTrialData logo" />
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/clinTrialData)](https://CRAN.R-project.org/package=clinTrialData)
 [![R-CMD-check](https://github.com/Lovemore-Gakava/clinTrialData/actions/workflows/r.yml/badge.svg)](https://github.com/Lovemore-Gakava/clinTrialData/actions/workflows/r.yml)
 <!-- badges: end -->
 
