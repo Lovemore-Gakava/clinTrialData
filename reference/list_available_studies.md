@@ -51,7 +51,10 @@ A data frame with columns:
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
+# \donttest{
 list_available_studies()
-} # }
+#>                 source version size_mb cached
+#> 1          cdisc_pilot  v0.1.0     3.7   TRUE
+#> 2 cdisc_pilot_extended  v0.1.0     4.3  FALSE
+# }
 ```

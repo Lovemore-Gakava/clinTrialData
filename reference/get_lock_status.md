@@ -17,12 +17,3 @@ get_lock_status(study_path)
 ## Value
 
 A list with components `locked` (logical) and `path` (character).
-
-## Examples
-
-``` r
-if (FALSE) { # \dontrun{
-status <- get_lock_status("inst/exampledata/cdisc_pilot")
-status$locked
-} # }
-```

@@ -19,12 +19,3 @@ unlock_study(study_path)
 ## Value
 
 Logical indicating success, invisibly
-
-## Examples
-
-``` r
-if (FALSE) { # \dontrun{
-# Unlock a study folder to allow regeneration
-unlock_study("inst/exampledata/cdisc_pilot")
-} # }
-```

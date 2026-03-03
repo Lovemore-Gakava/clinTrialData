@@ -48,12 +48,8 @@ library(clinTrialData)
 
 # Studies on your machine (bundled + previously downloaded)
 list_data_sources()
-#>        source
-#> 1 cdisc_pilot
-#>                                                                                       description
-#> 1 CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping
-#>      domains  format location
-#> 1 adam, sdtm parquet  bundled
+#>        source description    domains  format location
+#> 1 cdisc_pilot cdisc_pilot adam, sdtm parquet   cached
 ```
 
 ## Quick Start
@@ -71,12 +67,12 @@ db <- connect_clinical_data("cdisc_pilot")
 #> Connection to:
 #> → adam
 #> • connector_fs
-#> • /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam
+#> • /home/runner/.cache/R/clinTrialData/cdisc_pilot/adam
 #> ────────────────────────────────────────────────────────────────────────────────
 #> Connection to:
 #> → sdtm
 #> • connector_fs
-#> • /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm
+#> • /home/runner/.cache/R/clinTrialData/cdisc_pilot/sdtm
 
 # List available datasets in the ADaM domain
 db$adam$list_content_cnt()
@@ -86,7 +82,7 @@ db$adam$list_content_cnt()
 
 # Read the subject-level dataset
 adsl <- db$adam$read_cnt("adsl")
-#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet
+#> → Found one file: /home/runner/.cache/R/clinTrialData/cdisc_pilot/adam/adsl.parquet
 head(adsl[, c("USUBJID", "TRT01A", "AGE", "SEX", "RACE")])
 #> # A tibble: 6 × 5
 #>   USUBJID     TRT01A                 AGE SEX   RACE 
@@ -154,7 +150,7 @@ str(adsl, list.len = 10)
 ``` r
 # Read adverse events data
 adae <- db$adam$read_cnt("adae")
-#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet
+#> → Found one file: /home/runner/.cache/R/clinTrialData/cdisc_pilot/adam/adae.parquet
 head(adae[, c("USUBJID", "AEDECOD", "AESEV", "AESER")])
 #> # A tibble: 6 × 4
 #>   USUBJID     AEDECOD                              AESEV    AESER
@@ -172,7 +168,7 @@ head(adae[, c("USUBJID", "AEDECOD", "AESEV", "AESER")])
 ``` r
 # Read demographics
 dm <- db$sdtm$read_cnt("dm")
-#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/dm.parquet
+#> → Found one file: /home/runner/.cache/R/clinTrialData/cdisc_pilot/sdtm/dm.parquet
 head(dm[, c("USUBJID", "ARM", "AGE", "SEX", "RACE")])
 #> # A tibble: 6 × 5
 #>   USUBJID     ARM                    AGE SEX   RACE 

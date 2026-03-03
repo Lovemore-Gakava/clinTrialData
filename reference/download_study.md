@@ -51,14 +51,26 @@ Invisibly returns the path to the cached study directory.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
+# \donttest{
 # Download the CDISC Pilot study
 download_study("cdisc_pilot")
-
-# Force re-download a specific version
-download_study("cdisc_pilot", version = "v1.0.0", force = TRUE)
+#> Downloading 'cdisc_pilot' (v0.1.0) ...
+#> Extracting to cache ...
+#> Done. 'cdisc_pilot' is ready. Connect with:
+#>   connect_clinical_data("cdisc_pilot")
 
 # Then connect as usual
 db <- connect_clinical_data("cdisc_pilot")
-} # }
+#> ℹ Replace some metadata informations...
+#> ────────────────────────────────────────────────────────────────────────────────
+#> Connection to:
+#> → adam
+#> • connector_fs
+#> • /home/runner/.cache/R/clinTrialData/cdisc_pilot/adam
+#> ────────────────────────────────────────────────────────────────────────────────
+#> Connection to:
+#> → sdtm
+#> • connector_fs
+#> • /home/runner/.cache/R/clinTrialData/cdisc_pilot/sdtm
+# }
 ```
