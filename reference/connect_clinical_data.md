@@ -26,37 +26,20 @@ A `connectors` object
 
 ``` r
 # \donttest{
-# Connect to CDISC Pilot data
-db <- connect_clinical_data("cdisc_pilot")
-#> ℹ Replace some metadata informations...
-#> ────────────────────────────────────────────────────────────────────────────────
-#> Connection to:
-#> → adam
-#> • connector_fs
-#> • /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam
-#> ────────────────────────────────────────────────────────────────────────────────
-#> Connection to:
-#> → sdtm
-#> • connector_fs
-#> • /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm
+if (interactive()) {
+  # Connect to CDISC Pilot data
+  db <- connect_clinical_data("cdisc_pilot")
 
-# List available datasets
-db$adam$list_content_cnt()
-#>  [1] "adae.parquet"     "adlb.parquet"     "adlbc.parquet"    "adlbh.parquet"   
-#>  [5] "adlbhy.parquet"   "adqsadas.parquet" "adqscibc.parquet" "adqsnpix.parquet"
-#>  [9] "adsl.parquet"     "adtte.parquet"    "advs.parquet"    
+  # List available datasets
+  db$adam$list_content_cnt()
 
-# Read a dataset
-adsl <- db$adam$read_cnt("adsl")
-#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet
+  # Read a dataset (requires the arrow package)
+  if (requireNamespace("arrow", quietly = TRUE)) {
+    adsl <- db$adam$read_cnt("adsl")
+  }
 
-# List available sources
-list_data_sources()
-#>        source
-#> 1 cdisc_pilot
-#>                                                                                       description
-#> 1 CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping
-#>      domains  format location
-#> 1 adam, sdtm parquet  bundled
+  # List available sources
+  list_data_sources()
+}
 # }
 ```

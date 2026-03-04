@@ -52,25 +52,12 @@ Invisibly returns the path to the cached study directory.
 
 ``` r
 # \donttest{
-# Download the CDISC Pilot study
-download_study("cdisc_pilot")
-#> Downloading 'cdisc_pilot' (v0.1.0) ...
-#> Extracting to cache ...
-#> Done. 'cdisc_pilot' is ready. Connect with:
-#>   connect_clinical_data("cdisc_pilot")
+if (interactive()) {
+  # Download a study not bundled with the package
+  download_study("cdisc_pilot_extended")
 
-# Then connect as usual
-db <- connect_clinical_data("cdisc_pilot")
-#> ℹ Replace some metadata informations...
-#> ────────────────────────────────────────────────────────────────────────────────
-#> Connection to:
-#> → adam
-#> • connector_fs
-#> • /home/runner/.cache/R/clinTrialData/cdisc_pilot/adam
-#> ────────────────────────────────────────────────────────────────────────────────
-#> Connection to:
-#> → sdtm
-#> • connector_fs
-#> • /home/runner/.cache/R/clinTrialData/cdisc_pilot/sdtm
+  # Then connect as usual
+  db <- connect_clinical_data("cdisc_pilot_extended")
+}
 # }
 ```

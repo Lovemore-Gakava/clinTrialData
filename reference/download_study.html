@@ -13,7 +13,7 @@ Requires the piggyback package."><meta property="og:image" content="https://love
 
     <a class="navbar-brand me-2" href="../index.html">clinTrialData</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,26 +90,13 @@ official <code>clinTrialData</code> release repository.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
-<span class="r-in"><span><span class="co"># Download the CDISC Pilot study</span></span></span>
-<span class="r-in"><span><span class="fu">download_study</span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Downloading 'cdisc_pilot' (v0.1.0) ...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Extracting to cache ...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Done. 'cdisc_pilot' is ready. Connect with:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   connect_clinical_data("cdisc_pilot")</span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># Download a study not bundled with the package</span></span></span>
+<span class="r-in"><span>  <span class="fu">download_study</span><span class="op">(</span><span class="st">"cdisc_pilot_extended"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Then connect as usual</span></span></span>
-<span class="r-in"><span><span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"cdisc_pilot"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Replace some metadata informations...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Connection to:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → <span style="font-weight: bold;">adam</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> connector_fs</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> /home/runner/.cache/R/clinTrialData/cdisc_pilot/adam</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Connection to:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → <span style="font-weight: bold;">sdtm</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> connector_fs</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> /home/runner/.cache/R/clinTrialData/cdisc_pilot/sdtm</span>
+<span class="r-in"><span>  <span class="co"># Then connect as usual</span></span></span>
+<span class="r-in"><span>  <span class="va">db</span> <span class="op">&lt;-</span> <span class="fu"><a href="connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"cdisc_pilot_extended"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

@@ -46,7 +46,7 @@ dataset_info("cdisc_pilot")
 #> CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping
 #> 
 #> Domains & datasets:
-#>   adam   (11): adae, adlb, adlbc, adlbh, adlbhy, adqsadas, adqscibc, adqsnpix, ... (11 total)
+#>   adam   (10): adae, adlbc, adlbh, adlbhy, adqsadas, adqscibc, adqsnpix, adsl, ... (10 total)
 #>   sdtm   (22): ae, cm, dm, ds, ex, lb, mh, qs, ... (22 total)
 #> 
 #> Subjects:   225

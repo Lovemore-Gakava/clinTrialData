@@ -20,8 +20,6 @@ The CDISC Pilot 01 study data includes both ADaM and SDTM domains.
 
 - ADAE: Adverse Events Analysis Dataset
 
-- ADLB: Laboratory Analysis Dataset (combined)
-
 - ADLBC: Laboratory Analysis Dataset (Chemistry)
 
 - ADLBH: Laboratory Analysis Dataset (Hematology)

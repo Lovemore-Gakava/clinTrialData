@@ -46,6 +46,10 @@ A data frame with columns:
 
 ``` r
 list_data_sources()
-#>        source description    domains  format location
-#> 1 cdisc_pilot cdisc_pilot adam, sdtm parquet   cached
+#>        source
+#> 1 cdisc_pilot
+#>                                                                                       description
+#> 1 CDISC Pilot 01 Study — standard ADaM and SDTM datasets widely used for training and prototyping
+#>      domains  format location
+#> 1 adam, sdtm parquet  bundled
 ```
