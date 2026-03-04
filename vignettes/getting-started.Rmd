@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+has_arrow <- requireNamespace("arrow", quietly = TRUE)
 ```
 
 ## Introduction
@@ -59,7 +60,7 @@ list_data_sources()
 
 The package bundles the CDISC Pilot 01 study, so you can connect immediately:
 
-```{r}
+```{r, eval = has_arrow}
 # Connect to CDISC Pilot data
 db <- connect_clinical_data("cdisc_pilot")
 
@@ -88,7 +89,7 @@ cache_dir()
 
 ### Explore the Data
 
-```{r}
+```{r, eval = has_arrow}
 # Dimensions
 dim(adsl)
 
@@ -100,7 +101,7 @@ str(adsl, list.len = 10)
 
 ### ADaM Datasets
 
-```{r}
+```{r, eval = has_arrow}
 # Read adverse events data
 adae <- db$adam$read_cnt("adae")
 head(adae[, c("USUBJID", "AEDECOD", "AESEV", "AESER")])
@@ -108,7 +109,7 @@ head(adae[, c("USUBJID", "AEDECOD", "AESEV", "AESER")])
 
 ### SDTM Datasets
 
-```{r}
+```{r, eval = has_arrow}
 # Read demographics
 dm <- db$sdtm$read_cnt("dm")
 head(dm[, c("USUBJID", "ARM", "AGE", "SEX", "RACE")])
@@ -116,7 +117,7 @@ head(dm[, c("USUBJID", "ARM", "AGE", "SEX", "RACE")])
 
 ## Example Analysis
 
-```{r}
+```{r, eval = has_arrow}
 library(dplyr)
 
 # Basic demographic summary by treatment

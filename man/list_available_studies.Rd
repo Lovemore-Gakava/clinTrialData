@@ -34,6 +34,8 @@ Requires the \code{piggyback} package.
 }
 \examples{
 \donttest{
-list_available_studies()
+if (interactive()) {
+  list_available_studies()
+}
 }
 }

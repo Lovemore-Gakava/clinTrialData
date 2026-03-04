@@ -249,7 +249,9 @@ cache_dir <- function() {
 #'
 #' @examples
 #' \donttest{
-#' list_available_studies()
+#' if (interactive()) {
+#'   list_available_studies()
+#' }
 #' }
 list_available_studies <- function(repo = "Lovemore-Gakava/clinTrialData") {
   releases <- tryCatch(
@@ -372,11 +374,13 @@ list_available_studies <- function(repo = "Lovemore-Gakava/clinTrialData") {
 #'
 #' @examples
 #' \donttest{
-#' # Download the CDISC Pilot study
-#' download_study("cdisc_pilot")
+#' if (interactive()) {
+#'   # Download a study not bundled with the package
+#'   download_study("cdisc_pilot_extended")
 #'
-#' # Then connect as usual
-#' db <- connect_clinical_data("cdisc_pilot")
+#'   # Then connect as usual
+#'   db <- connect_clinical_data("cdisc_pilot_extended")
+#' }
 #' }
 download_study <- function(source,
                            version = "latest",

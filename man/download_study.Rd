@@ -36,10 +36,12 @@ Requires the \code{piggyback} package.
 }
 \examples{
 \donttest{
-# Download the CDISC Pilot study
-download_study("cdisc_pilot")
+if (interactive()) {
+  # Download a study not bundled with the package
+  download_study("cdisc_pilot_extended")
 
-# Then connect as usual
-db <- connect_clinical_data("cdisc_pilot")
+  # Then connect as usual
+  db <- connect_clinical_data("cdisc_pilot_extended")
+}
 }
 }

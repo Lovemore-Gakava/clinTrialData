@@ -248,7 +248,7 @@ test_that("dataset_info parses bundled cdisc_pilot domains correctly", {
   expect_true("sdtm" %in% names(result$domains))
   expect_true("adsl" %in% unlist(result$domains$adam))
   expect_true("dm" %in% unlist(result$domains$sdtm))
-  expect_equal(length(unlist(result$domains$adam)), 11)
+  expect_equal(length(unlist(result$domains$adam)), 10)
   expect_equal(length(unlist(result$domains$sdtm)), 22)
 })
 

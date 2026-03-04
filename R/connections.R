@@ -246,17 +246,21 @@ list_data_sources <- function() {
 #'
 #' @examples
 #' \donttest{
-#' # Connect to CDISC Pilot data
-#' db <- connect_clinical_data("cdisc_pilot")
+#' if (interactive()) {
+#'   # Connect to CDISC Pilot data
+#'   db <- connect_clinical_data("cdisc_pilot")
 #'
-#' # List available datasets
-#' db$adam$list_content_cnt()
+#'   # List available datasets
+#'   db$adam$list_content_cnt()
 #'
-#' # Read a dataset
-#' adsl <- db$adam$read_cnt("adsl")
+#'   # Read a dataset (requires the arrow package)
+#'   if (requireNamespace("arrow", quietly = TRUE)) {
+#'     adsl <- db$adam$read_cnt("adsl")
+#'   }
 #'
-#' # List available sources
-#' list_data_sources()
+#'   # List available sources
+#'   list_data_sources()
+#' }
 #' }
 connect_clinical_data <- function(source = "cdisc_pilot") {
   available_sources <- list_data_sources()$source

@@ -14,7 +14,6 @@
 #' **ADaM datasets include:**
 #' - ADSL: Subject-Level Analysis Dataset
 #' - ADAE: Adverse Events Analysis Dataset
-#' - ADLB: Laboratory Analysis Dataset (combined)
 #' - ADLBC: Laboratory Analysis Dataset (Chemistry)
 #' - ADLBH: Laboratory Analysis Dataset (Hematology)
 #' - ADLBHY: Laboratory Analysis Dataset (Hy's Law)

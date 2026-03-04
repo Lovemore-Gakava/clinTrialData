@@ -23,7 +23,6 @@ The CDISC Pilot 01 study data includes both ADaM and SDTM domains.
 \itemize{
 \item ADSL: Subject-Level Analysis Dataset
 \item ADAE: Adverse Events Analysis Dataset
-\item ADLB: Laboratory Analysis Dataset (combined)
 \item ADLBC: Laboratory Analysis Dataset (Chemistry)
 \item ADLBH: Laboratory Analysis Dataset (Hematology)
 \item ADLBHY: Laboratory Analysis Dataset (Hy's Law)

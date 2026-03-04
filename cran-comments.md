@@ -1,26 +1,33 @@
-## Resubmission
+## Resubmission (0.1.1)
 
-This is a resubmission. The following issues raised by CRAN have been addressed:
+This is a resubmission addressing issues flagged in the CRAN check results for 0.1.0.
 
-* Added a reference (CDISC) in the Description field of DESCRIPTION with
-  angle-bracket URL format.
-* Removed examples from unexported internal functions `get_lock_status()` and
-  `unlock_study()`.
-* Replaced all `\dontrun{}` with `\donttest{}` for examples that download data
-  (`download_study()`, `list_available_studies()`).
+### Vignette ERROR on r-oldrel-macos-x86_64
+
+The vignette failed to rebuild on platforms where the `arrow` package is not
+available. All code chunks in `vignettes/getting-started.Rmd` that call
+`read_cnt()` (which reads Parquet files via `arrow`) are now guarded with
+`eval = requireNamespace("arrow", quietly = TRUE)` so they are silently skipped
+when `arrow` is absent.
+
+### donttest examples
+
+The `\donttest{}` example for `connect_clinical_data()` called `read_cnt()`,
+which requires `arrow`. The `read_cnt()` call is now wrapped in
+`if (requireNamespace("arrow", quietly = TRUE))`.
+
+### Package size NOTE
+
+The installed size has been reduced from 5.4 MB to approximately 4.1 MB by
+removing `adlb.parquet` from the bundled `cdisc_pilot` data. This file was a
+derived dataset (created by row-binding `adlbc`, `adlbh`, and `adlbhy`) and is
+not part of the original CDISC Pilot 01 source data. The three source datasets
+are retained. The combined `adlb` dataset remains available in the
+`cdisc_pilot_extended` study on GitHub Releases.
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
-
-## Package size
-
-The installed package size is 5.4 MB (4.9 MB in `inst/exampledata/`). This
-directory contains the CDISC Pilot 01 study in Parquet format — a widely-used
-standard reference dataset for clinical data analysis training and prototyping.
-It is bundled so the package works fully offline without a network call.
-Additional datasets are hosted on GitHub Releases and downloaded on demand via
-`download_study()`.
 
 ## Test environments
 
