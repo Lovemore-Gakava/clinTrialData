@@ -124,7 +124,7 @@ Use `list_data_sources()` to see all locally available studies and `list_availab
 
 Adding a new study to the library does not require a pull request or a CRAN submission. The data lives on GitHub Releases, not inside the package.
 
-1. **Prepare your data** as Parquet files organised by domain (e.g. `adam/`, `sdtm/`):
+1. **Prepare your data** as Parquet files organized by domain (e.g. `adam/`, `sdtm/`):
 
 ```
 your_study/

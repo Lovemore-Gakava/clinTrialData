@@ -1,4 +1,3 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # clinTrialData <img src="man/figures/logo.png" align="right" height="139" alt="clinTrialData logo" />
@@ -27,98 +26,94 @@ The core idea is simple: datasets live as assets on [GitHub
 Releases](https://github.com/Lovemore-Gakava/clinTrialData/releases),
 not inside the package itself. This means:
 
-- **Users** can pull in any study with a single function call
-- **Contributors** can add new datasets without a CRAN resubmission
-- **The library expands** as the community adds more real-world clinical
-  trial examples
+-   **Users** can pull in any study with a single function call
+-   **Contributors** can add new datasets without a CRAN resubmission
+-   **The library expands** as the community adds more real-world
+    clinical trial examples
 
-``` r
-# What's available to download from GitHub Releases?
-list_available_studies()
-#>                  source version size_mb cached
-#> 1           cdisc_pilot  v0.1.0     3.7   TRUE
-#> 2  cdisc_pilot_extended  v0.1.0     4.3  FALSE
+<!-- -->
 
-# Inspect any study before downloading — fetches a tiny metadata file
-dataset_info("cdisc_pilot_extended")
-#> ──────────────────────────────────────────────────────────────────────────
-#> cdisc_pilot_extended (v0.1.0)
-#> ──────────────────────────────────────────────────────────────────────────
-#> Enhanced CDISC Pilot 01 study with urinalysis data
-#>
-#> Domains & datasets:
-#>   adam   (12): adsl, adae, adlb, adlbc, adlbh, adlbhy, adlburi, ...
-#>   sdtm   (22): ae, cm, dm, ds, ex, lb, mh, qs, relrec, sc, ...
-#>
-#> Subjects:   254
-#> Version:    v0.1.0
-#> License:    CDISC Pilot — educational use
-#> Source:     https://github.com/cdisc-org/sdtm-adam-pilot-project
-#> ──────────────────────────────────────────────────────────────────────────
+    # What's available to download from GitHub Releases?
+    list_available_studies()
+    #>                  source version size_mb cached
+    #> 1           cdisc_pilot  v0.1.0     3.7   TRUE
+    #> 2  cdisc_pilot_extended  v0.1.0     4.3  FALSE
 
-# Download once; cached locally from then on
-download_study("cdisc_pilot_extended")
+    # Inspect any study before downloading — fetches a tiny metadata file
+    dataset_info("cdisc_pilot_extended")
+    #> ──────────────────────────────────────────────────────────────────────────
+    #> cdisc_pilot_extended (v0.1.0)
+    #> ──────────────────────────────────────────────────────────────────────────
+    #> Enhanced CDISC Pilot 01 study with urinalysis data
+    #>
+    #> Domains & datasets:
+    #>   adam   (12): adsl, adae, adlb, adlbc, adlbh, adlbhy, adlburi, ...
+    #>   sdtm   (22): ae, cm, dm, ds, ex, lb, mh, qs, relrec, sc, ...
+    #>
+    #> Subjects:   254
+    #> Version:    v0.1.0
+    #> License:    CDISC Pilot — educational use
+    #> Source:     https://github.com/cdisc-org/sdtm-adam-pilot-project
+    #> ──────────────────────────────────────────────────────────────────────────
 
-# Connect and analyse — same API for every study
-db <- connect_clinical_data("cdisc_pilot_extended")
-adsl <- db$adam$read_cnt("adsl")
-```
+    # Download once; cached locally from then on
+    download_study("cdisc_pilot_extended")
+
+    # Connect and analyse — same API for every study
+    db <- connect_clinical_data("cdisc_pilot_extended")
+    adsl <- db$adam$read_cnt("adsl")
 
 ## Installation
 
-``` r
-# Install from CRAN
-install.packages("clinTrialData")
+    # Install from CRAN
+    install.packages("clinTrialData")
 
-# Or the development version from GitHub:
-# install.packages("remotes")
-remotes::install_github("Lovemore-Gakava/clinTrialData")
-```
+    # Or the development version from GitHub:
+    # install.packages("remotes")
+    remotes::install_github("Lovemore-Gakava/clinTrialData")
 
 ## Quick Start
 
-``` r
-library(clinTrialData)
+    library(clinTrialData)
 
-# What's already on your machine?
-list_data_sources()
+    # What's already on your machine?
+    list_data_sources()
 
-# What's available to download?
-list_available_studies()
+    # What's available to download?
+    list_available_studies()
 
-# Download a study (only needed once — cached locally after that)
-download_study("cdisc_pilot")
+    # Download a study (only needed once — cached locally after that)
+    download_study("cdisc_pilot")
 
-# Connect and explore
-db <- connect_clinical_data("cdisc_pilot")
+    # Connect and explore
+    db <- connect_clinical_data("cdisc_pilot")
 
-db$adam$list_content_cnt()  # list ADaM datasets
-db$sdtm$list_content_cnt()  # list SDTM datasets
+    db$adam$list_content_cnt()  # list ADaM datasets
+    db$sdtm$list_content_cnt()  # list SDTM datasets
 
-adsl <- db$adam$read_cnt("adsl")
-dm   <- db$sdtm$read_cnt("dm")
-```
+    adsl <- db$adam$read_cnt("adsl")
+    dm   <- db$sdtm$read_cnt("dm")
 
 ## Available Data Sources
 
 ### Bundled with the package
 
-**cdisc_pilot** — Standard CDISC Pilot 01 study (10 ADaM, 22 SDTM
+**cdisc\_pilot** — Standard CDISC Pilot 01 study (10 ADaM, 22 SDTM
 datasets). Available immediately after installation, no download needed.
 
 ### Available via GitHub Releases
 
-**cdisc_pilot_extended** — Enhanced CDISC Pilot 01 study (11 ADaM, 24
+**cdisc\_pilot\_extended** — Enhanced CDISC Pilot 01 study (11 ADaM, 24
 SDTM datasets) with additional features:
 
-- **TRTDURY** — Treatment duration in years
-- **ADLBURI** — Urinalysis laboratory dataset
-- **ADLB** — Combined labs including urinalysis
+-   **TRTDURY** — Treatment duration in years
+-   **ADLBURI** — Urinalysis laboratory dataset
+-   **ADLB** — Combined labs including urinalysis
 
-``` r
-download_study("cdisc_pilot_extended")
-connect_clinical_data("cdisc_pilot_extended")
-```
+<!-- -->
+
+    download_study("cdisc_pilot_extended")
+    connect_clinical_data("cdisc_pilot_extended")
 
 Use `list_data_sources()` to see all locally available studies and
 `list_available_studies()` to see everything on GitHub Releases.
@@ -129,7 +124,7 @@ Adding a new study to the library does not require a pull request or a
 CRAN submission. The data lives on GitHub Releases, not inside the
 package.
 
-1.  **Prepare your data** as Parquet files organised by domain
+1.  **Prepare your data** as Parquet files organized by domain
     (e.g. `adam/`, `sdtm/`):
 
 <!-- -->
@@ -142,35 +137,35 @@ package.
         ├── dm.parquet
         └── ae.parquet
 
-2.  **Upload to a GitHub Release** — open an issue on the
+1.  **Upload to a GitHub Release** — open an issue on the
     [repository](https://github.com/Lovemore-Gakava/clinTrialData/issues)
     to request a release slot, then use the helper script:
 
-``` r
-source("data-raw/upload_to_release.R")
+<!-- -->
 
-# Upload the data zip
-upload_study_to_release("your_study", tag = "v1.1.0")
+    source("data-raw/upload_to_release.R")
 
-# Generate and upload the metadata (enables dataset_info() for your study)
-generate_and_upload_metadata(
-  source      = "your_study",
-  description = "Brief description of your study",
-  version     = "v1.1.0",
-  license     = "Your license here",
-  source_url  = "https://link-to-original-data",
-  tag         = "v1.1.0"
-)
-```
+    # Upload the data zip
+    upload_study_to_release("your_study", tag = "v1.1.0")
 
-3.  **Users can inspect and access it immediately** — no CRAN submission
+    # Generate and upload the metadata (enables dataset_info() for your study)
+    generate_and_upload_metadata(
+      source      = "your_study",
+      description = "Brief description of your study",
+      version     = "v1.1.0",
+      license     = "Your license here",
+      source_url  = "https://link-to-original-data",
+      tag         = "v1.1.0"
+    )
+
+1.  **Users can inspect and access it immediately** — no CRAN submission
     required:
 
-``` r
-dataset_info("your_study")      # inspect before downloading
-download_study("your_study")    # download and cache
-connect_clinical_data("your_study")
-```
+<!-- -->
+
+    dataset_info("your_study")      # inspect before downloading
+    download_study("your_study")    # download and cache
+    connect_clinical_data("your_study")
 
 ## Data Protection
 
@@ -196,10 +191,8 @@ support additional analysis scenarios.
 
 ## Documentation
 
-``` r
-# Browse all vignettes
-vignette(package = "clinTrialData")
+    # Browse all vignettes
+    vignette(package = "clinTrialData")
 
-# Cache location
-cache_dir()
-```
+    # Cache location
+    cache_dir()

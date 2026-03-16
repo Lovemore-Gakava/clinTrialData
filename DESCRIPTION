@@ -1,6 +1,6 @@
 Package: clinTrialData
 Title: Clinical Trial Example Datasets
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(
     person("Lovemore", "Gakava", , "Lovemore.Gakava@gmail.com", role = c("aut", "cre", "cph"))
   )
@@ -16,6 +16,7 @@ URL: https://lovemore-gakava.github.io/clinTrialData/,
     https://github.com/Lovemore-Gakava/clinTrialData
 BugReports: https://github.com/Lovemore-Gakava/clinTrialData/issues
 Encoding: UTF-8
+Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Imports:
