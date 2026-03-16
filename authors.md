@@ -10,13 +10,13 @@ Source:
 [`DESCRIPTION`](https://github.com/Lovemore-Gakava/clinTrialData/blob/main/DESCRIPTION)
 
 Gakava L (2026). *clinTrialData: Clinical Trial Example Datasets*. R
-package version 0.1.2,
+package version 0.1.3,
 <https://lovemore-gakava.github.io/clinTrialData/>.
 
     @Manual{,
       title = {clinTrialData: Clinical Trial Example Datasets},
       author = {Lovemore Gakava},
       year = {2026},
-      note = {R package version 0.1.2},
+      note = {R package version 0.1.3},
       url = {https://lovemore-gakava.github.io/clinTrialData/},
     }

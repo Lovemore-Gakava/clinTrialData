@@ -224,7 +224,7 @@ needed** to add data.
 
 ### Step 1: Prepare your data
 
-Organise your Parquet files by domain:
+Organize your Parquet files by domain:
 
     your_new_study/
     ├── adam/

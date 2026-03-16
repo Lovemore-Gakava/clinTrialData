@@ -22,7 +22,7 @@ not inside the package itself. This means:
 - **The library expands** as the community adds more real-world clinical
   trial examples
 
-``` r
+``` R
 # What's available to download from GitHub Releases?
 list_available_studies()
 #>                  source version size_mb cached
@@ -56,7 +56,7 @@ adsl <- db$adam$read_cnt("adsl")
 
 ## Installation
 
-``` r
+``` R
 # Install from CRAN
 install.packages("clinTrialData")
 
@@ -67,7 +67,7 @@ remotes::install_github("Lovemore-Gakava/clinTrialData")
 
 ## Quick Start
 
-``` r
+``` R
 library(clinTrialData)
 
 # What's already on your machine?
@@ -105,7 +105,7 @@ SDTM datasets) with additional features:
 - **ADLBURI** — Urinalysis laboratory dataset
 - **ADLB** — Combined labs including urinalysis
 
-``` r
+``` R
 download_study("cdisc_pilot_extended")
 connect_clinical_data("cdisc_pilot_extended")
 ```
@@ -122,7 +122,7 @@ Adding a new study to the library does not require a pull request or a
 CRAN submission. The data lives on GitHub Releases, not inside the
 package.
 
-1.  **Prepare your data** as Parquet files organised by domain
+1.  **Prepare your data** as Parquet files organized by domain
     (e.g. `adam/`, `sdtm/`):
 
 ``` R
@@ -135,11 +135,11 @@ your_study/
     └── ae.parquet
 ```
 
-2.  **Upload to a GitHub Release** — open an issue on the
+1.  **Upload to a GitHub Release** — open an issue on the
     [repository](https://github.com/Lovemore-Gakava/clinTrialData/issues)
     to request a release slot, then use the helper script:
 
-``` r
+``` R
 source("data-raw/upload_to_release.R")
 
 # Upload the data zip
@@ -156,10 +156,10 @@ generate_and_upload_metadata(
 )
 ```
 
-3.  **Users can inspect and access it immediately** — no CRAN submission
+1.  **Users can inspect and access it immediately** — no CRAN submission
     required:
 
-``` r
+``` R
 dataset_info("your_study")      # inspect before downloading
 download_study("your_study")    # download and cache
 connect_clinical_data("your_study")
@@ -189,7 +189,7 @@ support additional analysis scenarios.
 
 ## Documentation
 
-``` r
+``` R
 # Browse all vignettes
 vignette(package = "clinTrialData")
 
