@@ -16,7 +16,6 @@ Logical indicating success, invisibly
 }
 \description{
 Marks a study path as locked for the duration of the current R session.
-On Unix-like systems, cached study directories are also made read-only
-at the file-system level via \code{Sys.chmod()}.
+The lock is in-memory only: no file-system permissions are modified.
 }
 \keyword{internal}

@@ -14,7 +14,6 @@ Logical indicating success, invisibly
 }
 \description{
 Removes the in-memory lock on a study path, allowing write operations
-for the remainder of the current R session. On Unix-like systems, also
-restores write permissions on cached study directories.
+for the remainder of the current R session.
 }
 \keyword{internal}

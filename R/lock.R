@@ -3,46 +3,6 @@
 .lock_env <- new.env(parent = emptyenv())
 .lock_env$locked_paths <- character(0)
 
-#' Set directory permissions (Unix only)
-#'
-#' On Unix-like systems, sets the directory and its files to read-only
-#' (mode 0555/0444) or read-write (mode 0755/0644). This is a no-op
-#' on Windows, where these permission bits are not meaningful.
-#' Only applied to paths under the user cache directory.
-#'
-#' @param path Directory path.
-#' @param read_only Logical; TRUE to make read-only, FALSE to restore.
-#' @keywords internal
-.set_permissions <- function(path, read_only = TRUE) {
-  if (.Platform$OS.type != "unix") return(invisible(NULL))
-
- # Only harden paths under the user cache, not the installed package
-  cache_root <- normalizePath(
-    tools::R_user_dir("clinTrialData", "cache"),
-    mustWork = FALSE
-  )
-  norm_path <- normalizePath(path, mustWork = FALSE)
-  if (!startsWith(norm_path, cache_root)) return(invisible(NULL))
-
-  if (!dir.exists(path)) return(invisible(NULL))
-
-  if (read_only) {
-    # Files read-only, dirs read + execute (to allow listing)
-    files <- list.files(path, recursive = TRUE, full.names = TRUE)
-    for (f in files) Sys.chmod(f, "0444")
-    dirs <- list.dirs(path, recursive = TRUE, full.names = TRUE)
-    for (d in dirs) Sys.chmod(d, "0555")
-  } else {
-    # Restore write permissions
-    dirs <- list.dirs(path, recursive = TRUE, full.names = TRUE)
-    for (d in dirs) Sys.chmod(d, "0755")
-    files <- list.files(path, recursive = TRUE, full.names = TRUE)
-    for (f in files) Sys.chmod(f, "0644")
-  }
-
-  invisible(NULL)
-}
-
 #' Check if a study folder is locked
 #'
 #' @description
@@ -60,8 +20,7 @@ is_study_locked <- function(study_path) {
 #'
 #' @description
 #' Marks a study path as locked for the duration of the current R session.
-#' On Unix-like systems, cached study directories are also made read-only
-#' at the file-system level via `Sys.chmod()`.
+#' The lock is in-memory only: no file-system permissions are modified.
 #'
 #' @param study_path Path to the study folder
 #' @param reason Optional reason for the lock (included in messages only)
@@ -78,9 +37,6 @@ lock_study <- function(study_path, reason = "Package installed") {
     .lock_env$locked_paths <- c(.lock_env$locked_paths, np)
   }
 
-  # Harden file permissions on cached studies (Unix only)
-  .set_permissions(study_path, read_only = TRUE)
-
   invisible(TRUE)
 }
 
@@ -88,8 +44,7 @@ lock_study <- function(study_path, reason = "Package installed") {
 #'
 #' @description
 #' Removes the in-memory lock on a study path, allowing write operations
-#' for the remainder of the current R session. On Unix-like systems, also
-#' restores write permissions on cached study directories.
+#' for the remainder of the current R session.
 #'
 #' @param study_path Path to the study folder
 #' @return Logical indicating success, invisibly
@@ -97,10 +52,6 @@ lock_study <- function(study_path, reason = "Package installed") {
 unlock_study <- function(study_path) {
   np <- normalizePath(study_path, mustWork = FALSE)
   .lock_env$locked_paths <- setdiff(.lock_env$locked_paths, np)
-
-  # Restore write permissions (Unix only, cache paths only)
-  .set_permissions(study_path, read_only = FALSE)
-
   invisible(TRUE)
 }
 
@@ -170,8 +121,8 @@ can_write_study <- function(study_path, operation = "write to study folder") {
 #'
 #' @description
 #' Called when the package is loaded. Registers bundled and cached study
-#' folders as locked (in memory) to prevent accidental data modification.
-#' No files are written to disk.
+#' folders as locked (in memory only) to prevent accidental data modification.
+#' No files are written to disk and no file-system permissions are changed.
 #'
 #' @param libname Library name
 #' @param pkgname Package name
@@ -194,7 +145,6 @@ can_write_study <- function(study_path, operation = "write to study folder") {
   }
 
   # Also lock any previously downloaded (cached) studies
-
   cd <- tools::R_user_dir("clinTrialData", "cache")
   if (dir.exists(cd)) {
     cached_folders <- list.dirs(cd, recursive = FALSE, full.names = TRUE)

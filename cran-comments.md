@@ -1,33 +1,26 @@
-## Resubmission (0.1.1)
+## Resubmission (0.1.2)
 
-This is a resubmission addressing issues flagged in the CRAN check results for 0.1.0.
+This is a resubmission following archival of 0.1.1.
 
-### Vignette ERROR on r-oldrel-macos-x86_64
+### Archival reason addressed
 
-The vignette failed to rebuild on platforms where the `arrow` package is not
-available. All code chunks in `vignettes/getting-started.Rmd` that call
-`read_cnt()` (which reads Parquet files via `arrow`) are now guarded with
-`eval = requireNamespace("arrow", quietly = TRUE)` so they are silently skipped
-when `arrow` is absent.
+The package was archived because `lock_study()` called `Sys.chmod()` to set
+cached study directories to mode 0555 (no write bit) on Unix. This left
+undeletable detritus in `~/.cache/R/clinTrialData/` after R sessions ended,
+blocking cleanup by the account that ran the CRAN checks.
 
-### donttest examples
-
-The `\donttest{}` example for `connect_clinical_data()` called `read_cnt()`,
-which requires `arrow`. The `read_cnt()` call is now wrapped in
-`if (requireNamespace("arrow", quietly = TRUE))`.
-
-### Package size NOTE
-
-The installed size has been reduced from 5.4 MB to approximately 4.1 MB by
-removing `adlb.parquet` from the bundled `cdisc_pilot` data. This file was a
-derived dataset (created by row-binding `adlbc`, `adlbh`, and `adlbhy`) and is
-not part of the original CDISC Pilot 01 source data. The three source datasets
-are retained. The combined `adlb` dataset remains available in the
-`cdisc_pilot_extended` study on GitHub Releases.
+The fix removes all filesystem permission changes. The in-memory lock
+(`.lock_env`) is sufficient to guard against accidental overwrites within a
+session. No `Sys.chmod()` calls remain in the package.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 2 notes
+
+* NOTE: "New submission / Package was archived on CRAN" — expected for a
+  resubmission after archival.
+* NOTE: "unable to verify current time" — local network issue; not reproducible
+  on CRAN infrastructure.
 
 ## Test environments
 
