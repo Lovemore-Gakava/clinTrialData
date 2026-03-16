@@ -1,9 +1,7 @@
 # Lock a study folder
 
 Marks a study path as locked for the duration of the current R session.
-On Unix-like systems, cached study directories are also made read-only
-at the file-system level via
-[`Sys.chmod()`](https://rdrr.io/r/base/files2.html).
+The lock is in-memory only: no file-system permissions are modified.
 
 ## Usage
 

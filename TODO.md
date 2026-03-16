@@ -78,9 +78,7 @@ Test
 [`dataset_info()`](https://lovemore-gakava.github.io/clinTrialData/reference/dataset_info.md)
 local/bundled JSON parsing
 
-Test
-[`.set_permissions()`](https://lovemore-gakava.github.io/clinTrialData/reference/dot-set_permissions.md)
-on Unix (skip on Windows)
+Test `.set_permissions()` on Unix (skip on Windows)
 
 Offline fallback for
 [`list_available_studies()`](https://lovemore-gakava.github.io/clinTrialData/reference/list_available_studies.md)
