@@ -49,6 +49,14 @@
 <li><p><label><input type="checkbox"><strong>Reduce bundled data size</strong>: The tarball is ~4 MB (4.9 MB installed). Only act if CRAN flags it — bundled data could move to GitHub Releases with <code>download_study("cdisc_pilot")</code> on first use.</label></p></li>
 <li><p><label><input type="checkbox"><strong>pkgdown site</strong>: Verify <code>_pkgdown.yml</code> renders correctly after the documentation changes.</label></p></li>
 </ul></div>
+<div class="section level3">
+<h3 id="downloadable-studies-github-release-assets">Downloadable studies (GitHub Release assets)<a class="anchor" aria-label="anchor" href="#downloadable-studies-github-release-assets"></a></h3>
+<ul class="task-list"><li>
+<label><input type="checkbox"><strong><code>onco_phase3_solid</code> ADaM labels (upstream dependency)</strong>: The published bundle’s ADaM datasets are largely unlabelled – 107/333 columns (32%) vs 95% for SDTM. Five are fully unlabelled: <code>adex</code>, <code>adlb</code>, <code>adrs</code>, <code>adtr</code>, <code>adtte</code> (the primary OS time-to-event dataset). Root cause is upstream in the source ADaM derivation, tracked at <a href="https://github.com/OpenTrialReporting/torivumab-nsclc-301/issues/14" class="external-link">OpenTrialReporting/torivumab-nsclc-301#14</a>. When fixed upstream, rebuild the bundle and re-upload <code>onco_phase3_solid.zip</code></label>
+<ul><li>
+<code>onco_phase3_solid_metadata.json</code> to the <code>v0.1.0</code> release, then re-verify label coverage.</li>
+</ul></li>
+</ul></div>
 </div>
 <div class="section level2">
 <h2 id="completed">Completed<a class="anchor" aria-label="anchor" href="#completed"></a></h2>

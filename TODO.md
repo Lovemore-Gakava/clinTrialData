@@ -28,6 +28,20 @@ with `download_study("cdisc_pilot")` on first use.
 **pkgdown site**: Verify `_pkgdown.yml` renders correctly after the
 documentation changes.
 
+### Downloadable studies (GitHub Release assets)
+
+**`onco_phase3_solid` ADaM labels (upstream dependency)**: The published
+bundle’s ADaM datasets are largely unlabelled – 107/333 columns (32%) vs
+95% for SDTM. Five are fully unlabelled: `adex`, `adlb`, `adrs`, `adtr`,
+`adtte` (the primary OS time-to-event dataset). Root cause is upstream
+in the source ADaM derivation, tracked at
+[OpenTrialReporting/torivumab-nsclc-301#14](https://github.com/OpenTrialReporting/torivumab-nsclc-301/issues/14).
+When fixed upstream, rebuild the bundle and re-upload
+`onco_phase3_solid.zip`
+
+- `onco_phase3_solid_metadata.json` to the `v0.1.0` release, then
+  re-verify label coverage.
+
 ## Completed
 
 Derive `n_subjects` from ADSL/DM in `data-raw/upload_to_release.R`
