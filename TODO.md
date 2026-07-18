@@ -26,15 +26,15 @@
 
 ### Downloadable studies (GitHub Release assets)
 
-- [ ] **`onco_phase3_solid` ADaM labels (upstream dependency)**: The published
-  bundle's ADaM datasets are largely unlabelled -- 107/333 columns (32%) vs
-  95% for SDTM. Five are fully unlabelled: `adex`, `adlb`, `adrs`, `adtr`,
-  `adtte` (the primary OS time-to-event dataset). Root cause is upstream in
-  the source ADaM derivation, tracked at
+- [x] **`onco_phase3_solid` ADaM labels (upstream dependency)**: ADaM datasets
+  were largely unlabelled -- 107/333 columns (32%). Five were fully unlabelled:
+  `adex`, `adlb`, `adrs`, `adtr`, `adtte`. Root cause was upstream in the source
+  ADaM derivation, tracked at
   [OpenTrialReporting/torivumab-nsclc-301#14](https://github.com/OpenTrialReporting/torivumab-nsclc-301/issues/14).
-  When fixed upstream, rebuild the bundle and re-upload `onco_phase3_solid.zip`
-  + `onco_phase3_solid_metadata.json` to the `v0.1.0` release, then re-verify
-  label coverage.
+  **Resolved 2026-07-18**: fixed upstream (source `d189351`, ADaM now 333/333).
+  `onco_phase3_solid.zip` rebuilt and re-uploaded to the `v0.1.0` release;
+  verified 333/333 (100%) from the published asset. SDTM unchanged at 268/282
+  (`suppsu` still 0/10 -- out of scope of #14).
 
 ## Completed
 
