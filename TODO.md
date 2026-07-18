@@ -36,6 +36,20 @@
   verified 333/333 (100%) from the published asset. SDTM unchanged at 268/282
   (`suppsu` still 0/10 -- out of scope of #14).
 
+- [ ] **`onco_phase3_solid` P21-remediation reload (HELD)**: Source has advanced
+  past the published bundle -- published asset was built from `d189351`; source
+  is now at `d5d738f` with Pinnacle 21 remediation **in progress** (e.g.
+  `AVISIT`/`AVISITN` added to 5 BDS datasets; baseline/PARAM/flag/study-day
+  content fixes), so the release asset is stale. P21 reports (SDTM-IG 3.4 +
+  ADaM-IG 1.3, Community 4.1.0) uploaded upstream at
+  `qc/p21-reports/2026-07-18/`. Open items in those reports include ADaM
+  derivation defects (`AD0154` multiple baseline, `AD0152` `ABLFL`/`BASE`,
+  `AD0196` null `PARAMCD`, `AD0141` `PARAM`, `SD1152` duplicates) and 68
+  `AD0018` label-text mismatches; CT findings (`CT2001/2/3`) are accepted
+  synthetic-data limitations. **Decision 2026-07-18: hold the reload** until a
+  clean/dispositioned P21 run, then rebuild `onco_phase3_solid.zip`, re-upload
+  to `v0.1.0`, and re-verify (coverage + labels).
+
 ## Completed
 
 - [x] Derive `n_subjects` from ADSL/DM in `data-raw/upload_to_release.R`
