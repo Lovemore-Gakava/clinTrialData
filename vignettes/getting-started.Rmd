@@ -137,6 +137,45 @@ dm <- db$sdtm$read_cnt("dm")
 head(dm[, c("USUBJID", "ARM", "AGE", "SEX", "RACE")])
 ```
 
+### Loading a Whole Domain at Once
+
+Reading datasets one at a time is fine for a few, but you can load an entire
+domain in a single step. `list_content_cnt()` lists a domain's files and
+`read_cnt()` reads one by name, so a small helper covers both:
+
+```{r, eval = has_arrow}
+# Read every parquet dataset in a domain into a named list
+read_domain <- function(conn) {
+  stems <- tools::file_path_sans_ext(conn$list_content_cnt(pattern = "\\.parquet$"))
+  setNames(lapply(stems, \(nm) conn$read_cnt(nm)), stems)
+}
+
+adam <- read_domain(db$adam)
+names(adam)
+dim(adam$adsl)
+```
+
+Load every domain at once by mapping the helper over `names(db)`:
+
+```{r, eval = has_arrow}
+all_data <- setNames(lapply(names(db), \(d) read_domain(db[[d]])), names(db))
+names(all_data)                 # e.g. "adam", "sdtm"
+# then access as all_data$adam$adsl, all_data$sdtm$dm, ...
+```
+
+Prefer each dataset as its own object in your workspace (`adsl`, `adae`,
+`dm`, ...)? Load a domain straight into the global environment instead. This
+overwrites any existing objects of the same name, so it is best used
+interactively rather than inside a package or function:
+
+```{r, eval = FALSE}
+stems <- tools::file_path_sans_ext(db$adam$list_content_cnt(pattern = "\\.parquet$"))
+for (nm in stems) assign(nm, db$adam$read_cnt(nm), envir = .GlobalEnv)
+```
+
+Labels are preserved throughout -- for example `attr(adam$adsl$AGE, "label")`
+returns "Age" -- because `read_cnt()` reads via `arrow::read_parquet()`.
+
 ## Example Analysis
 
 ```{r, eval = has_arrow}
