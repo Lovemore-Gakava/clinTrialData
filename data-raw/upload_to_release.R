@@ -118,6 +118,46 @@ upload_all_studies <- function(tag       = "latest",
 }
 
 # -----------------------------------------------------------------------------
+#' Count distinct subjects in a study folder
+#'
+#' Returns the number of unique USUBJID values. Prefers the canonical
+#' subject-level datasets -- ADSL (ADaM) then DM (SDTM) -- which carry exactly
+#' one record per enrolled subject and therefore give the true count. Other
+#' domains (e.g. ADAE) only contain subjects with at least one record, so
+#' reading an arbitrary file undercounts. If neither ADSL nor DM is present,
+#' falls back to the largest distinct-USUBJID count seen across all datasets.
+#'
+#' @param study_path  Path to the study folder
+#' @param domain_dirs Character vector of domain subdirectory names
+#' @return Integer subject count (0 if no USUBJID can be read)
+.count_subjects <- function(study_path, domain_dirs) {
+  read_usubjid <- function(path) {
+    tryCatch(
+      unique(arrow::read_parquet(path, col_select = "USUBJID")$USUBJID),
+      error = function(e) character(0)
+    )
+  }
+
+  # Preferred subject-level datasets, in priority order
+  for (preferred in c("adsl.parquet", "dm.parquet")) {
+    for (domain in domain_dirs) {
+      candidate <- file.path(study_path, domain, preferred)
+      if (file.exists(candidate)) {
+        subjects <- read_usubjid(candidate)
+        if (length(subjects) > 0) return(length(subjects))
+      }
+    }
+  }
+
+  # Fallback: the largest distinct-USUBJID count across every dataset
+  all_files <- list.files(
+    study_path, pattern = "\\.parquet$", recursive = TRUE, full.names = TRUE
+  )
+  if (length(all_files) == 0) return(0L)
+  max(vapply(all_files, function(f) length(read_usubjid(f)), integer(1)))
+}
+
+# -----------------------------------------------------------------------------
 #' Generate metadata.json for a study folder
 #'
 #' Scans a study's parquet files to auto-detect domains, dataset names, and
@@ -146,8 +186,7 @@ generate_metadata <- function(source,
   domain_dirs <- list.dirs(study_path, recursive = FALSE, full.names = FALSE)
   domain_dirs <- domain_dirs[domain_dirs != ""]
 
-  domains      <- list()
-  all_subjects <- character(0)
+  domains <- list()
 
   for (domain in domain_dirs) {
     parquet_files <- list.files(
@@ -159,22 +198,13 @@ generate_metadata <- function(source,
 
     dataset_names <- sub("\\.parquet$", "", parquet_files)
     domains[[domain]] <- as.list(dataset_names)
-
-    # Try to read USUBJID from the first parquet to get subject count
-    if (length(all_subjects) == 0) {
-      tryCatch({
-        first_file <- file.path(study_path, domain, parquet_files[[1]])
-        df <- arrow::read_parquet(first_file, col_select = "USUBJID")
-        all_subjects <- unique(df$USUBJID)
-      }, error = function(e) NULL)
-    }
   }
 
   meta <- list(
     source      = source,
     description = description,
     domains     = domains,
-    n_subjects  = length(all_subjects),
+    n_subjects  = .count_subjects(study_path, domain_dirs),
     version     = version,
     license     = license,
     source_url  = source_url

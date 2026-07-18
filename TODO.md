@@ -26,6 +26,9 @@
 
 ## Completed
 
+- [x] Derive `n_subjects` from ADSL/DM in `data-raw/upload_to_release.R`
+  (previously read the first alphabetical file, `adae`, undercounting
+  subjects with no adverse event)
 - [x] Replace `mockery` dependency with `testthat::local_mocked_bindings()`
 - [x] Remove `LazyData: false` from DESCRIPTION (no `data/` directory)
 - [x] Rewrite lock system from file-based to in-memory (`R/lock.R`)
