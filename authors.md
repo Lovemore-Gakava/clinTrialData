@@ -7,7 +7,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/Lovemore-Gakava/clinTrialData/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/Lovemore-Gakava/clinTrialData/blob/v0.1.1/DESCRIPTION)
 
 Gakava L (2026). *clinTrialData: Clinical Trial Example Datasets*. R
 package version 0.1.3,
