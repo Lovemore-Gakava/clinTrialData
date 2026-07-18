@@ -226,6 +226,96 @@ head(dm[, c("USUBJID", "ARM", "AGE", "SEX", "RACE")])
 #> 6 01-701-1047 Placebo                 85 F     WHITE
 ```
 
+### Loading a Whole Domain at Once
+
+Reading datasets one at a time is fine for a few, but you can load an
+entire domain in a single step. `list_content_cnt()` lists a domain’s
+files and `read_cnt()` reads one by name, so a small helper covers both:
+
+``` r
+
+# Read every parquet dataset in a domain into a named list
+read_domain <- function(conn) {
+  stems <- tools::file_path_sans_ext(conn$list_content_cnt(pattern = "\\.parquet$"))
+  setNames(lapply(stems, \(nm) conn$read_cnt(nm)), stems)
+}
+
+adam <- read_domain(db$adam)
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbc.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbh.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbhy.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqsadas.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqscibc.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqsnpix.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adtte.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/advs.parquet
+names(adam)
+#>  [1] "adae"     "adlbc"    "adlbh"    "adlbhy"   "adqsadas" "adqscibc"
+#>  [7] "adqsnpix" "adsl"     "adtte"    "advs"
+dim(adam$adsl)
+#> [1] 254  48
+```
+
+Load every domain at once by mapping the helper over `names(db)`:
+
+``` r
+
+all_data <- setNames(lapply(names(db), \(d) read_domain(db[[d]])), names(db))
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbc.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbh.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbhy.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqsadas.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqscibc.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqsnpix.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adtte.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/advs.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ae.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/cm.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/dm.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ds.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ex.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/lb.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/mh.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/qs.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/relrec.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/sc.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/se.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/suppae.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/suppdm.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/suppds.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/supplb.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/sv.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ta.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/te.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ti.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ts.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/tv.parquet
+#> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/vs.parquet
+names(all_data)                 # e.g. "adam", "sdtm"
+#> [1] "adam" "sdtm"
+# then access as all_data$adam$adsl, all_data$sdtm$dm, ...
+```
+
+Prefer each dataset as its own object in your workspace (`adsl`, `adae`,
+`dm`, …)? Load a domain straight into the global environment instead.
+This overwrites any existing objects of the same name, so it is best
+used interactively rather than inside a package or function:
+
+``` r
+
+stems <- tools::file_path_sans_ext(db$adam$list_content_cnt(pattern = "\\.parquet$"))
+for (nm in stems) assign(nm, db$adam$read_cnt(nm), envir = .GlobalEnv)
+```
+
+Labels are preserved throughout – for example
+`attr(adam$adsl$AGE, "label")` returns “Age” – because `read_cnt()`
+reads via
+[`arrow::read_parquet()`](https://arrow.apache.org/docs/r/reference/read_parquet.html).
+
 ## Example Analysis
 
 ``` r

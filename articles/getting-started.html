@@ -62,7 +62,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Getting Started with clinTrialData</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Lovemore-Gakava/clinTrialData/blob/v0.1.1/vignettes/getting-started.Rmd" class="external-link"><code>vignettes/getting-started.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Lovemore-Gakava/clinTrialData/blob/main/vignettes/getting-started.Rmd" class="external-link"><code>vignettes/getting-started.Rmd</code></a></small>
       <div class="d-none name"><code>getting-started.Rmd</code></div>
     </div>
 
@@ -289,11 +289,93 @@ label returns <code>NULL</code>.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 01-701-1034 Xanomeline High Dose    77 F     WHITE</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 01-701-1047 Placebo                 85 F     WHITE</span></span></code></pre></div>
 </div>
+<div class="section level3">
+<h3 id="loading-a-whole-domain-at-once">Loading a Whole Domain at Once<a class="anchor" aria-label="anchor" href="#loading-a-whole-domain-at-once"></a>
+</h3>
+<p>Reading datasets one at a time is fine for a few, but you can load an
+entire domain in a single step. <code>list_content_cnt()</code> lists a
+domain’s files and <code>read_cnt()</code> reads one by name, so a small
+helper covers both:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Read every parquet dataset in a domain into a named list</span></span>
+<span><span class="va">read_domain</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">conn</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">stems</span> <span class="op">&lt;-</span> <span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/fileutils.html" class="external-link">file_path_sans_ext</a></span><span class="op">(</span><span class="va">conn</span><span class="op">$</span><span class="fu">list_content_cnt</span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"\\.parquet$"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">stems</span>, \<span class="op">(</span><span class="va">nm</span><span class="op">)</span> <span class="va">conn</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="va">nm</span><span class="op">)</span><span class="op">)</span>, <span class="va">stems</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">adam</span> <span class="op">&lt;-</span> <span class="fu">read_domain</span><span class="op">(</span><span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">)</span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbc.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbh.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbhy.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqsadas.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqscibc.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqsnpix.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adtte.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/advs.parquet</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">adam</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "adae"     "adlbc"    "adlbh"    "adlbhy"   "adqsadas" "adqscibc"</span></span>
+<span><span class="co">#&gt;  [7] "adqsnpix" "adsl"     "adtte"    "advs"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">adam</span><span class="op">$</span><span class="va">adsl</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 254  48</span></span></code></pre></div>
+<p>Load every domain at once by mapping the helper over
+<code>names(db)</code>:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">db</span><span class="op">)</span>, \<span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="fu">read_domain</span><span class="op">(</span><span class="va">db</span><span class="op">[[</span><span class="va">d</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">db</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbc.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbh.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adlbhy.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqsadas.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqscibc.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adqsnpix.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adsl.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adtte.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/advs.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ae.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/cm.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/dm.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ds.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ex.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/lb.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/mh.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/qs.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/relrec.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/sc.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/se.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/suppae.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/suppdm.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/suppds.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/supplb.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/sv.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ta.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/te.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ti.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/ts.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/tv.parquet</span></span></span>
+<span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/vs.parquet</span></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">all_data</span><span class="op">)</span>                 <span class="co"># e.g. "adam", "sdtm"</span></span>
+<span><span class="co">#&gt; [1] "adam" "sdtm"</span></span>
+<span><span class="co"># then access as all_data$adam$adsl, all_data$sdtm$dm, ...</span></span></code></pre></div>
+<p>Prefer each dataset as its own object in your workspace
+(<code>adsl</code>, <code>adae</code>, <code>dm</code>, …)? Load a
+domain straight into the global environment instead. This overwrites any
+existing objects of the same name, so it is best used interactively
+rather than inside a package or function:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stems</span> <span class="op">&lt;-</span> <span class="fu">tools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/tools/fileutils.html" class="external-link">file_path_sans_ext</a></span><span class="op">(</span><span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">list_content_cnt</span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"\\.parquet$"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">nm</span> <span class="kw">in</span> <span class="va">stems</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/assign.html" class="external-link">assign</a></span><span class="op">(</span><span class="va">nm</span>, <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="va">nm</span><span class="op">)</span>, envir <span class="op">=</span> <span class="va">.GlobalEnv</span><span class="op">)</span></span></code></pre></div>
+<p>Labels are preserved throughout – for example
+<code>attr(adam$adsl$AGE, "label")</code> returns “Age” – because
+<code>read_cnt()</code> reads via
+<code><a href="https://arrow.apache.org/docs/r/reference/read_parquet.html" class="external-link">arrow::read_parquet()</a></code>.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="example-analysis">Example Analysis<a class="anchor" aria-label="anchor" href="#example-analysis"></a>
 </h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
@@ -343,7 +425,7 @@ CRAN submission is needed</strong> to add data.</p>
 </h3>
 <p>Open an <a href="https://github.com/Lovemore-Gakava/clinTrialData/issues" class="external-link">issue</a>
 to request a release slot, then use the helper script:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/upload_to_release.R"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Upload the data zip</span></span>
@@ -362,7 +444,7 @@ to request a release slot, then use the helper script:</p>
 <div class="section level3">
 <h3 id="step-3-users-can-inspect-and-access-it-immediately">Step 3: Users can inspect and access it immediately<a class="anchor" aria-label="anchor" href="#step-3-users-can-inspect-and-access-it-immediately"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dataset_info.html">dataset_info</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span>       <span class="co"># inspect before downloading</span></span>
 <span><span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span>     <span class="co"># download and cache</span></span>
 <span><span class="fu"><a href="../reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span></span></code></pre></div>
