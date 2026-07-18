@@ -51,11 +51,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="downloadable-studies-github-release-assets">Downloadable studies (GitHub Release assets)<a class="anchor" aria-label="anchor" href="#downloadable-studies-github-release-assets"></a></h3>
-<ul class="task-list"><li>
-<label><input type="checkbox"><strong><code>onco_phase3_solid</code> ADaM labels (upstream dependency)</strong>: The published bundle’s ADaM datasets are largely unlabelled – 107/333 columns (32%) vs 95% for SDTM. Five are fully unlabelled: <code>adex</code>, <code>adlb</code>, <code>adrs</code>, <code>adtr</code>, <code>adtte</code> (the primary OS time-to-event dataset). Root cause is upstream in the source ADaM derivation, tracked at <a href="https://github.com/OpenTrialReporting/torivumab-nsclc-301/issues/14" class="external-link">OpenTrialReporting/torivumab-nsclc-301#14</a>. When fixed upstream, rebuild the bundle and re-upload <code>onco_phase3_solid.zip</code></label>
-<ul><li>
-<code>onco_phase3_solid_metadata.json</code> to the <code>v0.1.0</code> release, then re-verify label coverage.</li>
-</ul></li>
+<ul class="task-list"><li><label><input type="checkbox" checked><strong><code>onco_phase3_solid</code> ADaM labels (upstream dependency)</strong>: ADaM datasets were largely unlabelled – 107/333 columns (32%). Five were fully unlabelled: <code>adex</code>, <code>adlb</code>, <code>adrs</code>, <code>adtr</code>, <code>adtte</code>. Root cause was upstream in the source ADaM derivation, tracked at <a href="https://github.com/OpenTrialReporting/torivumab-nsclc-301/issues/14" class="external-link">OpenTrialReporting/torivumab-nsclc-301#14</a>. <strong>Resolved 2026-07-18</strong>: fixed upstream (source <code>d189351</code>, ADaM now 333/333). <code>onco_phase3_solid.zip</code> rebuilt and re-uploaded to the <code>v0.1.0</code> release; verified 333/333 (100%) from the published asset. SDTM unchanged at 268/282 (<code>suppsu</code> still 0/10 – out of scope of #14).</label></li>
 </ul></div>
 </div>
 <div class="section level2">
