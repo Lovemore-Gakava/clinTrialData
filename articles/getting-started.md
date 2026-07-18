@@ -152,6 +152,40 @@ str(adsl, list.len = 10)
 #>   [list output truncated]
 ```
 
+### Inspecting Variable Labels
+
+Clinical datasets carry variable **labels** (for example `AGE` has the
+label “Age”). These are stored as R *attributes* on each column and are
+preserved when the data is read – but R does not print them alongside
+the values, so [`head()`](https://rdrr.io/r/utils/head.html),
+[`print()`](https://rdrr.io/r/base/print.html), and
+[`View()`](https://rdrr.io/r/utils/View.html) show the data only. To see
+the labels, inspect the attribute directly:
+
+``` r
+
+# Label of a single variable
+attr(adsl$AGE, "label")
+#> [1] "Age"
+
+# Labels for several variables at once
+sapply(adsl[, c("USUBJID", "TRT01A", "AGE", "SEX", "RACE")], attr, "label")
+#>                          USUBJID                           TRT01A 
+#>      "Unique Subject Identifier" "Actual Treatment for Period 01" 
+#>                              AGE                              SEX 
+#>                            "Age"                            "Sex" 
+#>                             RACE 
+#>                           "Race"
+```
+
+`str(adsl)` (above) also lists each column’s label, and label-aware
+packages such as `formatters`, `labelled`, and `gtsummary` pick them up
+automatically.
+
+Label coverage depends on the source data: some contributed studies
+label only a subset of variables, or none at all. A variable with no
+label returns `NULL`.
+
 ## Working with Different Domains
 
 ### ADaM Datasets

@@ -219,6 +219,36 @@ Releases:</p>
 <span><span class="co">#&gt;   ..- attr(*, "label")= chr "Actual Treatment for Period 01 (N)"</span></span>
 <span><span class="co">#&gt;   [list output truncated]</span></span></code></pre></div>
 </div>
+<div class="section level3">
+<h3 id="inspecting-variable-labels">Inspecting Variable Labels<a class="anchor" aria-label="anchor" href="#inspecting-variable-labels"></a>
+</h3>
+<p>Clinical datasets carry variable <strong>labels</strong> (for example
+<code>AGE</code> has the label “Age”). These are stored as R
+<em>attributes</em> on each column and are preserved when the data is
+read – but R does not print them alongside the values, so
+<code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code>, <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code>, and <code><a href="https://rdrr.io/r/utils/View.html" class="external-link">View()</a></code> show
+the data only. To see the labels, inspect the attribute directly:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Label of a single variable</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">adsl</span><span class="op">$</span><span class="va">AGE</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Age"</span></span>
+<span></span>
+<span><span class="co"># Labels for several variables at once</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">adsl</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"USUBJID"</span>, <span class="st">"TRT01A"</span>, <span class="st">"AGE"</span>, <span class="st">"SEX"</span>, <span class="st">"RACE"</span><span class="op">)</span><span class="op">]</span>, <span class="va">attr</span>, <span class="st">"label"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                          USUBJID                           TRT01A </span></span>
+<span><span class="co">#&gt;      "Unique Subject Identifier" "Actual Treatment for Period 01" </span></span>
+<span><span class="co">#&gt;                              AGE                              SEX </span></span>
+<span><span class="co">#&gt;                            "Age"                            "Sex" </span></span>
+<span><span class="co">#&gt;                             RACE </span></span>
+<span><span class="co">#&gt;                           "Race"</span></span></code></pre></div>
+<p><code>str(adsl)</code> (above) also lists each column’s label, and
+label-aware packages such as <code>formatters</code>,
+<code>labelled</code>, and <code>gtsummary</code> pick them up
+automatically.</p>
+<p>Label coverage depends on the source data: some contributed studies
+label only a subset of variables, or none at all. A variable with no
+label returns <code>NULL</code>.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="working-with-different-domains">Working with Different Domains<a class="anchor" aria-label="anchor" href="#working-with-different-domains"></a>
@@ -226,7 +256,7 @@ Releases:</p>
 <div class="section level3">
 <h3 id="adam-datasets">ADaM Datasets<a class="anchor" aria-label="anchor" href="#adam-datasets"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Read adverse events data</span></span>
 <span><span class="va">adae</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">adam</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"adae"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet</span></span></span>
@@ -244,7 +274,7 @@ Releases:</p>
 <div class="section level3">
 <h3 id="sdtm-datasets">SDTM Datasets<a class="anchor" aria-label="anchor" href="#sdtm-datasets"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Read demographics</span></span>
 <span><span class="va">dm</span> <span class="op">&lt;-</span> <span class="va">db</span><span class="op">$</span><span class="va">sdtm</span><span class="op">$</span><span class="fu">read_cnt</span><span class="op">(</span><span class="st">"dm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; → Found one file: <span style="color: #0000BB;">/home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/dm.parquet</span></span></span>
@@ -263,7 +293,7 @@ Releases:</p>
 <div class="section level2">
 <h2 id="example-analysis">Example Analysis<a class="anchor" aria-label="anchor" href="#example-analysis"></a>
 </h2>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
@@ -313,7 +343,7 @@ CRAN submission is needed</strong> to add data.</p>
 </h3>
 <p>Open an <a href="https://github.com/Lovemore-Gakava/clinTrialData/issues" class="external-link">issue</a>
 to request a release slot, then use the helper script:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/upload_to_release.R"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Upload the data zip</span></span>
@@ -332,7 +362,7 @@ to request a release slot, then use the helper script:</p>
 <div class="section level3">
 <h3 id="step-3-users-can-inspect-and-access-it-immediately">Step 3: Users can inspect and access it immediately<a class="anchor" aria-label="anchor" href="#step-3-users-can-inspect-and-access-it-immediately"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dataset_info.html">dataset_info</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span>       <span class="co"># inspect before downloading</span></span>
 <span><span class="fu"><a href="../reference/download_study.html">download_study</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span>     <span class="co"># download and cache</span></span>
 <span><span class="fu"><a href="../reference/connect_clinical_data.html">connect_clinical_data</a></span><span class="op">(</span><span class="st">"your_new_study"</span><span class="op">)</span></span></code></pre></div>
