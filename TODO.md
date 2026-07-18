@@ -30,6 +30,10 @@ documentation changes.
 
 ## Completed
 
+Derive `n_subjects` from ADSL/DM in `data-raw/upload_to_release.R`
+(previously read the first alphabetical file, `adae`, undercounting
+subjects with no adverse event)
+
 Replace `mockery` dependency with
 [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
 

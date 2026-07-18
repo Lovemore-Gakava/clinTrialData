@@ -33,6 +33,7 @@ Key features:
 ## Installation
 
 ``` r
+
 # Install from CRAN
 install.packages("clinTrialData")
 
@@ -44,6 +45,7 @@ remotes::install_github("Lovemore-Gakava/clinTrialData")
 ## Available Data Sources
 
 ``` r
+
 library(clinTrialData)
 
 # Studies on your machine (bundled + previously downloaded)
@@ -64,6 +66,7 @@ The package bundles the CDISC Pilot 01 study, so you can connect
 immediately:
 
 ``` r
+
 # Connect to CDISC Pilot data
 db <- connect_clinical_data("cdisc_pilot")
 #> ℹ Replace some metadata informations...
@@ -104,6 +107,7 @@ head(adsl[, c("USUBJID", "TRT01A", "AGE", "SEX", "RACE")])
 Studies beyond the bundled data can be downloaded from GitHub Releases:
 
 ``` r
+
 # What's available to download?
 list_available_studies()
 
@@ -117,6 +121,7 @@ cache_dir()
 ### Explore the Data
 
 ``` r
+
 # Dimensions
 dim(adsl)
 #> [1] 254  48
@@ -152,6 +157,7 @@ str(adsl, list.len = 10)
 ### ADaM Datasets
 
 ``` r
+
 # Read adverse events data
 adae <- db$adam$read_cnt("adae")
 #> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/adam/adae.parquet
@@ -170,6 +176,7 @@ head(adae[, c("USUBJID", "AEDECOD", "AESEV", "AESER")])
 ### SDTM Datasets
 
 ``` r
+
 # Read demographics
 dm <- db$sdtm$read_cnt("dm")
 #> → Found one file: /home/runner/work/_temp/Library/clinTrialData/exampledata/cdisc_pilot/sdtm/dm.parquet
@@ -188,6 +195,7 @@ head(dm[, c("USUBJID", "ARM", "AGE", "SEX", "RACE")])
 ## Example Analysis
 
 ``` r
+
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'
@@ -240,6 +248,7 @@ Open an [issue](https://github.com/Lovemore-Gakava/clinTrialData/issues)
 to request a release slot, then use the helper script:
 
 ``` r
+
 source("data-raw/upload_to_release.R")
 
 # Upload the data zip
@@ -259,6 +268,7 @@ generate_and_upload_metadata(
 ### Step 3: Users can inspect and access it immediately
 
 ``` r
+
 dataset_info("your_new_study")       # inspect before downloading
 download_study("your_new_study")     # download and cache
 connect_clinical_data("your_new_study")
