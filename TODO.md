@@ -26,6 +26,13 @@
 
 ### Downloadable studies (GitHub Release assets)
 
+- [ ] **Every new release tag must carry *all* studies' assets**:
+  `download_study(version = "latest")` resolves to the newest release and then
+  filters the asset list to that release only, so a tag that ships one study
+  breaks `download_study()` for the others. `v0.1.1` and `v0.1.2` both re-carry
+  the full set of six assets. Worth making `upload_all_studies()` the documented
+  default, or having `download_study()` fall back to searching older releases.
+
 - [x] **`onco_phase3_solid` ADaM labels (upstream dependency)**: ADaM datasets
   were largely unlabelled -- 107/333 columns (32%). Five were fully unlabelled:
   `adex`, `adlb`, `adrs`, `adtr`, `adtte`. Root cause was upstream in the source
@@ -36,19 +43,20 @@
   verified 333/333 (100%) from the published asset. SDTM unchanged at 268/282
   (`suppsu` still 0/10 -- out of scope of #14).
 
-- [ ] **`onco_phase3_solid` P21-remediation reload (HELD)**: Source has advanced
-  past the published bundle -- published asset was built from `d189351`; source
-  is now at `d5d738f` with Pinnacle 21 remediation **in progress** (e.g.
-  `AVISIT`/`AVISITN` added to 5 BDS datasets; baseline/PARAM/flag/study-day
-  content fixes), so the release asset is stale. P21 reports (SDTM-IG 3.4 +
-  ADaM-IG 1.3, Community 4.1.0) uploaded upstream at
-  `qc/p21-reports/2026-07-18/`. Open items in those reports include ADaM
-  derivation defects (`AD0154` multiple baseline, `AD0152` `ABLFL`/`BASE`,
-  `AD0196` null `PARAMCD`, `AD0141` `PARAM`, `SD1152` duplicates) and 68
-  `AD0018` label-text mismatches; CT findings (`CT2001/2/3`) are accepted
-  synthetic-data limitations. **Decision 2026-07-18: hold the reload** until a
-  clean/dispositioned P21 run, then rebuild `onco_phase3_solid.zip`, re-upload
-  to `v0.1.0`, and re-verify (coverage + labels).
+- [x] **`onco_phase3_solid` P21-remediation reload (was HELD)**: The published
+  asset was built from `d189351`, while the source kept moving through Pinnacle
+  21 remediation, so it went stale. **Decision 2026-07-18: hold the reload**
+  until a clean/dispositioned P21 run. **Released 2026-07-26 as `v0.1.2`**
+  (source `a427d6c`): P21 is now dispositioned -- SDTM 10,891 / ADaM 10,890
+  findings, of which 10,873 are the single accepted `SD0007` DA-units warning
+  and the remainder are documented accepted limitations. The bundle also grew
+  from 22 to **26 SDTM domains** (adds trial design `ts`/`ta`/`te`/`se`), gained
+  SAP §12.2 date-based analysis-visit windowing with a unified `ANL01FL`, an ALP
+  analyte and unscheduled lab/vitals visits. Verified from the published URL:
+  38/38 Parquet re-read, 812,681 rows, **708/708 variables labelled** (`suppsu`
+  now labelled too), ADSL/DM both 450 subjects. Metadata description corrected
+  to the true **1:1 (225:225)** allocation -- earlier text said 2:1, copied from
+  the source protocol synopsis.
 
 ## Completed
 
