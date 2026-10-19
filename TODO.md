@@ -28,7 +28,29 @@ with `download_study("cdisc_pilot")` on first use.
 **pkgdown site**: Verify `_pkgdown.yml` renders correctly after the
 documentation changes.
 
+**Next CRAN release: trim `AVISIT` in bundled `cdisc_pilot`
+`adlbc`/`adlbh`** (issue \#3, item 5b). The source XPTs pad AVISIT
+(`" Baseline"`), so `AVISIT == "Baseline"` matches nothing. Already
+fixed in `cdisc_pilot_extended`; the bundled source needs a CRAN
+resubmission. Check other bundled ADaM datasets with AVISIT for the same
+padding.
+
 ### Downloadable studies (GitHub Release assets)
+
+**Issue \#3 (siera ARS variables) – data-only release `data-2026.10`**:
+added to `cdisc_pilot_extended` (not the bundled source, so no CRAN
+resubmission): ADSL `COUNTRY`, `RANDFL`, `TRTDURM`, `DTHCAUS`,
+`DTHCGR1`, `DCSREAS`; new `ADEXSUM`; `AVISIT` trimmed in all ADaM
+datasets. Packaging fixes in `upload_to_release.R`: `.lock` files
+excluded from zips (the published v0.1.0-v0.1.2 zips still contain one
+with hostname/user), `metadata.json` required inside the zip,
+`overwrite = FALSE` by default, `carry_forward_assets()` to re-carry
+unchanged studies to a new tag. Remaining: rebuild, publish, reply on
+the issue. Trade-off: siera’s tests for these variables run in CI only
+(download-only source), skipped on CRAN.
+
+**`cdisc_pilot.zip` release asset still contains the legacy `.lock`**
+(hostname/user). Re-zip and publish on the next data release.
 
 **Every new release tag must carry *all* studies’ assets**:
 `download_study(version = "latest")` resolves to the newest release and
