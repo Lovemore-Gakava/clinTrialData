@@ -34,15 +34,28 @@ DATA_DIR   <- file.path(getwd(), "inst", "exampledata")
 #' @param source   Name of the study folder inside inst/exampledata/
 #' @param tag      Release tag (e.g. "v1.0.0")
 #' @param repo     GitHub repo (owner/name)
-#' @param overwrite Whether to overwrite an existing asset of the same name
+#' @param overwrite Whether to overwrite an existing asset of the same name.
+#'   Defaults to FALSE: published assets should be immutable so that anyone
+#'   pinned to a tag keeps getting the same data. Publish changes under a new
+#'   tag instead (see carry_forward_assets()).
 upload_study_to_release <- function(source,
                                     tag       = "latest",
                                     repo      = REPO,
-                                    overwrite = TRUE) {
+                                    overwrite = FALSE) {
   study_path <- file.path(DATA_DIR, source)
 
   if (!dir.exists(study_path)) {
     stop("Study folder not found: ", study_path)
+  }
+
+  # metadata.json inside the zip is what list_data_sources() reads for the
+  # study description once the study is downloaded
+  if (!file.exists(file.path(study_path, "metadata.json"))) {
+    stop(
+      "No metadata.json in ", study_path, ".\n",
+      "Run generate_metadata('", source, "', ...) first so it is included ",
+      "in the zip."
+    )
   }
 
   # Resolve "latest" tag
@@ -65,7 +78,9 @@ upload_study_to_release <- function(source,
   zip_result <- utils::zip(
     zipfile = tmp_zip,
     files   = source,
-    flags   = "-r9X"  # recursive, max compression, no extra attributes
+    flags   = "-r9X", # recursive, max compression, no extra attributes
+    # Never ship local artefacts: legacy .lock files carried hostname/user
+    extras  = c("-x", "*/.lock", "*/.DS_Store")
   )
 
   setwd(old_wd)
@@ -96,7 +111,7 @@ upload_study_to_release <- function(source,
 #' @param overwrite Whether to overwrite existing assets
 upload_all_studies <- function(tag       = "latest",
                                repo      = REPO,
-                               overwrite = TRUE) {
+                               overwrite = FALSE) {
   studies <- list.dirs(DATA_DIR, recursive = FALSE, full.names = FALSE)
   studies <- studies[studies != ""]
 
@@ -238,7 +253,8 @@ generate_and_upload_metadata <- function(source,
                                          source_url  = "",
                                          tag         = version,
                                          repo        = REPO,
-                                         data_dir    = DATA_DIR) {
+                                         data_dir    = DATA_DIR,
+                                         overwrite   = FALSE) {
   meta <- generate_metadata(
     source      = source,
     description = description,
@@ -257,11 +273,49 @@ generate_and_upload_metadata <- function(source,
     repo      = repo,
     tag       = tag,
     name      = asset_name,
-    overwrite = TRUE
+    overwrite = overwrite
   )
   message("Done: metadata for '", source, "' uploaded to ", repo, "@", tag)
 
   invisible(meta)
+}
+
+# -----------------------------------------------------------------------------
+#' Copy unchanged study assets from an existing release to a new one
+#'
+#' download_study(version = "latest") only looks at the newest release, so
+#' every new release must carry the full set of study assets -- not just the
+#' studies that changed. This copies the zip + metadata assets of every study
+#' NOT listed in `exclude` from `from_tag` to `to_tag`, byte for byte.
+#'
+#' @param from_tag Existing release to copy from (e.g. "v0.1.2")
+#' @param to_tag   New release to copy into (must already exist)
+#' @param exclude  Study names that will be uploaded fresh (not copied)
+#' @param repo     GitHub repo
+carry_forward_assets <- function(from_tag, to_tag, exclude = character(0),
+                                 repo = REPO) {
+  assets <- piggyback::pb_list(repo = repo, tag = from_tag)
+  study  <- sub("(_metadata\\.json|\\.zip)$", "", assets$file_name)
+  keep   <- assets$file_name[!study %in% exclude]
+
+  if (length(keep) == 0) {
+    message("Nothing to carry forward.")
+    return(invisible(character(0)))
+  }
+
+  tmp <- tempfile("carry_")
+  dir.create(tmp)
+  on.exit(unlink(tmp, recursive = TRUE), add = TRUE)
+
+  message("Carrying forward from ", from_tag, " to ", to_tag, ": ",
+          paste(keep, collapse = ", "))
+  piggyback::pb_download(file = keep, dest = tmp, repo = repo, tag = from_tag,
+                         overwrite = TRUE)
+  for (f in keep) {
+    piggyback::pb_upload(file = file.path(tmp, f), repo = repo, tag = to_tag,
+                         name = f, overwrite = FALSE)
+  }
+  invisible(keep)
 }
 
 # =============================================================================
@@ -296,3 +350,33 @@ generate_and_upload_metadata <- function(source,
 #   tag         = "v1.0.0"
 # )
 # # Users can now access it immediately — no CRAN resubmission needed!
+#
+# -----------------------------------------------------------------------------
+# Data-only release (no CRAN resubmission) -- e.g. issue #3, October 2026
+# -----------------------------------------------------------------------------
+# # 1. Rebuild the study locally
+# unlock_study("inst/exampledata/cdisc_pilot_extended")  # if locked
+# source("data-raw/create_extended_datasets.R")
+#
+# # 2. Write metadata.json INTO the study folder (it ships inside the zip)
+# generate_metadata(
+#   source      = "cdisc_pilot_extended",
+#   description = paste(
+#     "Enhanced CDISC Pilot 01 study: additional ADSL variables (COUNTRY,",
+#     "RANDFL, TRTDURM, DTHCAUS, DTHCGR1, DCSREAS), ADEXSUM exposure summary,",
+#     "combined ADLB and trimmed AVISIT. ADLBURI urinalysis values are",
+#     "simulated and not part of the original pilot."
+#   ),
+#   version     = "data-2026.10",
+#   license     = "CDISC Pilot - educational use",
+#   source_url  = "https://github.com/cdisc-org/sdtm-adam-pilot-project"
+# )
+#
+# # 3. New release under a data tag -- never overwrite an existing tag
+# piggyback::pb_new_release(repo = REPO, tag = "data-2026.10")
+#
+# # 4. Carry the unchanged studies forward, then upload the updated one
+# carry_forward_assets("v0.1.2", "data-2026.10", exclude = "cdisc_pilot_extended")
+# upload_study_to_release("cdisc_pilot_extended", tag = "data-2026.10")
+# generate_and_upload_metadata(... same arguments as step 2 ...,
+#                              tag = "data-2026.10")

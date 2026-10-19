@@ -64,3 +64,6 @@ man/figures/logo_original.png
 doc/
 README.html
 .positai/
+
+# Download-only study built by data-raw/create_extended_datasets.R (ships via GitHub Releases)
+inst/exampledata/cdisc_pilot_extended/
