@@ -21,3 +21,4 @@
 ^CRAN-SUBMISSION$
 ^cran-comments\.md$
 ^\.claude$
+^inst/exampledata/cdisc_pilot_extended$

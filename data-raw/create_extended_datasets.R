@@ -1,6 +1,17 @@
 # Script to create extended CDISC pilot datasets
 # This script reads the original cdisc_pilot datasets and adds extra variables
 # based on the transformation logic in dev/setup-data.R
+#
+# What the extended source adds on top of cdisc_pilot:
+#   - TRT01AN / TRT01PN / TRTDURY numeric and derived variables
+#   - ADSL: COUNTRY, RANDFL, TRTDURM, DTHCAUS, DTHCGR1, DCSREAS (issue #3)
+#   - ADEXSUM exposure summary dataset (issue #3)
+#   - AVISIT trimmed of leading blanks in all ADaM datasets (issue #3)
+#   - ADLBURI urinalysis dataset -- SIMULATED values (set.seed(123)); it is
+#     not part of the original CDISC pilot
+#   - ADLB combining ADLBC, ADLBH, ADLBHY and ADLBURI
+#
+# Everything except ADLBURI is derived from data already in cdisc_pilot.
 
 library(arrow)
 library(dplyr)
@@ -9,27 +20,50 @@ library(dplyr)
 source("R/lock.R")
 
 # Create output directory structure
+source_dir <- "inst/exampledata/cdisc_pilot"
 output_dir <- "inst/exampledata/cdisc_pilot_extended"
 
 # Check if the output directory is locked
 if (dir.exists(output_dir) && is_study_locked(output_dir)) {
-  status <- get_lock_status(output_dir)
   stop(
     "Cannot create extended datasets: study folder is locked\n",
-    "  Path: ",
-    output_dir,
-    "\n",
-    "  Locked at: ",
-    status$locked_at,
-    "\n",
-    "  Reason: ",
-    status$reason,
-    "\n",
-    "  To unlock and regenerate data, run: unlock_study('",
-    output_dir,
-    "')",
+    "  Path: ", output_dir, "\n",
+    "  To unlock and regenerate data, run: unlock_study('", output_dir, "')",
     call. = FALSE
   )
+}
+
+# Remove stale artefacts from older builds (e.g. the file-based .lock from
+# v0.1.0, which carried hostname/user details) so they are not re-zipped.
+unlink(file.path(output_dir, ".lock"))
+
+# -----------------------------------------------------------------------------
+# Helpers
+# -----------------------------------------------------------------------------
+
+# Attach a variable label (read by arrow and haven on the way back in)
+set_label <- function(x, label) {
+  attr(x, "label") <- label
+  x
+}
+
+# Trim leading/trailing blanks from AVISIT. The source XPT files pad AVISIT
+# (e.g. "        Baseline"), which makes AVISIT == "Baseline" filters fail.
+# See issue #3.
+trim_avisit <- function(data) {
+  if ("AVISIT" %in% names(data) && is.character(data$AVISIT)) {
+    lbl <- attr(data$AVISIT, "label")
+    data$AVISIT <- trimws(data$AVISIT)
+    attr(data$AVISIT, "label") <- lbl
+  }
+  data
+}
+
+# Move `cols` to sit immediately after `anchor` (if both exist)
+place_after <- function(data, cols, anchor) {
+  cols <- intersect(cols, names(data))
+  if (length(cols) == 0 || !anchor %in% names(data)) return(data)
+  dplyr::relocate(data, dplyr::all_of(cols), .after = dplyr::all_of(anchor))
 }
 
 dir.create(
@@ -116,8 +150,197 @@ if (!"TRTDURY" %in% colnames(adsl)) {
   }
 }
 
+# -----------------------------------------------------------------------------
+# ADSL additions for ARS-driven ARD generation (issue #3, requested by siera)
+# Every variable is derived from data already in cdisc_pilot -- nothing is
+# simulated.
+# -----------------------------------------------------------------------------
+message("Adding issue #3 ADSL variables...")
+
+dm    <- read_parquet(file.path(source_dir, "sdtm/dm.parquet"))
+ds    <- read_parquet(file.path(source_dir, "sdtm/ds.parquet"))
+adae0 <- read_parquet(file.path(source_dir, "adam/adae.parquet"))
+
+# COUNTRY: carried over from DM (ADaMIG standard ADSL variable)
+adsl <- adsl %>%
+  select(-any_of("COUNTRY")) %>%
+  left_join(select(dm, USUBJID, COUNTRY), by = "USUBJID") %>%
+  mutate(COUNTRY = set_label(COUNTRY, "Country"))
+
+# RANDFL: every ADSL subject in the pilot was randomized (screen failures are
+# in DM only), so RANDFL = "Y" for all ADSL records
+adsl$RANDFL <- set_label(rep("Y", nrow(adsl)), "Randomized Population Flag")
+
+# TRTDURM: treatment duration in months, as admiral::derive_vars_duration(
+# out_unit = "months") -- days / (365.25 / 12)
+adsl$TRTDURM <- set_label(
+  as.numeric(adsl$TRTDUR) / 30.4375,
+  "Duration of Treatment (months)"
+)
+
+# DTHCAUS / DTHCGR1: cause of death and treatment-emergent grouping.
+# Primary source is the fatal AE (AESDTH == "Y", earliest if several); the
+# fallback is DS.DSTERM for the death disposition record. Mirrors the
+# admiral ADSL template (derive_vars_extreme_event()).
+fatal_ae <- adae0 %>%
+  filter(AESDTH == "Y") %>%
+  arrange(USUBJID, ASTDT, AESEQ) %>%
+  group_by(USUBJID) %>%
+  slice(1) %>%
+  ungroup() %>%
+  transmute(USUBJID, AE_CAUSE = AEDECOD, AE_TRTEMFL = TRTEMFL)
+
+ds_death <- ds %>%
+  filter(toupper(DSDECOD) == "DEATH") %>%
+  arrange(USUBJID, DSSTDTC) %>%
+  group_by(USUBJID) %>%
+  slice(1) %>%
+  ungroup() %>%
+  transmute(USUBJID, DS_CAUSE = DSTERM)
+
+dm_death <- dm %>%
+  filter(DTHFL == "Y") %>%
+  transmute(USUBJID, DTHDT_ = as.Date(substr(DTHDTC, 1, 10)))
+
+adsl <- adsl %>%
+  left_join(fatal_ae, by = "USUBJID") %>%
+  left_join(ds_death, by = "USUBJID") %>%
+  left_join(dm_death, by = "USUBJID") %>%
+  mutate(
+    DTHCAUS = case_when(
+      DTHFL != "Y"      ~ "",
+      !is.na(AE_CAUSE)  ~ AE_CAUSE,
+      !is.na(DS_CAUSE)  ~ DS_CAUSE,
+      TRUE              ~ ""
+    ),
+    DTHCGR1 = case_when(
+      DTHFL != "Y" ~ "",
+      AE_TRTEMFL %in% "Y" ~ "Treatment-emergent",
+      !is.na(DTHDT_) & !is.na(TRTEDT) & DTHDT_ <= TRTEDT + 30 ~
+        "Treatment-emergent",
+      TRUE ~ "Not treatment-emergent"
+    ),
+    DTHCAUS = set_label(DTHCAUS, "Cause of Death"),
+    DTHCGR1 = set_label(DTHCGR1, "Cause of Death Group 1")
+  ) %>%
+  select(-AE_CAUSE, -AE_TRTEMFL, -DS_CAUSE, -DTHDT_)
+
+# DCSREAS: ADaMIG name for the reason for discontinuation from study.
+# Blank for completers; otherwise the existing DCREASCD value.
+adsl$DCSREAS <- set_label(
+  ifelse(toupper(adsl$DCDECOD) == "COMPLETED" | is.na(adsl$DCREASCD),
+         "", adsl$DCREASCD),
+  "Reason for Discontinuation from Study"
+)
+
+# Column placement close to related variables
+adsl <- adsl %>%
+  place_after("COUNTRY", "SITEGR1") %>%
+  place_after("RANDFL", "SAFFL") %>%
+  place_after("TRTDURM", "TRTDURY") %>%
+  place_after(c("DTHCAUS", "DTHCGR1"), "DTHFL") %>%
+  place_after("DCSREAS", "DCREASCD")
+
+stopifnot(
+  nrow(adsl) == length(unique(adsl$USUBJID)),
+  sum(adsl$DTHFL == "Y") == sum(adsl$DTHCAUS != "")
+)
+
 write_parquet(adsl, file.path(output_dir, "adam/adsl.parquet"))
 message("ADSL complete")
+
+# -----------------------------------------------------------------------------
+# ADEXSUM: exposure summary, one record per subject per parameter (issue #3)
+#
+# Duration and cumulative dose are taken from ADSL so ADEXSUM always agrees
+# with ADSL.TRTDUR / ADSL.CUMDOSE (6 subjects have a missing EXENDTC, which
+# ADSL already resolves via TRTEDT). Number of administrations counts dosing
+# days from EX (the patch is applied once daily), with a missing EXENDTC
+# imputed as ADSL.TRTEDT.
+# -----------------------------------------------------------------------------
+message("Creating ADEXSUM...")
+
+ex <- read_parquet(file.path(source_dir, "sdtm/ex.parquet"))
+
+nadmin <- ex %>%
+  left_join(select(adsl, USUBJID, TRTEDT), by = "USUBJID") %>%
+  mutate(
+    EXSTDT = as.Date(substr(EXSTDTC, 1, 10)),
+    EXENDT = as.Date(ifelse(
+      is.na(EXENDTC) | EXENDTC == "",
+      as.character(TRTEDT),
+      substr(EXENDTC, 1, 10)
+    )),
+    NDAYS = as.numeric(EXENDT - EXSTDT) + 1
+  ) %>%
+  group_by(USUBJID) %>%
+  summarise(NADMIN = sum(NDAYS, na.rm = TRUE), .groups = "drop")
+
+exsum_base <- adsl %>%
+  filter(SAFFL == "Y") %>%
+  select(STUDYID, USUBJID, SUBJID, SITEID, TRT01A, TRT01AN, SAFFL,
+         TRTSDT, TRTEDT, TRTDUR, CUMDOSE) %>%
+  left_join(nadmin, by = "USUBJID")
+
+params <- data.frame(
+  PARAMN  = 1:4,
+  PARAMCD = c("TRTDUR", "NADMIN", "PTIME", "CUMDOSE"),
+  PARAM   = c(
+    "Duration on Therapy (days)",
+    "Number of Administrations",
+    "Person Time (years)",
+    "Cumulative Dose (mg)"
+  ),
+  AVALU   = c("DAYS", "ADMINISTRATIONS", "YEARS", "mg"),
+  stringsAsFactors = FALSE
+)
+
+adexsum <- merge(exsum_base, params, all = TRUE) %>%
+  mutate(
+    AVAL = case_when(
+      PARAMCD == "TRTDUR"  ~ as.numeric(TRTDUR),
+      PARAMCD == "NADMIN"  ~ as.numeric(NADMIN),
+      PARAMCD == "PTIME"   ~ as.numeric(TRTDUR) / 365.25,
+      PARAMCD == "CUMDOSE" ~ as.numeric(CUMDOSE)
+    ),
+    AVALCAT1 = case_when(
+      PARAMCD != "TRTDUR" | is.na(AVAL) ~ "",
+      AVAL / 30.4375 < 6                ~ "< 6 months",
+      TRUE                              ~ ">= 6 months"
+    ),
+    AEXTRT = TRT01A,
+    TRTA   = TRT01A,
+    TRTAN  = TRT01AN
+  ) %>%
+  arrange(USUBJID, PARAMN) %>%
+  transmute(
+    STUDYID  = set_label(STUDYID,  "Study Identifier"),
+    USUBJID  = set_label(USUBJID,  "Unique Subject Identifier"),
+    SUBJID   = set_label(SUBJID,   "Subject Identifier for the Study"),
+    SITEID   = set_label(SITEID,   "Study Site Identifier"),
+    TRT01A   = set_label(TRT01A,   "Actual Treatment for Period 01"),
+    TRT01AN  = set_label(TRT01AN,  "Actual Treatment for Period 01 (N)"),
+    TRTA     = set_label(TRTA,     "Actual Treatment"),
+    TRTAN    = set_label(TRTAN,    "Actual Treatment (N)"),
+    AEXTRT   = set_label(AEXTRT,   "Actual Treatment Received"),
+    SAFFL    = set_label(SAFFL,    "Safety Population Flag"),
+    TRTSDT   = set_label(TRTSDT,   "Date of First Exposure to Treatment"),
+    TRTEDT   = set_label(TRTEDT,   "Date of Last Exposure to Treatment"),
+    PARAMCD  = set_label(PARAMCD,  "Parameter Code"),
+    PARAM    = set_label(PARAM,    "Parameter"),
+    PARAMN   = set_label(PARAMN,   "Parameter (N)"),
+    AVAL     = set_label(AVAL,     "Analysis Value"),
+    AVALU    = set_label(AVALU,    "Analysis Value Unit"),
+    AVALCAT1 = set_label(AVALCAT1, "Analysis Value Category 1")
+  )
+
+stopifnot(
+  nrow(adexsum) == 4 * sum(adsl$SAFFL == "Y"),
+  !anyNA(adexsum$AVAL)
+)
+
+write_parquet(adexsum, file.path(output_dir, "adam/adexsum.parquet"))
+message("ADEXSUM created with ", nrow(adexsum), " records")
 
 # Process ADLB (and similar datasets that have TRT01A and TRT01P)
 adam_files <- c(
@@ -202,6 +425,7 @@ for (file in adam_files) {
       }
     }
 
+    data <- trim_avisit(data)
     write_parquet(data, file.path(output_dir, "adam", file))
     message(paste(file, "complete"))
   }
@@ -292,6 +516,7 @@ for (file in other_adam_files) {
       }
     }
 
+    data <- trim_avisit(data)
     write_parquet(data, file.path(output_dir, "adam", file))
     message(paste(file, "complete"))
   }
