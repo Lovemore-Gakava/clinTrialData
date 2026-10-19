@@ -38,8 +38,7 @@
   added to `cdisc_pilot_extended` (not the bundled source, so no CRAN
   resubmission): ADSL `COUNTRY`, `RANDFL`, `TRTDURM`, `DTHCAUS`, `DTHCGR1`,
   `DCSREAS`; new `ADEXSUM`; `AVISIT` trimmed in all ADaM datasets.
-  Packaging fixes in `upload_to_release.R`: `.lock` files excluded from zips
-  (the published v0.1.0-v0.1.2 zips still contain one with hostname/user),
+  Packaging fixes in `upload_to_release.R`: `.lock` files excluded from zips,
   `metadata.json` required inside the zip, `overwrite = FALSE` by default,
   `carry_forward_assets()` to re-carry unchanged studies to a new tag.
   Trade-off: siera's tests
