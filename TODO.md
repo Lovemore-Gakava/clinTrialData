@@ -33,7 +33,8 @@
 
 ### Downloadable studies (GitHub Release assets)
 
-- [ ] **Issue #3 (siera ARS variables) -- data-only release `data-2026.10`**:
+- [x] **Issue #3 (siera ARS variables) -- data-only release `data-2026.10`**
+  (released 2026-10-19, PR #4; reply posted on #3):
   added to `cdisc_pilot_extended` (not the bundled source, so no CRAN
   resubmission): ADSL `COUNTRY`, `RANDFL`, `TRTDURM`, `DTHCAUS`, `DTHCGR1`,
   `DCSREAS`; new `ADEXSUM`; `AVISIT` trimmed in all ADaM datasets.
@@ -41,7 +42,7 @@
   (the published v0.1.0-v0.1.2 zips still contain one with hostname/user),
   `metadata.json` required inside the zip, `overwrite = FALSE` by default,
   `carry_forward_assets()` to re-carry unchanged studies to a new tag.
-  Remaining: rebuild, publish, reply on the issue. Trade-off: siera's tests
+  Trade-off: siera's tests
   for these variables run in CI only (download-only source), skipped on CRAN.
 
 - [ ] **`cdisc_pilot.zip` release asset still contains the legacy `.lock`**
