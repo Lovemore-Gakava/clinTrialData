@@ -45,8 +45,10 @@
   Trade-off: siera's tests
   for these variables run in CI only (download-only source), skipped on CRAN.
 
-- [ ] **`cdisc_pilot.zip` release asset still contains the legacy `.lock`**
-  (hostname/user). Re-zip and publish on the next data release.
+- [x] **Legacy `.lock` (hostname/user) removed from release zips** (2026-10-19):
+  `cdisc_pilot.zip` on all four releases and `cdisc_pilot_extended.zip` on
+  v0.1.0-v0.1.2 replaced in place with the `.lock` entry deleted; data
+  entries byte-identical (CRC-checked).
 
 - [ ] **Every new release tag must carry *all* studies' assets**:
   `download_study(version = "latest")` resolves to the newest release and then
