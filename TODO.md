@@ -24,6 +24,13 @@
 - [ ] **pkgdown site**: Verify `_pkgdown.yml` renders correctly after the
   documentation changes.
 
+- [ ] **Next CRAN release: trim `AVISIT` in bundled `cdisc_pilot`
+  `adlbc`/`adlbh`** (issue #3, item 5b). The source XPTs pad AVISIT
+  (`"        Baseline"`), so `AVISIT == "Baseline"` matches nothing.
+  Already fixed in `cdisc_pilot_extended`; the bundled source needs a CRAN
+  resubmission. Check other bundled ADaM datasets with AVISIT for the same
+  padding.
+
 ### Downloadable studies (GitHub Release assets)
 
 - [ ] **Issue #3 (siera ARS variables) -- data-only release `data-2026.10`**:
